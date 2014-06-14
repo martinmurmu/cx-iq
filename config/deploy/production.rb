@@ -2,7 +2,7 @@ set :application, "amplifiedanalytics.com"
 #set :repository,  "https://jetcharter.unfuddle.com/svn/jetcharter_dm/trunk/web"
 # Use Git source control
 set :scm, :git
-set :repository, "git@github.com:gergoryy/aai_home.git"
+set :repository, "git@github.com:piplzchoice/cx-iq.git"
 
 # Production deploys should ALWAYS come from master branch.
 # Please don't change this without a really good reason.

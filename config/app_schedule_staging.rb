@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 set :environment, "staging"
-set :cron_log, "/home/staging/aai_ror_staging.amplifiedanalytics.com/current/log/cron_log.log"
+set :cron_log, "/home/staging/staging.cx-iq.com/current/log/cron_log.log"
 
 every 2.hours do
   rake "ferret:rebuild INDEXES=product"

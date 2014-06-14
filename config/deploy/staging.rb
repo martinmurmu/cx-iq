@@ -1,8 +1,8 @@
-set :application, "aai_ror_staging.amplifiedanalytics.com"
+set :application, "staging.cx-iq.com"
 #set :repository,  "https://jetcharter.unfuddle.com/svn/jetcharter_dm/trunk/web"
 # Use Git source control
 set :scm, :git
-set :repository, "git@github.com:gergoryy/aai_home.git"
+set :repository, "git@github.com:piplzchoice/cx-iq.git"
 #set :repository, "https://martynasp@github.com/dmitryv/aai_home"
 
 # For staging, we will deploy from integration branch for now
