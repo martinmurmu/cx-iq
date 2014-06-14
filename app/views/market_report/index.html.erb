@@ -1,0 +1,134 @@
+<style>
+  #phone_list div {
+    font-size: 14px;
+  }
+  #phone_list div img {
+    float: right;
+    cursor: pointer;
+  }
+</style>
+<div style="float:left;width:500px;padding:20px;font-size:14px;color:#555;">
+  <h2>Products</h2>
+  <p>
+  </p>
+  <p>
+  <div style="margin-top:20px;">
+    <img src="/images/search_icon.png" style="vertical-align:top;margin-top:-10px;width:36px;">
+    <input id="product_select" value="" style="width:380px;border:1px solid #888;margin-top:-5px;">
+    <img id="addButton" src="/images/add_icon.png" style="float:right;margin-right:40px;vertical-align:top;margin-top:-5px;cursor:pointer;width:24px;" alt="add" onclick="javascript:add_product()">
+  </div>
+  <div id="phone_list" style="margin-left:40px;width:425px;">
+  </div>
+  </p>
+</div>
+
+<div style="float:left;width:240px;padding:20px;font-size:14px;color:#555;">
+  <h2>Available Attributes</h2>
+  <select id="attributes" style="width:240px;height:200px;background:#fff;" multiple>
+  </select>
+  * select multiple using Ctrl+Click
+</div>
+
+<div style="clear:both"></div>
+
+<center>
+<input type="button" id="generate" class="button green" value="Generate Market Intellegence Report">
+</center>
+
+
+<script>
+
+(function($) {
+    $.extend({
+        getGo: function(url, params) {
+            document.location = url + '?' + $.param(params);
+        },
+        postGo: function(url, params) {
+            var $form = $("<form>")
+                .attr("method", "post")
+                .attr("action", url);
+            $.each(params, function(name, value) {
+                $("<input type='hidden'>")
+                    .attr("name", name)
+                    .attr("value", value)
+                    .appendTo($form);
+            });
+            $form.appendTo("body");
+            $form.submit();
+        }
+    });
+})(jQuery);
+
+  function log(s) {
+    window.console && window.console.log(s)
+  }
+  var phone_list = []
+  //ON DELETE
+  $("#phone_list div img").live("click", function() {
+    var phone = $(this).parent().find(".phone").html();
+    phone_list.splice(phone_list.indexOf(phone),1)
+    rebuild_product_list();
+  })
+
+  function update_attributes() {
+    $.post("/market_report/attributes_for",
+      {products:JSON.stringify(phone_list)},
+      function(data) {
+         $("#attributes").html("");
+         var attributes = JSON.parse(data)
+         log(attributes)
+         log(attributes.length)
+
+         for(var i=0;i<attributes.length;i++) {
+           log(attributes[i])
+            $("#attributes").append($("<option></option>")
+              .attr("value",attributes[i])
+              .text(attributes[i])
+            )
+         }
+      })
+  }
+  function rebuild_product_list() {
+    $("#phone_list").html("");
+    for(var i=0;i<phone_list.length;i++) {
+      $("#phone_list").append("<div><span class=phone>"+phone_list[i]+"</span><img src='/images/delete_icon.png'></div><div style='clear:both'></div>")
+    }
+    update_attributes();
+  }
+  
+  function add_product() {
+      var phone_name = $("#product_select").val();
+      log(phone_name)
+      log(phone_list.indexOf(phone_name))
+      if(phone_list.indexOf(phone_name)==-1) {
+        phone_list.push(phone_name)
+      }
+      rebuild_product_list();
+      $("#product_select").val("");
+  }
+
+  $(function() {
+
+    $('#product_select').autocomplete({
+      source: <%= raw Product.smart_phones.order(:name).map(&:name).to_json %>,
+      autoFocus: true,
+      select: function(e,ui) {
+        $("#product_select").val(ui.item.value)
+        setTimeout("add_product()",200)
+        return true;
+      }
+    });
+
+    $('#generate').click( function() {
+       var selected_attributes = []
+       $("#attributes option:selected").each( function() {
+         selected_attributes.push($(this).text())
+       })
+       $.postGo("/market_report/show",
+         {products:JSON.stringify(phone_list),
+          attributes: JSON.stringify(selected_attributes)})
+    })
+
+  })
+
+</script>

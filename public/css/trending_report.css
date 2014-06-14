@@ -1,0 +1,46 @@
+a { color: #000; }
+
+body {
+	background: #fff !important;
+	font-family: "Trebuchet MS"
+}
+
+.period_links {
+	font-size: 12px;
+	padding-left: 32px;
+}
+
+.period_link {
+	float: left;
+	margin-left: 10px;
+	overflow: hidden;
+}
+
+div.legend {
+	border: 1px black solid;
+	width: 600px;
+	overflow:auto;
+	margin: 10px 0;
+	padding: 10px;
+}
+
+div.legend ul li {
+	list-style-type:none;
+	float: left;
+	margin-bottom: 5px;
+	width: 500px;
+}
+
+div.legend ul li div.box {
+	border: 1px black solid;
+	width: 15px;
+	height: 15px;
+	float: left
+}
+
+div.legend ul li div.detail {
+	font-size: 14px;
+	color: black;
+	float: left;
+	margin-left: 5px;
+}

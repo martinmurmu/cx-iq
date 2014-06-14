@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  product_group_id: 1
+  product_id: '00048d085693fa1f0e45c8acd782d939'
+
+two:
+  product_group_id: 1
+  product_id: '00105bd4140c2dd0bc9706bdf409b2bc'

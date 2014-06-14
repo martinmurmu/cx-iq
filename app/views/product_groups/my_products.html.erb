@@ -1,0 +1,35 @@
+<% content_for :top_content_area do -%>
+    <div id="content_top">
+      <div id="content_area">
+        <p>
+          <img src="/images/account/myaccountheader.png" alt="My Current Product Category Subscriptions" width="102" height="28" style="padding-top: 10px;" />
+        </p>
+      </div>
+      <div id="message_area"></div>
+    </div>
+<% end -%>
+
+<div id="content_area">
+
+  <% @same_url_query = true %>
+  <%= render 'products/product_lookup' %>
+
+  <div id="account_tabs">
+    <%= link_to "", edit_user_registration_path, :id=> 'tab_1' -%>
+    <%= link_to "", my_products_product_groups_path, :id=> 'tab_3', :class=>"active" -%>
+    <%= link_to "", product_groups_path, :id=> 'tab_2' -%>
+  </div>
+
+
+  <div id="category_list">
+    <%= render :partial => 'my_products_search_results' %>
+  </div>
+  <div style='float:left;margin-top:10px'>
+	<a href=http://youtu.be/xWXXEQzcrkA target=_blank class='button yellow'>Help Video</a>
+  </div>
+  <div class="actionBar">
+    <ul>
+    </ul>
+  </div><!--end actionBar-->
+  <div class="clearer"></div>
+</div>

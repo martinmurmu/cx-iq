@@ -1,0 +1,58 @@
+<% @page_title = 'Contact Us - Amplified Analytics' -%>
+<% content_for :top_content_area do -%>
+    <div id="content_top">
+      <div id="content_area">
+        <img src="/images/contactus/telluswhatyouthink2.png" alt="Tell Us What You Think" />
+      </div>
+      <div id="message_area">
+      </div>
+    </div>    
+<% end -%>
+
+<div id="content_area">
+<p>
+<b>
+  Please feel free to contact us with any
+  comments/suggestions or general feedback you may have.
+</b>
+</p>
+<br />
+<% form_for(@user_messages) do |f| %>
+<div id="contact_wrap">
+  <%= f.error_messages %>
+  <div id="contact_left">
+    <img src="/images/contactus/formlabel-name.jpg" />
+    <div class="bg_shadow_small">
+      <div class="shadow_inner_small" id="edt_name_border">
+        <%= f.text_field :name, :class=>"shadow_textbox_small" %>
+      </div>
+    </div>
+    <img src="/images/contactus/formlabel-email.jpg" />
+    <div class="bg_shadow_small">
+      <div class="shadow_inner_small" id="edt_email_border">
+        <%= f.text_field :email, :class=>"shadow_textbox_small" %>
+      </div>
+
+    </div>
+    <img src="/images/contactus/formlabel-company.jpg" />
+    <div class="bg_shadow_small">
+      <div class="shadow_inner_small" id="edt_company_border">
+        <%= f.text_field :company, :class=>"shadow_textbox_small" %>
+      </div>
+    </div>
+  </div>
+  <div id="contact_right">
+    <img src="/images/contactus/formlabel-message.jpg" />
+    <div class="bg_shadow_large">
+
+      <div class="shadow_inner_large" id="edt_msg_border">
+        <%= f.text_area :message, :class=>"shadow_textbox_large" %>
+      </div>
+    </div>
+    <img src="/images/contactus/callus.jpg" alt="Call us at 415-373-2627" style="position:relative; top:10px; left:10px;" />
+    <%= f.submit 'Create', :alt=>"Submit", :style=>"float: right", :type=>"image", :src=>"/images/submit-button.jpg" %>
+  </div>
+</div>
+<% end %>
+
+</div>

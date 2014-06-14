@@ -1,0 +1,14 @@
+Dear <%= @user.first_name %>,<br/>
+We sent you this message that the following products have received
+<br/>
+new customer feedback:
+<br/>
+<br/>
+<% for product in @products %>
+  <%= Product.find(product).try(:name) %>
+  <br/>
+<% end %>
+<br/>
+The new feedback caused Opinion Miner® to recalculate the scores measuring customer experience with these products. To assess these changes, please follow this link.
+<br/>
+<%= link_to 'link to', product_groups_url %>

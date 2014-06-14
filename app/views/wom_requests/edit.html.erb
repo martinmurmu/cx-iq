@@ -1,0 +1,48 @@
+<h1>Editing wom_request</h1>
+
+<% form_for(@wom_request) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :product_name %><br />
+    <%= f.text_field :product_name %>
+  </p>
+  <p>
+    <%= f.label :competitor_a %><br />
+    <%= f.text_field :competitor_a %>
+  </p>
+  <p>
+    <%= f.label :competitor_b %><br />
+    <%= f.text_field :competitor_b %>
+  </p>
+  <p>
+    <%= f.label :competitor_c %><br />
+    <%= f.text_field :competitor_c %>
+  </p>
+  <p>
+    <%= f.label :competitor_d %><br />
+    <%= f.text_field :competitor_d %>
+  </p>
+  <p>
+    <%= f.label :update_frequency %><br />
+    <%= f.text_field :update_frequency %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :company_name %><br />
+    <%= f.text_field :company_name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @wom_request %> |
+<%= link_to 'Back', wom_requests_path %>

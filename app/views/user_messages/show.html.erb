@@ -1,0 +1,24 @@
+<% @page_title = 'Contact Us - Amplified Analytics' -%>
+<p>
+  <b>Name:</b>
+  <%=h @user_messages.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @user_messages.email %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%=h @user_messages.company %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%=h @user_messages.message %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_messages_path(@user_messages) %> |
+<%= link_to 'Back', user_messages_path %>

@@ -1,0 +1,109 @@
+.pw_wrapper {
+	position: relative;
+}
+
+.pw_content {
+	position: absolute;
+	top: 85px;
+	left: 17px;
+	width: 200px;
+	height: auto;
+}
+
+.pw_header {
+	height: 50px;
+	padding-left: 11px;
+}
+
+.pw_header p {
+	font-family: arial;
+	font-size: 11px;
+	text-align: center;
+}
+
+.pw_dialbox {
+	background: url(../images/widget/bg-dialbox.gif) no-repeat !important;
+	width: 184px;
+	height: 58px;
+	margin-top: 5px;
+	margin-left: 15px;
+}
+
+.pw_dialbox_left {
+	float: left;
+	width: 70px;
+	padding: 6px 12px 0px 12px;
+}
+
+.pw_dialbox_caption p {
+	float: left;
+	color: #af1d1d;
+	font-size: 9px;
+	font-weight: bold;
+	font-family: Arial, Helvetica;
+	text-transform: uppercase;
+	margin-top: 15px;
+	line-height: 11px;
+	padding: 0 0 0 0;
+}
+
+.pw_view_reviews a {
+	font-family: Arial;
+	color: #7e7c7c;
+	font-size: 9px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: block;
+	float: left;
+}
+
+.pw_dialbox_right img {
+	margin-top: 5px;
+}
+
+.aai_panel {
+	border-style: none;
+	border: none;
+	background: transparent;
+	border-width: 0px;
+}
+
+.pw_dialbox a {
+	font-family: Arial;
+	color: #7e7c7c;
+	font-size: 9px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: block;
+	float: left;
+}
+
+.pw_tooltip_heading
+{
+	font-size: 10px;
+	font-family:Arial;
+	word-wrap: break-word;
+	font-weight: bolder;
+	color: gray;
+	text-transform: uppercase;
+	line-height: 0px;
+	padding-top: 10px;
+}
+
+.pw_tooltip_text p
+{
+	font-family: Arial;
+	color: #000000;
+	font-size: 11px;
+	line-height: 12px;
+}
+
+.pw_tooltip_container
+{
+	width: 240px; 
+	background-color: #FFFFFF;
+}
+
+

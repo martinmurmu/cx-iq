@@ -1,0 +1,14 @@
+<div id="content_area">
+  <div align="center" style="padding: 60px 0 90px 0;">
+    <% form_for :product_group, @product_group, :url => { :action => "create_from_product_report" } do |f| -%>
+      <%= render :partial => 'form', :locals => { :f => f } -%>
+      <div align="center">
+        <input name="Save" type="submit" id="subscribe" tabindex="6" value="Save" style="width:80px; height:28px;" />
+          &nbsp;&nbsp;
+        <%= link_to 'Cancel', product_report_products_path(params[:report_id]) -%>
+      </div>
+      </p>
+      <%= hidden_field_tag 'report_id', params[:report_id] %>
+    <% end -%>
+  </div>
+</div>

@@ -1,0 +1,186 @@
+<%= stylesheet_link_tag 'reviews.css', 'panel.css', 'style.css', 'Modal.css', 'prd_widget', '/aai/css/prm_style.css', '/css/global.css',  '/css/style.css', '/stylesheets/prototip.css' %>
+<%= javascript_include_tag :defaults, 'scriptaculous', 'prototip' %>
+
+<style>
+.prd_panel_right {
+    padding-right: 0px;
+}
+
+.content-wrap >.content {
+    height: auto;
+}
+
+.auto_complete {
+    left: 42px !important;
+    top: 106px !important;
+}
+
+</style>
+<div id="content_area" style='margin:20px;background:#fff;'>
+  <h2 class="product_name_header">Enter a name of the product here to discover its reputation</h2>
+  <div style='clear:both'></div>
+  <%= form_tag(v2p_accelerator_demo_path, {:method=>:get, :id => "v2pdemo-submit"}) -%>
+  <table width="100%">
+    <tbody>
+      <tr>
+        <td width="70%">
+          <%= text_field_with_auto_complete :product, :name, :tabindex=>"0", :class=>"longEditbox" %>
+<!--
+         <div style="top: 0 !important; display: none; z-index: 4301; width: 450px; height: 200px;" class="rich-sb-common-container" id="j_id131:productSuggest">
+            <div class="rich-sb-ext-decor-1">
+              <div style="" class="rich-sb-ext-decor-2">
+              </div>
+            </div>
+          </div>-->
+        </td>
+        <td width="30%" align="right" style="padding-right: 15px;">
+          <%#= image_submit_tag("submit-button.jpg", :style=>"border: medium none ;") -%>
+					<a style="" href="#" id="submit-btn-pro"><%= image_tag("submit-button.jpg", :style=>"border: medium none ;") %></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </form>
+
+  <center style="padding: 5px;"><img style="border: medium none ;" src="/images/PageSeparator1.png">
+  </center>
+  <br>
+  <% if params[:product] && params[:product][:name] && params[:product][:name]!="" && @product.blank? %>
+  <%= render "/shared/search_not_found" %>
+  <% end %>
+  <div class="prd_panel_wrapper" style='height: auto'>
+    <div class="prd_panel_left">
+      <h2>To get started ...</h2>
+      <p>
+          Please enter the name of the product manufacturer to display a list of matching products, select one, and
+          click "Submit".
+      </p>
+      <br />
+      <p>
+          If you can't find a product on manufacturer's list, try to search it by its name, like "Coolpix" or
+          "Pavilion" to display the list of that family of products.
+      </p>
+      <br>
+      <p>
+          If you still can't find it, <a style='text-decoration:underline' href=/V2P-Product-Reviews/Product-Submit>contact us</a> to add it to our database.
+      </p>
+      <br>
+      <a target=_blank style='text-decoration:none' href=/V2P-Product-Reviews/Video><img src=/images/video_play2.png style='vertical-align:top;margin-top:-5px;margin-right:6px;'><span style='text-decoration:underline;color:#358;font-size:14px;'>click to view video</span></a>
+      <img style="padding: 15px 5px 20px 0px;" alt="" src="/images/section_separator_2.png" alt="" />
+      <% unless @product.blank? -%>
+        <% form_tag "/products/#{@product.id}/produce_psa_report", :id => "pr_form" do -%>
+          <%= hidden_field_tag 'threshold', '0.0075', :id => "pr_threshold" %>
+          <%= hidden_field_tag 'keywords',  '', :id => "pr_keywords" %>
+          <%= hidden_field_tag 'mapping', '', :id => "mapping" %>
+					<%= seemorebutton_link(cookies, current_user) %>
+        <% end %>
+        <%= form_tag(compare_with_other_products_v2p_accelerator_path, :method => :post, :style=>'position:absolute;margin-left:400px;margin-top:-20px;') -%>
+          <%= hidden_field_tag 'product_id', @product.id -%>
+          <%= image_submit_tag("/images/compareButton.png", :style=>"position:absolute;margin-left:40px;padding: 5px 5px;") %>
+        </form>
+        <!-- AddThis Button BEGIN -->
+        <div style='position:absolute;margin-left:450px;width:200px;margin-top:40px;'>
+            <script type="text/javascript">
+             var addthis_config = {
+                 services_exclude: 'print'
+             }
+             </script>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_compact"></a>
+            </div>
+            <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e7b48114c64d7b1"></script>
+        </div>
+        <!-- AddThis Button END -->
+
+      <% end -%>
+
+      <img src="/images/scale_legend.png" alt="" /><br>
+      <a href=http://ce.org><img src="/images/products/CEA_member_logo.jpg" style='position:relative;width:143px;margin-bottom:400px;margin:20px;margin-top:60px;margin-left:320px;'></a>
+
+    </div>
+    <div class="prd_panel_right">
+      <form enctype="application/x-www-form-urlencoded" action="/Products/V2P-Accelerator/Demo" method="post" name="j_id157" id="j_id157">
+        <%= render 'v2p_accelerator/widget' -%>
+      </form>
+      <div id="ReviewPanelOuter">
+      </div>
+      <div id="LoginPanelOuter">
+      </div>
+    </div>
+  </div>
+</div>
+<a style="display: none;" href="#popup-loader" id="example1"></a>
+<div style="display:none;">
+	<div id="popup-loader">
+		<img src="/images/44.gif" />
+	</div>
+</div>
+
+<% content_for :header do -%>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			jQuery("a#example1").fancybox({
+				'titleShow'     : false,
+	      'hideOnOverlayClick':false,
+      	'hideOnContentClick':false
+			});
+
+			jQuery('#submit-btn-pro').click(function() {
+				show_loading_sbm();
+			});
+
+			jQuery("#product_name").keypress(function(e){
+				if(e.keyCode == 13) {
+					show_loading_sbm();
+					return false
+				}
+			});
+		});
+
+		function show_loading_sbm(){
+			jQuery("#fancybox-loading").remove();
+			jQuery("a#example1").click();
+			jQuery("#fancybox-outer").css("background", "transparent");
+//			jQuery("#fancybox-outer div").css("background", "transparent");
+//			jQuery(".fancy-bg").css("background", "none");
+			setTimeout("jQuery('#v2pdemo-submit').submit()", "1000");
+		}
+	</script>
+	<style>
+		#fancybox-title-wrap {
+			display: none;
+		}
+
+		#fancybox-close {
+			display: none !important;
+		}
+
+		#fancybox-outer div {
+			background: url();
+		}
+
+	</style>
+<% end %>
+
+<% unless @popup.nil? %>
+	<% content_for :header do -%>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				jQuery("#seemorebutton-link").fancybox()
+			});
+		</script>
+	<% end %>
+
+	<div style="display:none;">
+		<div id="popup-msg">
+		&nbsp;<br />&nbsp;<br />
+		<span style="font-size: 14px;">
+		<%= @popup_msg %>
+		</span>
+		&nbsp;<br />&nbsp;<br />&nbsp;<br />
+		</div>
+	</div>
+<% end %>

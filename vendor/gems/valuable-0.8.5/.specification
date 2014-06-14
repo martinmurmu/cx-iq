@@ -1,0 +1,80 @@
+--- !ruby/object:Gem::Specification 
+name: valuable
+version: !ruby/object:Gem::Version 
+  hash: 53
+  prerelease: false
+  segments: 
+  - 0
+  - 8
+  - 5
+  version: 0.8.5
+platform: ruby
+authors: 
+- Johnathon Wright
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2010-10-05 00:00:00 -06:00
+default_executable: 
+dependencies: []
+
+description: Valuable is a ruby base class that is essentially attr_accessor on steroids. It intends to use a simple and intuitive interface, allowing you to get on with the logic specific to your application.
+email: jw@mustmodify.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- lib/valuable.rb
+- README.markdown
+- rakefile.rb
+- test/bad_attributes_test.rb
+- test/alias_test.rb
+- test/write_and_read_attribute_test.rb
+- test/inheritance_test.rb
+- test/deprecated_test.rb
+- test/valuable_test.rb
+has_rdoc: true
+homepage: http://valuable.mustmodify.com
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: valuable
+rubygems_version: 1.3.7
+signing_key: 
+specification_version: 3
+summary: attr_accessor on steroids with defaults, constructor, and light casting.
+test_files: 
+- test/bad_attributes_test.rb
+- test/alias_test.rb
+- test/write_and_read_attribute_test.rb
+- test/inheritance_test.rb
+- test/deprecated_test.rb
+- test/valuable_test.rb

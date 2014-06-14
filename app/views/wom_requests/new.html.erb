@@ -1,0 +1,106 @@
+<style>
+.shedule-form, .sign-in-form, .sign-up-form {
+  height: auto;
+}
+.content-wrap > .content {
+  height: auto;
+  min-height: 550px;
+}
+
+</style>
+
+<% @page_title = 'Word of Mouth Analysis - Amplified Analytics' -%>
+<% content_for :top_content_area do -%>
+    <div id="content_top">
+      <div style="position:relative; bottom: -400px;">&nbsp;</div>
+      <div id="content_area">
+        <img src="/images/wom/contact/pagetitle.png">
+      </div>
+      <div id="message_area">
+      </div>
+    </div>
+<% end -%>
+
+<div id="content_area">
+<style type="text/css">
+  #contact_wrap {position: relative; width: 98%; overflow: hidden; margin-top: 10px;}
+  #contact_wrap #contact_left { float: left; width: 290px; }
+  .bg_shadow_small {height:44px; width:300px; background-image:url(/images/contactus/smlfieldboxshadow.jpg);background-repeat: no-repeat; margin-left: -7px; z-index: 4;}
+  .shadow_inner_small {position: relative; height: 26px; width:279px; left: 8px; top: 8px;
+  /*border: 2px; border-color: red; border-style: solid;*/
+  }
+  .shadow_textbox_small { position: relative; background: none; border: none; width:274px; height:24px; font-family:Verdana; font-size:16px; left: 3px; top: 5px; }
+  #contact_wrap #contact_right {float: right; width: 449px; }
+  .bg_shadow_large {height:184px; width:449px; background:url(/images/contactus/largefieldboxshadow.jpg) no-repeat bottom; z-index: 4;}
+  .shadow_inner_large {position: relative; height: 168px; width: 433px; left: 6px; top: 6px;
+  /* border: 2px; border-color: red; border-style: solid; */
+  }
+  #contact_wrap #contact_right .shadow_textbox_large { position: relative; background: none; border: none; width:430px; height:163px;
+  font-family:Verdana; font-size:14px; overflow: auto; left: 3px; top: 3px; }
+</style>
+  
+  <% form_for(@wom_request) do |f| %>
+      <div id="wom_wrap">
+        <%= f.error_messages %>
+      <div style="float: left; margin-top: 10px;">
+   <p><img src="/images/wom/contact/formlabel-product.png"><br>
+   <div class="bg_shadow_small">
+	<div class="shadow_inner_small">
+      <%= f.text_field :product_name, :class=>"shadow_textbox_small", :size=>"30" %>
+	</div></div>
+   </p>
+   <br><br>
+	<p><img src="/images/wom/contact/formlabel-competitors.png"><br>
+	<div style="position: relative;">
+      <div class="bg_shadow_small">
+	    <div class="shadow_inner_small">
+          <%= f.text_field :competitor_a, :class=>"shadow_textbox_small", :size=>"30" %>
+	    </div>
+	  </div>
+	  <div class="bg_shadow_small">
+	  <div class="shadow_inner_small">
+        <%= f.text_field :competitor_b, :class=>"shadow_textbox_small", :size=>"30" %><br>
+      </div>
+    </div>
+
+    <div class="bg_shadow_small">
+	  <div class="shadow_inner_small">
+        <%= f.text_field :competitor_c, :class=>"shadow_textbox_small", :size=>"30" %><br>
+      </div>
+    </div>
+
+	<div class="bg_shadow_small">
+	  <div class="shadow_inner_small">
+        <%= f.text_field :competitor_d, :class=>"shadow_textbox_small", :size=>"30" %>
+	  </div>
+    </div>
+  </div>
+  <br><br>Up to Four (4) competitors may be submitted.</p>
+  </div>
+  <div style="float: right; margin-top: 10px;">
+    <p><img src="/images/wom/contact/formlabel-frequency.png"></p>
+      <div class="shadow_inner_small">
+        <%= f.select :update_frequency, ['Monthly', 'Quarterly', 'One time snapshot with no updates required'], {}, :class=>"shadow_textbox_small" -%>
+      </div>
+    <br><br>
+   <img src="/images/wom/contact/formlabel-email.png"><br>
+   <div class="bg_shadow_small">
+	<div class="shadow_inner_small">
+      <%= f.text_field :email, :class=>"shadow_textbox_small", :size=>"30" %>
+   </div></div><br>
+   We need your email to send you a price and delivery time <br>estimate for the service you just selected.
+   <br><br>
+   <img src="/images/wom/contact/formlabel-company.png"><br>
+   <div class="bg_shadow_small">
+	 <div class="shadow_inner_small">
+       <%= f.text_field :company_name, :class=>"shadow_textbox_small", :size=>"30" %>
+     </div>
+   </div>
+   <%= nice_captcha %>
+   <div>
+    <%= f.submit 'Create', :id=>"user_messages_submit", :src=>"http://www.amplifiedanalytics.com/images/submit-button.jpg", :style=>"margin-top: 20px; margin-bottom: 20px;", :type=>"image" %>
+   </div>  
+	</div>
+	</div>
+  <% end -%>
+</div>

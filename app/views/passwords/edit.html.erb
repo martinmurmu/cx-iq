@@ -1,0 +1,41 @@
+<div id="content_area">
+<h2>Change your password</h2>
+
+<% form_for resource_name, resource, :url => password_path(resource_name), :html => { :method => :put } do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :reset_password_token %>
+
+    <table width="100%" cellspacing="5">
+    <tbody>
+      <tr>
+        <td>
+          <span style="padding: 0px;" class="label1">
+            <%= f.label :password %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.password_field :password, :tabindex=>"1", :style=>"width: 400px; margin-left: 0px;", :class=>"shadowEditBox" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span style="padding: 0px;" class="label1">
+            <%= f.label :password_confirmation %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.password_field :password_confirmation, :tabindex=>"2", :style=>"width: 400px; margin-left: 0px;", :class=>"shadowEditBox" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><%= f.submit "Change my password" %></p>
+<% end %>
+<br />
+<%= render :partial => "shared/devise_links" %>
+</div>

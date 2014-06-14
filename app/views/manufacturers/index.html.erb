@@ -1,0 +1,20 @@
+<div id="content_area">
+<h1>Listing manufacturers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% @manufacturers.each do |manufacturer| %>
+  <tr>
+    <td><%=h manufacturer.name %></td>
+    <td><%= link_to 'Show', manufacturer %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @manufacturers %>
+<br />
+
+<%= link_to 'New manufacturer', new_manufacturer_path %>
+</div>

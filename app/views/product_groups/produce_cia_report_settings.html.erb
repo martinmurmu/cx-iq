@@ -1,0 +1,158 @@
+<% if params[:auto] %>
+  <style>
+  body { display:none }
+  </style>
+<% end %>
+
+<% content_for :head_javascript do -%>
+<%= javascript_include_tag 'jquery-1.4.1.min', '/js/jquery-ui-1.8.9.custom.min.js', '/js/crir.js', '/js/cia_report.js', '/js/serialize.min.js', '/js/jquery.tinysort.min.js' %>
+<%= stylesheet_link_tag '/css/ui-lightness/jquery-ui-1.8.9.custom.css', '/css/crir.css', '/css/cia_report.css' %>
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
+<script type="text/javascript">
+
+    form_submit_clicked = false;
+    report_type = '<%= @report_type %>'
+    <% if @report_type=='cia' %>    
+        group_id = <%= @group.id %>
+    <% end %>
+    
+    <% if @report_type=='trending' || @report_type=='psa' %>
+        product_id = "<%= @product.id %>"
+    <% end %>
+
+
+    $i = 75;
+    $last = 0;
+    var aggregates = [];
+    $(function(){
+        // Slider
+        var aggregateName;
+        var attributes = [];
+        var foca=$('#slider');
+        foca.slider({
+            value: $i,
+            min: 15,
+            max: 95,
+            slide: function (event,ui){
+                //$i++;
+            },
+            stop: function(event, ui) {
+                var val = foca.slider( "option", "value" );
+                $i = val;
+            }
+        });
+        $('#fewAttributes').click(function() {
+            $i--;
+            foca.slider("option","value", $i);
+        });
+        $('#moreAttributes').click(function() {
+            $i++;
+            foca.slider("option","value", $i);
+        });
+        $('#default').click(function() {
+            $i = 75;
+            foca.slider("option","value", $i);
+        });
+
+        var mo = $('#toolTip');
+        $('#pr_text').focus(function(){
+            mo.show("slow");
+        })
+        $('#pr_text').blur(function(){
+            mo.hide("slow");
+        })
+
+        $('#applySettings').click(function() {
+          foca=$('#slider');
+          var threshold = foca.slider("option","value");
+          if(report_type=='trending' || report_type=='psa') {
+            threshold = parseInt(threshold)/10000;
+          }
+          log("threshold: "+threshold)
+          $('#pr_threshold').val(threshold);
+          
+          s = '';
+          $.each(aggregates, function(key, val) {
+            $.each(val[1], function(key, sub_val) {
+              s += sub_val + " => " + val[0] + "\n";
+            });
+          });
+          $('#pr_keywords').val(s);
+          $('#mapping').val(s);
+          log("keywords:"+s)
+          form_submit_clicked = true;
+          $('#pr_form').submit();
+        });
+
+    });
+</script>
+<% end -%>
+
+<div id="content_area">
+  
+  <% @report_type_name = "MI Analysis" %>
+  <% @report_type_name = "Trending" if @report_type=='trending' %>
+  <% @report_type_name = "CI Analysis" if @report_type=='psa' %>
+  
+  <h1><%= @report_type_name %> report settings for <%= @product_name %></h1>
+    <br /><br /><br />
+    
+  <% if @report_type=='cia' %>    
+    <%= form_tag( produce_cia_report_product_group_path(@group), :id => 'pr_form' ) -%>
+  <% elsif @report_type=='trending' %>
+    <%= form_tag( "/products/#{@product.id}/produce_trending_report", :id => 'pr_form' ) -%>
+  <% elsif @report_type=='psa' %>
+    <%= form_tag( "/products/#{@product.id}/produce_psa_report", :id => 'pr_form' ) -%>
+  <% end %>
+
+    <div id="seekBar">
+      <a id="fewAttributes"></a>
+      <div id="slider"></div>
+      <a id="moreAttributes"></a>
+      <div id="applyDiv" class="clear">
+        <a id="apply" class="getAttributes"></a>
+        <a id="default"></a>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="clearer"></div>
+    <%= hidden_field_tag 'threshold', '', :id => 'pr_threshold' %>
+    <%= hidden_field_tag 'keywords',  '', :id => 'pr_keywords' %>
+    <%= hidden_field_tag 'mapping', '', :id => 'mapping' %>
+
+  <div id="attributes" class="clear">
+      <h4>Available Attributes:</h4>
+      <div id="pr_checkboxes">
+      </div>
+      <select name="drop1" id="Select1" size="4" multiple="multiple" >
+
+      </select>
+      <div id="midColumn">
+          <div id="toolTip"></div>
+          <input id="pr_text" type="text" />
+          <a id="pr_add" class="clear"></a>
+      </div>
+      <a href="#" id="applySettings" class="clear">Apply settings and generate report</a>
+  </div>
+  </form>
+
+<% if @report_type=='cia' %>
+<form accept-charset="UTF-8" action="/product_groups/<%= @group.id -%>/aggregates_set" id="aggregates_set" method="post">
+<% else %>
+<form accept-charset="UTF-8" action="/product_groups/1/aggregates_set" id="aggregates_set" method="post">
+<% end %>
+
+<input name="utf8" type="hidden" value="&#x2713;" />
+<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+<input id=data name="data" type="hidden">
+</form>
+
+</div>
+
+<script>
+$(function() {
+          $('#pr_form').submit( function() {
+            if(!form_submit_clicked) return false;
+          });
+});
+</script>

@@ -1,0 +1,41 @@
+<div style="position: relative">
+<div id="TopLogin">
+<% if user_signed_in? -%>
+  <form id="topLogin_form" enctype="application/x-www-form-urlencoded" action="/Home" method="post" name="topLogin_form">
+    <input type="hidden" value="topLogin_form" name="topLogin_form" autocomplete="off">
+    <span id="topLogin_form:j_id8">
+      <table class="topLogin_table" width="100%" cellspacing="5" border="0">
+        <tbody>
+          <tr>
+            <td class="topLogin_prompt">
+              <span class="topLogin_text">Logged in as <%= current_user.full_name %></span>
+            </td>
+            <td class="topMyAccount_cell">
+              <input type="button" onclick="location.href='<%= product_groups_path %><%= "?return_url=#{request.url}" unless devise_controller? -%>'; return false;" id="topLogin_form:j_id14" class="topLogin_text topMyAccount_button" value="My Account" autocomplete="off"/>
+            </td>
+            <td class="topLogin_cell">
+              <input type="button" onclick="location.href='<%= destroy_user_session_path %>'; return false;" class="topLogin_text topLogin_button" name="topLogin_form:j_id17" value="Log Out" autocomplete="off"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </span>
+  </form>
+  <div id="LoginPanelOuter">
+  </div>
+<% else -%>
+      <table class="topLogin_table" width="100%" cellspacing="5" border="0">
+        <tbody>
+          <tr>
+            <td class="topLogin_prompt">
+              <input type="button" onclick="location.href='<%= new_user_registration_path %>'; return false;" class="topLogin_text topMyAccount_button" value="Register" autocomplete="off"/>
+            </td>
+            <td class="topLogin_cell">
+              <input type="button" onclick="location.href='<%= new_user_session_path %>'; return false;" class="topLogin_text topLogin_button" value="Login" autocomplete="off"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+<% end -%>
+</div>
+</div>

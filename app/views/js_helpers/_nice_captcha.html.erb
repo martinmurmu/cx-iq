@@ -1,0 +1,17 @@
+<script type="text/javascript" src="/javascripts/captcha/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/javascripts/captcha/jquery.captcha.js"></script>
+<link rel="stylesheet" type="text/css" href="/javascripts/captcha/captcha.css" media="screen" />
+
+<div class="ajax-fc-container">You must enable javascript to see captcha here!</div>
+<!-- End of captcha -->
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $(".ajax-fc-container").captcha({
+      captchaDir: "/javascripts/captcha",
+      url: "/get_captcha",
+      borderColor: "silver",
+      <%= "formId: #{options[:form_id]} ," if options[:form_id] %>
+      text: "Verify that you are a human,<br />drag <span>scissors</span> into the circle."
+    });
+  });
+</script>

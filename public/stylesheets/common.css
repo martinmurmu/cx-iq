@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+/* Toolbox */
+#clearer {clear:both;}
+
+/* Page preparation */
+* {
+	margin: 0; 
+	padding: 0;
+}
+html {
+	max-height: 100%; 
+	margin-bottom: 1px; 
+	height: 100%;
+}
+
+* html #Pagewrap {
+	height: 100%
+}
+
+body {
+	height: 100%; 
+	background: url(../images/bodybg.jpg) repeat-x left top; 
+	height: auto !Important; 
+	z-index: 1; 
+	background-color: #FFFFFF;
+}
+
+p, li {
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif; 
+	font-size: 12px; 
+	line-height: 17px; 
+	color: #555555;
+}
+
+a {
+	outline: none; 
+	color: #716E6E; 
+	text-decoration:none;
+}
+a img {
+	border:none;
+}
+
+ul {
+	list-style: none inside; 
+	position: relative;
+}
+
+a[href^="mailto"] { 
+	background: url(../images/emailIcon.png) right center no-repeat; 
+	padding-right: 12px; 
+}
+.centeredImage {    
+	text-align:center;    
+	margin-top:0px;   
+	margin-left: 30px;    
+	margin-bottom:0px;    
+	padding:0px;    
+}
+
+
+
+/*Content Areas */
+#Logo {
+	width: 416px; 
+	height: 123px; 
+	background: url(../images/logo.jpg) no-repeat top left; 
+	z-index: 2; 
+	position: relative; 
+	top: 3px; 
+	float: left
+}
+
+/*Typography*/
+p.disclaimers {
+	font-size: 10px; 
+	text-align: right;
+}
+
+/*Headings */
+h1 {
+	font-family: "Arial Narrow", Arial, Helvetica, sans-serif; 
+	font-size: 24px; 
+	font-weight:bold; 
+	text-transform: uppercase; 
+	padding: 20px 20px 10px 20px;
+}
+
+
+
+
+/*Main Nav Menu*/
+#Menu {position: absolute; z-index: 8; padding-top: 45px; height: 100%;  width: 100%;  _padding: 35px 0px 0 0; _right: 125px}
+/* #Menu {position: relative; z-index: 8; padding-top: 45px; width: 450px; float: left; } */
+#Menu ul {list-style-type: none;}
+#Menu ul li {float: right; display:inline;}
+#Menu a {display:inline:}
+
+/*Nav Buttons */
+#Home {width: 113px; height: 57px; background:url(../images/homebtn.jpg) no-repeat; position:relative;	display: block;}
+#Products {width: 101px; height: 57px; background:url(../images/productsbtn.jpg) no-repeat; position: relative; display: block;}
+/*#Blog {width: 101px; height: 57px; background:url(../images/blogbtn.jpg) no-repeat; position: relative; display: block;}*/
+#ContactUs { width: 126px; height: 57px; background: url(../images/contactusbtn.jpg) no-repeat; position: relative; display: block;}
+
+

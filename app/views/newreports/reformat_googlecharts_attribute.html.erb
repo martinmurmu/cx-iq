@@ -1,0 +1,38 @@
+
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Period');
+        data.addColumn('number', 'Index');
+        data.addRows(<%= @data[:values].count %>);
+        <% (0..(@data[:values].count-1)).each do |i| %>
+        data.setValue(<%= i %>, 0, '<%= @data[:labels][i] %>');
+        data.setValue(<%= i %>, 1, <%= @data[:values][i] %>);
+        <% end %>
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, {legend: 'none', width: 600, height: 220, title: '<%= params[:title].capitalize %>',
+                backgroundColor: '#ffd',
+                chartArea:{width:"85%",height:"80%"}
+
+        });
+      }
+    </script>
+  </head>  
+  <style>
+body {
+  background: #fff !important;
+  font-family: "Trebuchet MS"
+}
+  </style>
+
+  <body>
+    <div style='float:left' id="chart_div"></div><img src=/images/scale_legend.png style='float:left;width:120px;margin-top:120px;'>
+  </body>
+</html>

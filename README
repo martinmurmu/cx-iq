@@ -1,0 +1,29 @@
+SOME NOTES FOR APP MAINTAIN, DEPLOY
+
+APP STRUCTURE
+
+App uses java application to build reports, that app is executed by background worker.
+Ferret server is used for autocomplete in some dropdown lists (seems started automatically on reboot)
+
+BACKGROUND WORKER
+
+reports are produced in background, to start background worker:
+"cd /home/production/amplifiedanalytics.com/current;RAILS_ENV=production script/delayed_job restart"
+This command is executed automatically on reboot with root cron (@reboot command).
+
+It should be started by "production" user (in theory), but for some reason (permission problems)
+it doesn't work this way, so should be started by "root".
+
+If some report build code was changed worker isn't restarted by capistrano (deploy script)
+automatically, so should be restarted manually.
+
+
+DEPLOY
+
+branch master to be deployed to amplifiedanalytics.com
+with "cap production deploy"
+
+branch staging to be deployed to aai-ror-staging.amplifiedanalytics.com
+with "cap staging deploy"
+
+nk, 2013

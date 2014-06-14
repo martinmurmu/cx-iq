@@ -1,0 +1,26 @@
+defaults: &defaults
+  min_number_of_categories: 20
+  main_aai_site_url: http://svc2.amplifiedanalytics.com
+  main_aai_site_url_postfix:
+  report_generator: /Users/dd3/proj/aai/review_builder #/Users/dd4/NetBeansProjects/AAI/report_generator/review_builder
+  hostname: http://www.amplifiedanalytics.com
+  iq_hostname: http://qcamplifiedanalytics.iq2020.com
+  notifications_email: talrep@gmail.com
+
+development:
+  min_number_of_categories: 2
+  report_generator: /Users/dd3/proj/aai/review_builder
+  hostname: http://localhost:3000
+  <<: *defaults
+production:
+  report_generator: /home/production/report_generator/review_builder
+  iq_hostname: http://ampanalytics.iq2020.com
+  <<: *defaults
+staging:
+  hostname: http://aai-ror-staging.amplifiedanalytics.com
+  iq_hostname: http://qcamplifiedanalytics.iq2020.com
+  report_generator: /home/staging/report_generator/review_builder
+  <<: *defaults
+test:
+  min_number_of_categories: 2
+  <<: *defaults

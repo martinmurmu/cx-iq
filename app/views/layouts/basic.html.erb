@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<%= render 'shared/head' %>
+
+<body>
+    <div id="fullouterpagewrap">
+     <div style="position: relative"><a id="Logo" name="Logo" href="/Home"></a></div>
+     <%= render 'shared/top_login' %>
+
+     <%= render 'shared/nav_menu' %>
+
+      <!--END Menu-->
+      <!--END Logo-->
+
+        <%= yield %>
+
+        <%= render 'shared/footer' %>
+    </div>
+
+<%= render 'shared/google_analytics' if RAILS_ENV == 'production' -%>
+
+<%#= render 'shared/get_satisfaction' -%>
+
+ </body>
+</html>

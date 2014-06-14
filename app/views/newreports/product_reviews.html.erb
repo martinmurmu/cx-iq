@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <script type="text/javascript" src="/javascripts/fancybox/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        product_name = "<%=CGI.unescape(params[:product_name])%>";
+        $("#iframe-review").load(function (){
+          $("#iframe-review").contents().find("table").find("tbody").find("tr:first").find("td:last").html(product_name);
+        });
+
+      });
+    </script>
+  </head>
+  <body bgcolor="#bbbbbb">
+    <iframe id="iframe-review" src="<%=params[:url_review]%>" style="margin: 0; border: 0; width: 100%; height: 100%; padding:0;"></iframe>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "/css/additional"  %>
+<style>
+  #filter a {
+    padding: 0 5px;
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 12px;
+  }
+  #filter a:hover, #filter a.selected {
+    color: #fff;
+    background: #000;
+    text-decoration: none;
+  }
+</style>
+
+<div id="filter" style="position:absolute;left:20px;top:20px;">
+  <div id="importance" style="float:left">
+    <%= filter_link(:importance,'any','any importance') %><br>
+    <%= filter_link(:importance,'>1','importance>1%') %><br>
+    <%= filter_link(:importance,'>5','importance>5%') %><br>
+    <%= filter_link(:importance,'>10','importance>10%') %><br>
+  </div>
+  <div id="attributes" style="float:left">
+    <%= filter_link(:attributes,'all', 'all attributes') %><br>
+    <%= filter_link(:attributes,'common','only common attributes') %><br>
+  </div>
+  <div id="score" style="float:left">
+    <%= filter_link(:score,'any','any score') %><br>
+    <%= filter_link(:score,'<1','score<1') %>
+  </div>
+  <div style="clear:both"></div>
+</div>
+
+<%= render :file => "/market_report/view_prototype" %>
+
+
+<% if current_user && params[:product_group_id] && (ProductGroup.find(params[:product_group_id]).user==current_user rescue false) %>
+<a class="button_yellow" style="margin-left:20px;" href="/product_groups/<%=params[:product_group_id]%>/produce_cia_report_settings">Customize Report</a>
+<% end %>

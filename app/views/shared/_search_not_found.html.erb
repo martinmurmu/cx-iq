@@ -1,0 +1,7 @@
+<% name='product' if !name %>
+<div id=FlashMessage style='margin:10px;margin-bottom:20px;color:red;font-size:16px;'>We could not find this <%= name -%> in our database. Please <a href=/V2P-Product-Reviews/Product-Submit style='color:red;text-decoration:underline'>contact us</a> to add it for future analysis.</div>
+<script>
+  setTimeout( function() {
+       new Effect.Fade('FlashMessage', { duration:1});
+       }, 6000);
+</script>

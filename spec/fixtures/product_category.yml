@@ -1,0 +1,15 @@
+one:
+  product_id: 00048d085693fa1f0e45c8acd782d939
+  category_id: 2840
+ 
+ 
+two:
+  product_id: 00105bd4140c2dd0bc9706bdf409b2bc
+  category_id: 2840
+
+four:
+  product_id: 4b1b80fce4ade799250855ef8e9c603c
+  category_id: 980
+five:
+  product_id: 493e52192e8e9759e05a3a6be7e7bfab
+  category_id: 980

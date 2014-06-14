@@ -1,0 +1,26 @@
+<div class='product_lookup'>
+  <% if @same_url_query %>
+    <%= form_tag("", :method => :get) %>
+  <% else %>
+    <%= form_tag(product_group_products_path(@product_group), :method => :get) %>
+  <% end %>
+
+    <table width="100%" style='height:60px;' >
+      <tr>
+        <td width="70%" rowspan=2>
+          <%= text_field_with_auto_complete :product, :name, :tabindex=>"0", :class=>"longEditbox", :value => params["product"].blank? ? "" : params["product"], :name => 'product' %>
+        </td>
+        <td width="10%" class="product_lookup_selector">
+        </td>
+        <td width="20%" align="right" style="padding-right: 15px" rowspan=2>
+          <%= image_submit_tag "/aai/images/search-button.png" %>
+        </td>
+      </tr>
+      <tr>
+        <td width="10%" class="product_lookup_selector">
+        </td>
+      </tr>
+    </table>
+
+  </form>
+</div>

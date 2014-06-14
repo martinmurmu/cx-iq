@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<%= javascript_include_tag "jquery-1.4.4.min.js", "swfobject.js" %>
+		<link rel="stylesheet" type="text/css" href="/css/trending_report.css" />
+
+		<!--[if IE 9]>
+			<link rel="stylesheet" type="text/css" href="/css/ie9.css" />
+		<![endif]-->
+		<!--[if IE 8]>
+			<link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+			<![endif]-->
+		<!--[if IE 7]>
+			<link rel="stylesheet" type="text/css" href="/css/ie7.css" />
+		<![endif]-->
+
+		<%# render 'shared/head' %>
+
+		<%= render 'shared/google_analytics_head' %>
+		<%= render 'shared/quantcast' %>
+	</head>
+
+	<body>
+
+	<%= yield %>
+
+	<%= render 'shared/google_analytics' if RAILS_ENV == 'production' -%>
+
+	</body>
+</html>

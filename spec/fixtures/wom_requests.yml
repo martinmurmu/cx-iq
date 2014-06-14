@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  product_name: MyString
+  competitor_a: MyString
+  competitor_b: MyString
+  competitor_c: MyString
+  competitor_d: MyString
+  update_frequency: MyString
+  email: MyString
+  company_name: MyString
+
+two:
+  user_id: 1
+  product_name: MyString
+  competitor_a: MyString
+  competitor_b: MyString
+  competitor_c: MyString
+  competitor_d: MyString
+  update_frequency: MyString
+  email: MyString
+  company_name: MyString

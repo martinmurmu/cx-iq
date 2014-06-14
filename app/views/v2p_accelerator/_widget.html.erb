@@ -1,0 +1,88 @@
+<div id="j_id157:prd_widget_panel_ajax" class="rich-panel aai_panel">
+  <div id="j_id157:prd_widget_panel_ajax_body" class="rich-panel-body ">
+    <div class="pw_wrapper"><img src="/images/widget/bg-widget.gif">
+	 <div class="pw_content" style='width:215px'>
+	  <div class="pw_header" style='height:75px;padding:0;'>
+	   <p><span id="j_id131:product_search_box:status"><span style="display: none;" id="j_id131:product_search_box:status.start">Loading customer reviews...</span>
+         <span id="j_id131:product_search_box:status.stop" style='line-height:14px;'>
+           <% if @product.blank? -%>
+             No product selected
+           <% else -%>
+             We have collected <b><%= @product.reviews.try(:count) || 0 %></b> customer reviews for <b><%= @product.name %></b> as of <%= @product.recent_review.try(:recieve_date).try(:to_date).try(:to_formatted_s,:long) %>
+           <% end -%>
+         </span>
+       </span>
+ 	   </p>
+	  </div>
+	  <div class="pw_dialbox">
+	   <div class="pw_dialbox_left">
+		<div class="pw_dialbox_caption">
+		 <p>Functionality</p>
+		</div>
+		<div class="pw_view_reviews">
+          <% unless @product.blank? || @product.id.blank? -%>
+            <%= link_to 'View Reviews', product_reviews_path(@product, :type => 'f'), :target => '_blank' %>
+          <% end -%>
+		</div>
+	   </div>
+	   <div class="pw_dialbox_right"><%= v2p_widget_dial_image(@product, :functionality_score) %><img style="padding: 0px 3px 25px 0px;" alt="Help" src="/images/widget/question.gif" id="pfs_help">
+	   </div>
+	  </div>
+	  <div class="pw_dialbox">
+	   <div class="pw_dialbox_left">
+		<div class="pw_dialbox_caption">
+			<p>Reliability</p>
+		</div>
+		<div class="pw_view_reviews">
+          <% unless @product.blank? || @product.id.blank? -%>
+            <%= link_to 'View Reviews', product_reviews_path(@product, :type => 'r'), :target => '_blank' %>
+          <% end -%>
+		</div>
+	   </div>
+	   <div class="pw_dialbox_right"><%= v2p_widget_dial_image(@product, :reliability_score) %><img style="padding: 0px 3px 25px 0px;" alt="Help" src="/images/widget/question.gif" id="prs_help">
+	   </div>
+	  </div>
+	  <div class="pw_dialbox">
+  	   <div class="pw_dialbox_left">
+   	    <div class="pw_dialbox_caption">
+   		<p>Support</p>
+   	    </div>
+   	    <div class="pw_view_reviews">
+          <% unless @product.blank? || @product.id.blank? -%>
+            <%= link_to 'View Reviews', product_reviews_path(@product, :type => 's'), :target => '_blank' %>
+          <% end -%>
+   	    </div>
+  	   </div>
+  	   <div class="pw_dialbox_right">
+           <%= v2p_widget_dial_image(@product, :support_score) %><img style="padding: 0px 3px 25px 0px;" alt="Help" src="/images/widget/question.gif" id="pss_help">
+  	      </div>
+	    </div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    new Tip('pfs_help',
+            "<table class=\"pw_tooltip_container\"><tbody><tr><td><div class=\"pw_tooltip_text\"><h2 class=\"pw_tooltip_heading\">Product Functionality Score</h2>" +
+            "<br><p>This metric reflects the level of customer satisfaction with respect to the product meeting their expectations in terms of functionality, design" +
+            "and appearance.</p></div></td></tr><tr><td><img src=\"/images/widget/bigdial.png\"></td></tr><tr><td></td></tr></tbody></table>",
+        {effect: 'blind',
+        hook: { tip: 'bottomLeft', target: 'topRight' },
+        offset: { x: -10, y: -1 }, stem: 'bottomLeft'
+    });
+    new Tip('prs_help',
+            "<table class=\"pw_tooltip_container\"><tbody><tr><td><div class=\"pw_tooltip_text\"><h2 class=\"pw_tooltip_heading\">Product Reliability Score</h2>" +
+		    "<br><p>This metric reflects the level of customer satisfaction with the product longevity and ability to perform as expected.</p></div></td></tr><tr><td><img src=\"/images/widget/bigdial.png\"></td></tr><tr><td></td></tr></tbody></table>",
+        {effect: 'blind',
+        hook: { tip: 'bottomLeft', target: 'topRight' },
+        offset: { x: -10, y: -1 }, stem: 'bottomLeft'
+    });
+    new Tip('pss_help',
+            "<table class=\"pw_tooltip_container\"><tbody><tr><td><div class=\"pw_tooltip_text\"><h2 class=\"pw_tooltip_heading\">Product Support Score</h2>" +
+		    "<br><p>This metric reflects the level of customer satisfaction with all interactions involving the product ownership experience.</p></div></td></tr><tr><td><img src=\"/images/widget/bigdial.png\"></td></tr><tr><td></td></tr></tbody></table>",
+        {effect: 'blind',
+        hook: { tip: 'bottomLeft', target: 'topRight' },
+        offset: { x: -10, y: -1 }, stem: 'bottomLeft'
+    });
+</script>

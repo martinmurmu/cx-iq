@@ -1,0 +1,26 @@
+<h1>Listing user_messages</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Company</th>
+    <th>Message</th>
+  </tr>
+
+<% @user_messages.each do |user_messages| %>
+  <tr>
+    <td><%=h user_messages.name %></td>
+    <td><%=h user_messages.email %></td>
+    <td><%=h user_messages.company %></td>
+    <td><%=h user_messages.message %></td>
+    <td><%= link_to 'Show', user_messages %></td>
+    <td><%= link_to 'Edit', edit_user_messages_path(user_messages) %></td>
+    <td><%= link_to 'Destroy', user_messages, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user_messages', new_user_messages_path %>

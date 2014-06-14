@@ -1,0 +1,29 @@
+.white-content-box {
+	behavior: url(javascripts/PIE.htc);
+}
+
+#add-this-cust-cia{
+	margin: 0 0 45px 0;
+}
+
+.nav-menu {
+	width: 470px;
+}
+
+.content-wrap >.content {
+	height: 625px;
+}
+
+.Copyright {
+	padding-top: 10px;
+}
+
+div.legend ul {
+	width: 350px;
+}
+
+#badge-best-web-tools {
+	position: absolute;
+	top: 470px;
+	right: 835px;
+}

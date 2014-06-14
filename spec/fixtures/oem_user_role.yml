@@ -1,0 +1,13 @@
+one:
+  oem_user_id: 1
+  role_id: 1
+two:
+  oem_user_id: 1
+  role_id: 2
+
+three:
+  oem_user_id: 2
+  role_id: 1
+four:
+  oem_user_id: 2
+  role_id: 2

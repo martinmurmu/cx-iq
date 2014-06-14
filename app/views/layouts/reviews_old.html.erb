@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <%= stylesheet_link_tag 'reviews', 'panel', '/stylesheets/prototip.css' %>
+  <%= javascript_include_tag :defaults, 'prototip' %>
+
+</head>
+  <body style="background: transparent none repeat scroll 0% 0%; height: 100%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;">
+    <div id="ReviewPanelOuter">
+      </div>
+
+      <div style="position: absolute; z-index: 100; background-color: inherit;" id="reviewPanelContainer" class="rich-modalpanel ">
+      <div style="z-index: -1;" id="reviewPanelDiv" class="rich-mpnl-mask-div-opaque rich-mpnl-mask-div">
+        <button id="reviewPanelFirstHref" class="rich-mpnl-button">
+        </button>
+      </div>
+      <div class="rich-mpnl-panel">
+        <div style="position: absolute; left: 0px; top: 0px; z-index: 9;" id="reviewPanelCDiv" class="rich-mp-container">
+          <div id="reviewPanelShadowDiv" class="rich-mpnl-shadow" style="width: 0px; height: 0px;">
+          </div>
+          <div style="background-color: rgb(63, 143, 195); width: 800px; height: 600px;" id="reviewPanelContentDiv" class="rich-mpnl-ovf-hd rich-mpnl-trim rich-mpnl-content">
+            <div class="rich-mpnl-text rich-mpnl-controls ">
+              <a href="javascript:window.opener='x';window.close();">
+                <img src="/images/reviews/close.png" id="hidelink">
+              </a>
+            </div>
+          <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

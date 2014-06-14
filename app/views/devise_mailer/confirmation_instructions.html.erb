@@ -1,0 +1,8 @@
+<p><%= @resource.email %>,</p>
+
+<p>Welcome to Amplified Analytics.
+Thank you for registering with us. The only reason we have asked you to register is to allow us email you the results of your research of our data base when you request it.
+Your information will never be shared with anyone. </p>
+<p>Please confirm your account by clicking on </p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>

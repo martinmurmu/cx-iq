@@ -1,0 +1,513 @@
+-- MySQL dump 10.11
+--
+-- Host: localhost    Database: aai_home_dev
+-- ------------------------------------------------------
+-- Server version	5.0.45
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL auto_increment,
+  `parent_id` int(11) default NULL,
+  `name` varchar(150) collate utf8_unicode_ci default NULL,
+  `attrib_left` int(11) default NULL,
+  `attrib_right` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `competing_product`
+--
+
+DROP TABLE IF EXISTS `competing_product`;
+CREATE TABLE `competing_product` (
+  `oem_user_id` int(11) NOT NULL,
+  `primary_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `secondary_id` varchar(32) collate utf8_unicode_ci default NULL,
+  KEY `FKD4970AD4142DE96D` (`oem_user_id`),
+  KEY `FKD4970AD42AD395FD` (`oem_user_id`),
+  KEY `FKD4970AD47E57BDEB` (`primary_id`),
+  KEY `FKD4970AD494FD6A7B` (`primary_id`),
+  KEY `FKD4970AD4B8254D39` (`secondary_id`),
+  KEY `FKD4970AD4CECAF9C9` (`secondary_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `country`
+--
+
+DROP TABLE IF EXISTS `country`;
+CREATE TABLE `country` (
+  `iso` int(11) NOT NULL auto_increment,
+  `name` varchar(80) collate utf8_unicode_ci NOT NULL default '',
+  `printable_name` varchar(80) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`iso`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `country_state`
+--
+
+DROP TABLE IF EXISTS `country_state`;
+CREATE TABLE `country_state` (
+  `id` int(11) NOT NULL auto_increment,
+  `country_iso` varchar(2) collate utf8_unicode_ci NOT NULL default '',
+  `short_name` varchar(5) collate utf8_unicode_ci default NULL,
+  `name` varchar(50) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `login_history`
+--
+
+DROP TABLE IF EXISTS `login_history`;
+CREATE TABLE `login_history` (
+  `oem_user_id` int(11) NOT NULL,
+  `login_time` datetime NOT NULL,
+  KEY `FK88A801BE142DE96D` (`oem_user_id`),
+  KEY `FK88A801BE2AD395FD` (`oem_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `manufacturer`
+--
+
+DROP TABLE IF EXISTS `manufacturer`;
+CREATE TABLE `manufacturer` (
+  `id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL default '',
+  `hidden` int(11) default NULL,
+  KEY `idx_manuf_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `oem_user`
+--
+
+DROP TABLE IF EXISTS `oem_user`;
+CREATE TABLE `oem_user` (
+  `id` int(11) NOT NULL auto_increment,
+  `isActive` int(11) default NULL,
+  `phone_num` varchar(20) collate utf8_unicode_ci default NULL,
+  `last_name` varchar(100) collate utf8_unicode_ci default NULL,
+  `first_name` varchar(100) collate utf8_unicode_ci default NULL,
+  `isWidgetDemo` int(11) default NULL,
+  `email` varchar(100) collate utf8_unicode_ci default NULL,
+  `company` varchar(200) collate utf8_unicode_ci default NULL,
+  `isAdmin` int(11) default NULL,
+  `password` varchar(50) collate utf8_unicode_ci default NULL,
+  `username` varchar(100) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`),
+  KEY `idx_username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `oem_user_product`
+--
+
+DROP TABLE IF EXISTS `oem_user_product`;
+CREATE TABLE `oem_user_product` (
+  `product_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `oem_user_id` int(11) NOT NULL,
+  KEY `FK385BC663142DE96D` (`oem_user_id`),
+  KEY `FK385BC6632AD395FD` (`oem_user_id`),
+  KEY `FK385BC66332D1FBDE` (`product_id`),
+  KEY `FK385BC6634977A86E` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `oem_user_role`
+--
+
+DROP TABLE IF EXISTS `oem_user_role`;
+CREATE TABLE `oem_user_role` (
+  `oem_user_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  KEY `FK94C31B822AD395FD` (`oem_user_id`),
+  KEY `FK94C31B82BC63A9D1` (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `prm_category_subscriptions`
+--
+
+DROP TABLE IF EXISTS `prm_category_subscriptions`;
+CREATE TABLE `prm_category_subscriptions` (
+  `id` int(11) NOT NULL auto_increment,
+  `category_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_prm_category_subscriptions_on_id` (`id`),
+  KEY `index_prm_category_subscriptions_on_user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `prm_delayed_jobs`
+--
+
+DROP TABLE IF EXISTS `prm_delayed_jobs`;
+CREATE TABLE `prm_delayed_jobs` (
+  `id` int(11) NOT NULL auto_increment,
+  `priority` int(11) default '0',
+  `attempts` int(11) default '0',
+  `handler` text collate utf8_unicode_ci,
+  `last_error` text collate utf8_unicode_ci,
+  `run_at` datetime default NULL,
+  `locked_at` datetime default NULL,
+  `failed_at` datetime default NULL,
+  `locked_by` varchar(255) collate utf8_unicode_ci default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `prm_product_reports`
+--
+
+DROP TABLE IF EXISTS `prm_product_reports`;
+CREATE TABLE `prm_product_reports` (
+  `id` int(11) NOT NULL auto_increment,
+  `product_category_id` int(11) default NULL,
+  `manufacturer_id` varchar(255) collate utf8_unicode_ci default NULL,
+  `sorting_field` int(11) default NULL,
+  `sorting_order` int(11) default NULL,
+  `number_of_reviews` int(11) default NULL,
+  `csi_range` int(11) default NULL,
+  `pfs_range` int(11) default NULL,
+  `prs_range` int(11) default NULL,
+  `pss_range` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `per_page` int(11) default NULL,
+  `filtered` tinyint(1) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_product_reports_on_id` (`id`),
+  KEY `index_prm_product_reports_on_id` (`id`),
+  KEY `index_prm_product_reports_on_user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `prm_report_manufacturers`
+--
+
+DROP TABLE IF EXISTS `prm_report_manufacturers`;
+CREATE TABLE `prm_report_manufacturers` (
+  `id` int(11) NOT NULL auto_increment,
+  `report_id` int(11) default NULL,
+  `manufacturer_id` varchar(255) collate utf8_unicode_ci default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_prm_report_manufacturers_on_report_id` (`report_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `prm_report_product_filters`
+--
+
+DROP TABLE IF EXISTS `prm_report_product_filters`;
+CREATE TABLE `prm_report_product_filters` (
+  `id` int(11) NOT NULL auto_increment,
+  `report_id` int(11) default NULL,
+  `product_id` varchar(255) collate utf8_unicode_ci default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_prm_report_product_filters_on_report_id` (`report_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product` (
+  `id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `name` varchar(300) collate utf8_unicode_ci default NULL,
+  `model` varchar(100) collate utf8_unicode_ci default NULL,
+  `csi_score` float default NULL,
+  `functionality_score` float default NULL,
+  `reliability_score` float default NULL,
+  `support_score` float default NULL,
+  `manufacturer` varchar(32) collate utf8_unicode_ci default NULL,
+  `all_reviews_count` int(11) default NULL,
+  `func_reviews_count` int(11) default NULL,
+  `sup_review_count` int(11) default NULL,
+  `rel_reviews_count` int(11) default NULL,
+  `last_update` datetime NOT NULL,
+  KEY `FKED8DCCEF6272C30E` (`manufacturer`),
+  KEY `idx_product_name` (`name`(255))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `product_category`
+--
+
+DROP TABLE IF EXISTS `product_category`;
+CREATE TABLE `product_category` (
+  `product_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `category_id` int(11) default NULL,
+  KEY `FK_pc_category` (`category_id`),
+  KEY `FK_pc_product` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `retailer_site`
+--
+
+DROP TABLE IF EXISTS `retailer_site`;
+CREATE TABLE `retailer_site` (
+  `id` int(11) NOT NULL auto_increment,
+  `url` varchar(3000) collate utf8_unicode_ci NOT NULL default '',
+  `description` varchar(500) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `retailer_site_product`
+--
+
+DROP TABLE IF EXISTS `retailer_site_product`;
+CREATE TABLE `retailer_site_product` (
+  `product_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `retailer_site_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  KEY `FKA69AC2E632D1FBDE` (`product_id`),
+  KEY `FKA69AC2E64977A86E` (`product_id`),
+  KEY `FKA69AC2E63F76EB17` (`retailer_site_id`),
+  KEY `FKA69AC2E6FF369887` (`retailer_site_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `review`
+--
+
+DROP TABLE IF EXISTS `review`;
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL auto_increment,
+  `product_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `last_update_date` date default NULL,
+  `title` varchar(300) collate utf8_unicode_ci default NULL,
+  `csi_score` float default NULL,
+  `reliability_score` float default NULL,
+  `reviewer_name` varchar(100) collate utf8_unicode_ci default NULL,
+  `functionality_score` float default NULL,
+  `site` varchar(100) collate utf8_unicode_ci default NULL,
+  `reviewer_email` varchar(100) collate utf8_unicode_ci default NULL,
+  `reviewer_country` varchar(2) collate utf8_unicode_ci default NULL,
+  `source_url` varchar(3000) collate utf8_unicode_ci default NULL,
+  `recieve_date` datetime default NULL,
+  `reviewer_state` varchar(20) collate utf8_unicode_ci default NULL,
+  `text` text collate utf8_unicode_ci,
+  `reviewer_city` varchar(100) collate utf8_unicode_ci default NULL,
+  `support_score` float default NULL,
+  `sync_date` datetime default NULL,
+  `visibility` varchar(1) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `idx_f_score` (`functionality_score`),
+  KEY `FKC84EF75832D1FBDE` (`product_id`),
+  KEY `FKC84EF7584977A86E` (`product_id`),
+  KEY `idx_r_score` (`reliability_score`),
+  KEY `FKC84EF75858DC7376` (`reviewer_country`),
+  KEY `FKC84EF7586F822006` (`reviewer_country`),
+  KEY `idx_s_score` (`support_score`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `review_audit`
+--
+
+DROP TABLE IF EXISTS `review_audit`;
+CREATE TABLE `review_audit` (
+  `id` int(11) NOT NULL auto_increment,
+  `audit_date` datetime NOT NULL,
+  `csi_score_comment` varchar(500) collate utf8_unicode_ci default NULL,
+  `functionality_score_comment` varchar(500) collate utf8_unicode_ci default NULL,
+  `new_csi_score` float default NULL,
+  `new_functionality_score` float default NULL,
+  `new_reliability_score` float default NULL,
+  `new_support_score` float default NULL,
+  `oem_user_id` int(11) NOT NULL,
+  `old_csi_score` float default NULL,
+  `old_functionality_score` float default NULL,
+  `old_reliability_score` float default NULL,
+  `old_support_score` float default NULL,
+  `reliability_score_comment` varchar(500) collate utf8_unicode_ci default NULL,
+  `review_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `support_score_comment` varchar(500) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `review_feedback`
+--
+
+DROP TABLE IF EXISTS `review_feedback`;
+CREATE TABLE `review_feedback` (
+  `id` int(11) NOT NULL auto_increment,
+  `review_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `oem_user_id` int(11) default NULL,
+  `feedback` varchar(4000) collate utf8_unicode_ci NOT NULL default '',
+  `tag_functionality` int(11) default NULL,
+  `tag_reliability` int(11) default NULL,
+  `tag_support` int(11) default NULL,
+  `disclaimer` varchar(1) collate utf8_unicode_ci default NULL,
+  `feedback_time` datetime NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `oem_user_id` (`oem_user_id`),
+  KEY `review_id` (`review_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) collate utf8_unicode_ci NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `total products in db`
+--
+
+DROP TABLE IF EXISTS `total products in db`;
+CREATE TABLE `total products in db` (
+  `count(*)` bigint(20) NOT NULL default '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `total reviews in db`
+--
+
+DROP TABLE IF EXISTS `total reviews in db`;
+CREATE TABLE `total reviews in db` (
+  `count(*)` bigint(20) NOT NULL default '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `user_action`
+--
+
+DROP TABLE IF EXISTS `user_action`;
+CREATE TABLE `user_action` (
+  `id` int(11) NOT NULL auto_increment,
+  `visitor_profile_id` varchar(36) collate utf8_unicode_ci default NULL,
+  `action_time` datetime default NULL,
+  `page_name` varchar(100) collate utf8_unicode_ci default NULL,
+  `ip_address` varchar(30) collate utf8_unicode_ci default NULL,
+  `referrer` varchar(300) collate utf8_unicode_ci default NULL,
+  `action_name` varchar(50) collate utf8_unicode_ci default NULL,
+  `action_param1` varchar(300) collate utf8_unicode_ci default NULL,
+  `action_param2` varchar(100) collate utf8_unicode_ci default NULL,
+  `action_param3` varchar(100) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `user_messages`
+--
+
+DROP TABLE IF EXISTS `user_messages`;
+CREATE TABLE `user_messages` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) collate utf8_unicode_ci default NULL,
+  `email` varchar(255) collate utf8_unicode_ci default NULL,
+  `company` varchar(255) collate utf8_unicode_ci default NULL,
+  `message` text collate utf8_unicode_ci,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL auto_increment,
+  `email` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `encrypted_password` varchar(40) collate utf8_unicode_ci NOT NULL,
+  `password_salt` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `confirmation_token` varchar(20) collate utf8_unicode_ci default NULL,
+  `confirmed_at` datetime default NULL,
+  `confirmation_sent_at` datetime default NULL,
+  `reset_password_token` varchar(20) collate utf8_unicode_ci default NULL,
+  `remember_token` varchar(20) collate utf8_unicode_ci default NULL,
+  `remember_created_at` datetime default NULL,
+  `sign_in_count` int(11) default NULL,
+  `current_sign_in_at` datetime default NULL,
+  `last_sign_in_at` datetime default NULL,
+  `current_sign_in_ip` varchar(255) collate utf8_unicode_ci default NULL,
+  `last_sign_in_ip` varchar(255) collate utf8_unicode_ci default NULL,
+  `failed_attempts` int(11) default '0',
+  `unlock_token` varchar(20) collate utf8_unicode_ci default NULL,
+  `locked_at` datetime default NULL,
+  `authentication_token` varchar(20) collate utf8_unicode_ci default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `last_name` varchar(100) collate utf8_unicode_ci default NULL,
+  `first_name` varchar(100) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `index_users_on_email` (`email`),
+  UNIQUE KEY `index_users_on_confirmation_token` (`confirmation_token`),
+  UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `visitor`
+--
+
+DROP TABLE IF EXISTS `visitor`;
+CREATE TABLE `visitor` (
+  `id` int(11) NOT NULL auto_increment,
+  `ua_name` varchar(255) collate utf8_unicode_ci default NULL,
+  `ua_platform` varchar(255) collate utf8_unicode_ci default NULL,
+  `ua_version` varchar(255) collate utf8_unicode_ci default NULL,
+  `oem_user_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2010-04-03  3:57:59

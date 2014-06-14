@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag '/css/additional.css' %>
+
+<% if @product_group.blank? || @product_group.try(:products).try(:empty?) -%>
+  <br />
+  <p>The list is empty.</p>
+<% else -%>
+
+<div class="table_body" style="border:none;">
+  <table class="prm_table" cellspacing="0" style="width:737px;margin: 5px 3px 0 0px;">
+    <tr>
+      <th id="prod_name">Products (<%= @product_group.try(:products).try(:size) %>)</th>
+    </tr>
+    <% @product_group.products.each do |product| -%>
+    <tr class="subscribed_categories">
+      <td><%= link_to product["name"], product_path(product['id']), :class=>'blue' -%>
+      <%= link_to_remote "Remove", :url  => {:controller => 'products', :action => "remove_from_group", :id => product.id}, :loading => "Element.show('loading_bar')", :with => "'product=#{params[:product]}&type=#{params[:type]}&page=#{params[:page]}'", :complete => "Element.hide('loading_bar')", :html => {:class=>"unsubscribe"} %></td>
+    </tr>
+    <% end -%>
+  </table>
+  <div style="margin-top: 11px" >
+    <%= form_tag( produce_cia_report_product_group_path(@product_group), :id => 'pr_form' ) -%>
+    <%= hidden_field_tag 'threshold', '75' %>
+    <%= submit_tag 'Produce MIA report', :class => 'blue button_yellow cia_report_btn', :style => 'float:left; margin-left: 5px; margin-top: 1px;cursor:pointer;' -%>
+    </form>
+    <%= link_to 'Customize MIA report', produce_cia_report_settings_product_group_path(@product_group), :class => 'blue button_yellow', :style => 'float:left; margin-left: 5px; margin-top: 1px;' -%>
+    <%= link_to 'NPS&reg; Monitor', new_nps_report_path(:selected_category => "#{@product_group.id}_group",:auto=>1),:class => 'blue button_yellow', :style => 'float:right; margin-left: 5px; margin-top: 1px;' -%>
+  </div>
+</div>
+<div class="clearer"></div>
+<% end -%>
+
+<%= javascript_include_tag 'jquery-1.4.1.min' %>
+<script>
+  jQuery.noConflict();
+  var time = new Date().getTime();
+  jQuery(".cia_report_btn").attr("href",jQuery(".cia_report_btn").attr("href")+"&time="+time);
+  jQuery(".mir_report_btn").attr("href",jQuery(".mir_report_btn").attr("href")+"&time="+time);
+</script>

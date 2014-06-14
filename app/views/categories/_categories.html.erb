@@ -1,0 +1,37 @@
+<div class="table_body">
+  <% if @categories_with_children.blank? && @categories.blank? -%>
+  <ul>
+    <p>  No results.</p>
+  </ul>
+  <% end -%>
+
+  <ul>
+    <% @categories_with_children.each do |category| -%>
+        <li><a class="category" id="top_<%= category.dom_id %>" href="<%= url_for(:controller=>'categories', :action=>'show', :id=>category.id) %>"><span><%=h truncate(category.name, :length => 29) %></span></a></li>  
+        <script type="text/javascript" charset="utf-8">
+          new Tip('top_<%= category.dom_id %>', '<%= h(category.name) %>', {effect: 'blind', hook: { tip: 'bottomLeft', target: 'topRight' }, hideOn: false, hideAfter: 0.1, offset: { x: -10, y: -1 }, stem: 'bottomLeft'
+          });
+        </script>
+    <% end -%>    
+    <% @categories.each do |category| -%>
+      <% if current_user.subscribed? category -%>
+        <li class="select_category" id="<%= category.dom_id %>"><span><%=h truncate(category.name, :length => 30) %></span>
+            <div class="subscribed_message">Subscribed!</div>
+        </li>
+      <% else -%>
+        <li class="select_category" id="<%= category.dom_id %>"><span><%=h truncate(category.name, :length => 30) %></span>
+            <div><%= link_to_remote "", :url  => {:controller => 'categories', :action => "subscribe", :id => category.id}, :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => { :class=>"selectbtn" } %>
+            </div>
+        </li>
+      <% end %>
+      <script type="text/javascript" charset="utf-8">
+        new Tip('<%= category.dom_id %>', '<%= h(category.name) %><br><%= link_to "Number of products: #{category.products.size}", category_products_path(category) , :target=>'_blank', :style => "text-decoration: underline;" %><br>Number of reviews: <%=h category.number_of_product_reviews %><br>Updated <%= category.most_recent_updated_product.blank? ? 'N/A' : category.most_recent_updated_product.last_update.strftime("%d/%m/%Y") %>', {effect: 'blind', hook: { tip: 'bottomLeft', target: 'topRight' }, hideOn: false, hideAfter: 0.1, offset: { x: -10, y: -1 }, stem: 'bottomLeft'
+        });
+      </script>
+    <% end -%>
+  </ul> 
+</div>
+<%= render 'subscribed_categories' %>
+
+
+  

@@ -1,0 +1,19 @@
+<div id="content_area">
+  <h1>PSA report settings for <%= @product -%></h1>
+
+  <br /><br /><br />
+  <%= form_tag( produce_trending_report_product_path(@product) ) -%>
+    <table border=0>
+    <tr>
+      <td><%= label_tag 'threshold' -%>: <br /></td>
+      <td><%= text_field_tag 'threshold', '0.0075' -%></td>
+    </tr>
+    <tr>
+      <td><%= label_tag 'Attribute mapping' -%>: <br /></td>
+      <td><%= text_area_tag 'mapping', 'car => car', :rows => 15, :cols => 40 -%></td>
+    </tr>
+    </table>
+    <%= submit_tag 'Generate' -%>
+  </form>
+
+</div>

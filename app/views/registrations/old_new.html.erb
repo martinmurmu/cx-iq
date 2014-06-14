@@ -1,0 +1,117 @@
+<% content_for :top_content_area do end -%>
+<% form_for resource_name, resource, :url => registration_path(resource_name) do |f| -%>
+<table cellspacing="0" cellpadding="0" border="0" style="height: 100%; width: 100%;" id="loginSubview:registerPanelContentTable" class="rich-mp-content-table">
+  <tbody>
+  <tr style="height: 99%;">
+    <td valign="top" class="rich-mpnl-body">
+      <div id="modal_wrap">
+        <div id="content_top_modal">
+          <div id="header_content">
+            <span class="Heading2">Register below or </span>
+            <%= link_to "click here to login", new_user_session_path, :class=>"blueHyperLink", :style => "font-size: 20px;" %>
+            <p>All fields are required unless otherwise noted.</p>
+          </div>
+        </div>
+        <br>
+
+        <div style="margin-left: 20px;" id="content_modal">
+          <span id="loginSubview:registerForm:regRegion:status">
+            <span style="display: none;" id="loginSubview:registerForm:regRegion:status.start">
+              <div style="left: 250px; top: 110px;" class="loading_large"></div>
+            </span>
+            <span id="loginSubview:registerForm:regRegion:status.stop">
+              <dl class="rich-messages" id="loginSubview:registerForm:j_id56">
+                <dt>
+                  <%= f.error_messages %>
+                </dt>
+              </dl>
+            </span>
+          </span>
+            <table width="100%" cellspacing="5">
+              <tbody>
+              <tr>
+                <td><span style="padding: 0px;" class="label1">Email Address *</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.text_field :email, :tabindex=>"1", :style=>"width: 400px; margin-left: 0px;", :class=>"shadowEditBox" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span style="padding: 0px;" class="label1">Password *</span><span style="font-size: 9px;" class="label1">Password must be at least 6 symbols long, no spaces</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.password_field :password, :class=>"shadowEditBox", :tabindex=>"2", :style=>"width: 400px; margin-left: 0px;" %>
+                </td>
+              </tr>
+              <tr>
+                <td><span style="padding: 0px;" class="label1">Confirm Password *</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.password_field :password_confirmation, :class=>"shadowEditBox", :tabindex=>"3", :style=>"width: 400px; margin-left: 0px;" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span style="padding: 0px;" class="label1">First Name</span><span style="font-size: 9px;" class="label1">(Optional)</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.text_field :first_name, :tabindex=>"4", :style=>"width: 400px; margin-left: 0px;", :maxlength=>"100", :class=>"shadowEditBox" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span style="padding: 0px;" class="label1">Last Name</span><span style="font-size: 9px;" class="label1">(Optional)</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.text_field :last_name, :tabindex=>"4", :style=>"width: 400px; margin-left: 0px;", :maxlength=>"100", :class=>"shadowEditBox" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span style="padding: 0px;" class="label1">Company</span><span style="font-size: 9px;" class="label1">(Optional)</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.text_field :company, :tabindex=>"5", :style=>"width: 400px; margin-left: 0px;", :maxlength=>"100", :class=>"shadowEditBox" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.check_box :terms_of_service %>
+                  <label class="label1">I agree to the<a class="blueHyperLinkSmall" onclick="window.open('/TermsOfService', 'ts_window', 'status=1, toolbar=1, location=0, menubar=0, resizable=1, height=600, width=800, scrollbars=1');" href="#" name="loginSubview:registerForm:termsLink" id="loginSubview:registerForm:termsLink">
+                  'Terms of Service'</a>
+                  </label>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <br>
+            <table width="50%" cellspacing="5">
+              <tbody>
+              <tr>
+                <td>
+                  <%= f.submit "Register", :tabindex=>"6", :style=>"width: 80px;", :class=>"actionButton" %>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <br>
+            <br>
+        </div>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<% end -%>

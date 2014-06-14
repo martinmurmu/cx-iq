@@ -1,0 +1,26 @@
+<br/>
+<br/>
+<div>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>email</th>
+    <th>first name</th>
+    <th>last name</th>
+    <th>limitations</th>
+  </tr>
+<% @users.each do |user| -%>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.email %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= Limitation.exists?(:user_id => user.id) ? link_to('edit', edit_limitation_path(user.limitation)) : link_to('create', new_user_limitation_path(user)) %></td>
+    <td><%= link_to 'login_as', login_as_user_path(user)-%></td>
+  </tr>
+<% end -%>
+
+<%= will_paginate @users %>
+</table>
+</div>

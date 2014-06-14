@@ -1,0 +1,27 @@
+<div class="text-head"><h1>Sign In <span class="h1_super">(<%= link_to 'Not yet a member?', new_registration_path(resource_name),  :class=>"blueHyperLink" %>)</span> </h1><hr /></div>
+<div class="sign-in-form">
+  <% form_for resource_name, resource, :url => session_path(resource_name) do |f| -%>
+    <table width="580" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="50%" height="150" align="left" valign="top">
+          <label for="contact_first_name">Email</label>
+          <%= f.text_field :email, :tabindex=>"1", :style=>"width: 400px; margin-left: 0px;", :class=>"editbox1" %>          
+          <label for="contact_first_name">Password</label>
+          <%= f.password_field :password, :tabindex=>"2", :style=>"width: 400px; margin-left: 0px;", :class=>"editbox1" %>
+          <%= link_to 'Forgot your password?', new_password_path(resource_name), :class=>"blueHyperLinkSmall", :tabindex=>"0" %>
+        </td>
+      </tr>
+      <tr height="30" valign="top">
+        <td>
+          <%= f.check_box :remember_me, :tabindex=>"3" %>
+          <label class="label1">Remember me</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.submit "Sign In", :tabindex=>"4", :style=>"width: 80px;" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>

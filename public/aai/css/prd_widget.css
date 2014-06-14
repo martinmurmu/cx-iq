@@ -1,0 +1,48 @@
+.pw_wrapper {position: relative;}
+
+.pw_content {position: absolute; top: 85px; left: 20px; width: 200px; height: auto;}
+
+.pw_header {height: 50px;}
+.pw_header p {font-family: arial; font-size: 11px; text-align: center;}
+
+.pw_dialbox{
+	background:url(../images/bg-dialbox.gif) no-repeat !important;
+	width:184px;
+	height:58px;
+	margin-top: 5px;
+	margin-left: 15px;
+}
+.pw_dialbox_left{
+	float:left;
+	width:85px;
+	padding:6px 12px 0px 12px;
+}
+
+.pw_dialbox_caption p{
+	float:left;	
+	color:#af1d1d;
+	font-size:9px;
+	font-weight:bold;
+	font-family:Arial;
+	text-transform:uppercase;
+	margin-bottom: -1px;
+	line-height: 11px;
+}
+
+.pw_view_reviews a{
+	font-family:Arial;
+	color:#7e7c7c;
+	font-size:9px;
+	font-weight:bold;
+	text-transform:uppercase;
+	text-decoration:none;
+	display: block;
+	float: left;
+}
+
+.pw_dialbox_right img{
+	margin-top: 5px;	
+}
+
+
+

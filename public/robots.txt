@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /users/
+Disallow: /reviews/
+Disallow: /reviews*
+Sitemap: http://www.amplifiedanalytics.com/sitemap/sitemap_index.xml.gz
+

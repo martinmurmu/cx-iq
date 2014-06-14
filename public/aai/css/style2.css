@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Toolbox */
+#clearer {clear:both;}
+
+/* Page preparation */
+	* {margin: 0; padding: 0;}
+	html {height: 100%;}
+	* html #Pagewrap {height: 100%}
+	body  {background: url(../images/bodybg.jpg) repeat-x left top; height: auto !Important; z-index: 1;}
+	#fullouterpagewrap {width: 870px; height: 100%; margin: 0 auto;}
+	p, li {font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif; font-size: 12px; line-height: 17px; color: #555555;}
+	a {outline: none; color: #716E6E; text-decoration:none;}
+	ul {list-style: none inside; position: relative;}
+
+#Logo {width: 416px; height: 123px; background: url(../images/logo.jpg) no-repeat top left; z-index: 2; position: relative; float: left}
+
+/* Menu */
+	#Menu {position: relative; padding-top: 45px; width: 450px; float: left; z-index: 8;}
+	#Menu ul {list-style-type: none;}
+	#Menu ul li {float: right; display:inline;}
+/*	#Menu a {display:inline;}*/
+		/*Nav Buttons */
+		#Home {width: 113px; height: 57px; background:url(../images/homebtn.jpg) no-repeat; position:relative;	display: block;}
+		#Products {width: 101px; height: 57px; background:url(../images/productsbtn.jpg) no-repeat; position: relative; display: block;}
+	    #Blog {width: 101px; height: 57px; background:url(../images/blogbtn.jpg) no-repeat; position: relative; display: block;}
+		#ContactUs { width: 126px; height: 57px; background: url(../images/contactusbtn.jpg) no-repeat; position: relative; display: block;}
+
+
+#pagewrap_top {width: 100%; height: 35px; margin: 0 auto; background: url(../images/pagewrap_top.jpg) no-repeat top center; z-index: 2; overflow: hidden; }
+
+#pagewrap_middle {width: 100%; margin: 0 auto; background: url(../images/pagewrap_middle.jpg) repeat-y top center; z-index: 2;}
+
+#content_top {position: static; height: auto; width: 100%; margin: 0 auto; background: url(../images/contbg_top.jpg) no-repeat top center; z-index: 3;}
+	#content_top #content_area {position: relative; width: 90%; left: 50px; top: 10px}
+
+#message_area {position: relative; width: 87%; height: 35px; left: 50px; top: 10px; text-align: center; border-color: #497798; border-style: solid; border: 2px; vertical-align: middle;
+		display: none;
+		}
+	#message_area p {font-family: arial; font-size: 16px; color: navy; line-height: 1.2; font-weight: bold; display: inline;} 
+	#message_area span {position:relative; display: inline; vertical-align: middle;} 
+	#message_area img {height: 32px;} 
+
+#content_middle {position: static; width: 100%; margin: 0 auto; background: url(../images/contbg_middle.jpg) repeat-y top center; z-index: 3;}
+#content_middle #content_area {position: relative; width: 90%; left: 50px;}
+
+	#contact_wrap {position: relative; width: 98%; overflow: hidden; margin-top: 10px;}
+		#contact_wrap #contact_left { float: left; width: 310px; } 
+		#contact_wrap #contact_left .bg_shadow_small {height:44px; width:297px; background:url(../images/smlfieldboxshadow.jpg) no-repeat bottom; margin-left: -7px; z-index: 4;}
+		#contact_wrap #contact_left .shadow_inner_small {position: relative; height: 26px; width:279px; left: 8px; top: 8px; 
+			/*border: 2px; border-color: red; border-style: solid;*/
+			}
+		#contact_wrap #contact_left .shadow_textbox_small { position: relative; background: none; border: none; width:274px; height:24px; 
+			font-family:Verdana; font-size:16px; left: 3px; top: 5px; }
+	
+		#contact_wrap #contact_right {float: right; width: 449px; }
+		#contact_wrap #contact_right .bg_shadow_large {height:184px; width:449px; background:url(../images/largefieldboxshadow.jpg) no-repeat bottom; z-index: 4;}
+		#contact_wrap #contact_right .shadow_inner_large {position: relative; height: 168px; width: 433px; left: 6px; top: 6px; 
+			/* border: 2px; border-color: red; border-style: solid; */
+			}
+		#contact_wrap #contact_right .shadow_textbox_large { position: relative; background: none; border: none; width:430px; height:163px;
+	 		font-family:Verdana; font-size:14px; overflow: auto; left: 3px; top: 3px; }
+
+#content_bottom {height: 11px; width: 100%; margin: 0 auto;background: url(../images/contbg_bottom.jpg) no-repeat top center;}
+
+ 
+#footer {width: 100%; height: 90px; margin: 0 auto; background: url(../images/pagewrap_bottom.jpg) no-repeat top center; text-align:center;}
+#footer p {	padding:45px 0 0 0;	text-align:center; font-size: 11px;}
+#footer ul{	}
+#footer li {display: inline;list-style-type: none;text-align:center;margin: 0 5px 0 5px;font-size: 10px;}
+
+ 
+
+
+
+
+
+
+
+
+
+

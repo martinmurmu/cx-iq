@@ -1,0 +1,50 @@
+<%= stylesheet_link_tag '/css/additional' %>
+<% @page_title = 'Product Satisfaction Report - Amplified Analytics' -%>
+<% content_for :head_javascript do -%>
+<script type="text/javascript">
+	var add_this_script = "http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e7b48114c64d7b1&domready=1";
+	var addthis_config = {
+		services_exclude: 'print'
+	};
+
+	function load_addthis(){
+		var head;
+		var script;
+		head = $$('head')[0];
+		if (head)
+		{
+		  script = new Element('script', { type: 'text/javascript', src: add_this_script });
+		  head.appendChild(script);
+		}
+	}
+</script>
+<% end %>
+<div id="main_wrap" class="prm_body">
+  <br />
+  <div id="title">
+    <div id="market">
+      <img src="/images/prmir_new_header.png" alt="Product Reputation Market Intelligence Reporter" />
+    </div>
+    <div id="scale">
+      <img src="/images/miniScale.png" alt="Scale legend" />
+    </div>
+  </div>
+  <% unless current_user.guest? %>
+  <div class="accordion_section">
+    <div class=button_yellow style="margin-left:4px;margin-right:4px;margin-top: 25px;width:160px;">
+      <a href="<%= edit_product_report_path(@report) %>">Customize your report</a>
+    </div>
+  </div>
+  <% else %>
+    <br /><br />
+  <% end %>
+  <% unless @report.blank? -%>
+  <script>
+    document.observe('dom:loaded', function() {<%= remote_function :url  => {:controller => 'product_reports', :action => "refresh", :id => @report.id}, :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar');load_addthis();" %> });
+  </script>
+  <% end -%>
+
+  <div id="product_report">
+    <%= render :partial => 'results' if @report.blank? %>
+  </div>
+</div>
