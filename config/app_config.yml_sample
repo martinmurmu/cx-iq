@@ -17,7 +17,7 @@ production:
   iq_hostname: http://ampanalytics.iq2020.com
   <<: *defaults
 staging:
-  hostname: http://aai-ror-staging.cx-iq.com
+  hostname: http://staging.cx-iq.com
   iq_hostname: http://qcamplifiedanalytics.iq2020.com
   report_generator: /home/staging/report_generator/review_builder
   <<: *defaults

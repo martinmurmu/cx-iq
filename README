@@ -23,7 +23,7 @@ DEPLOY
 branch master to be deployed to amplifiedanalytics.com
 with "cap production deploy"
 
-branch staging to be deployed to aai-ror-staging.cx-iq.com
+branch staging to be deployed to staging.cx-iq.com
 with "cap staging deploy"
 
 nk, 2013

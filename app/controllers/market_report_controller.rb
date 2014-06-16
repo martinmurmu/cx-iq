@@ -407,8 +407,8 @@ class MarketReportController < ApplicationController
 
 private
   def report_store_host
-    if (request.host.include? "aai-ror-staging") || (request.host.include? "localhost")
-      "aai-ror-staging.cx-iq.com"
+    if (request.host.include? "staging") || (request.host.include? "localhost")
+      "staging.cx-iq.com"
     else
       "cx-iq.com"
     end
