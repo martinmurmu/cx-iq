@@ -1,5 +1,5 @@
 set :stages, %w(production staging)
-set :default_stage, 'staging'
+set :default_stage, 'production'
 set :keep_releases, 10
 after "deploy:update_code", "deploy:cleanup"
 
