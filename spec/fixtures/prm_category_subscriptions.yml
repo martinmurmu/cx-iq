@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  category_id: 4140
+  user_id: 1
+
+two:
+  category_id: 3210
+  user_id: 1
+
+three:
+  category_id: 2140
+  user_id: 1
+  
+four:
+  category_id: 2920
+  user_id: 1

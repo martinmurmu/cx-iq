@@ -1,0 +1,15 @@
+
+a[href^="mailto"]       { background: url(/stylesheets/blueprint/plugins/link-icons/icons/email.png) right center no-repeat; padding-right: 18px; }
+
+p {padding: 0px 10px 0px 3px}
+
+#content_middle ul.btnlinks {list-style-type: none; padding: 10px 0 0 8px;}
+
+div.product_lookup {
+	width: 754px;
+	font-size: 12px;
+}
+
+td.product_lookup_selector {
+	text-align: right;
+}

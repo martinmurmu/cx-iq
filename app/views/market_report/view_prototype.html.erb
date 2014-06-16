@@ -1,0 +1,194 @@
+<% colors = ['#e42','#0b0','#fa1','#fe2','#5bd','#dee'] %>
+
+<style>
+</style>
+<div id="score-legend">
+  <div style="position:absolute;top:10px;right:20px;">
+    <img src="/images/score_legend_transp.png">
+  </div>
+</div>
+
+<div id="chart_holder" style="width:940px;margin:90px auto 20px;">
+  <div style="position:absolute;right:75px;margin-top:8px;z-index:10">
+    <a href="/market_report/xlsx_export?<%=  "lid=#{params[:lid]}" if params[:lid]%><%="url=#{params[:url]}" if params[:url]%>"><%=image_tag("csv_file.png")%></a>
+  </div>
+  <div id="chart" style="width:100%;height:410px;"></div>
+</div>
+<%= stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css" %>
+<%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js", "jquery_ujs", "autocomplete-rails", "application", "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js", "flash", "application" %>
+
+<%= javascript_include_tag "highcharts/highcharts", "highcharts/themes/gray", "highcharts/modules/exporting"  %>
+
+<script type="text/javascript">
+
+  var chart;
+  $(document).ready(function() {
+    chart = new Highcharts.Chart({
+      height: 100,
+      chart: {
+        renderTo: 'chart',
+        zoomType: 'xy'
+      },
+      title: {
+        text: 'Market Intelligence Report'
+      },
+      subtitle: {
+        text: 'Number of customers: <%= @total_reviews %>, Total number of opinions expressed: <%= @total_opinions %>'
+      },
+      xAxis: [{
+          categories: <%= raw(@attributes.to_json) %>,
+          labels: {
+            rotation: -45,
+            align: 'right'
+          }
+        }],
+      yAxis: [{ // Primary yAxis
+          labels: {
+            formatter: function() {
+              return this.value +'';
+            },
+            style: {
+              color: '#fff'
+            }
+          },
+          min: 0,
+          max: 2,
+          title: {
+            text: 'Score',
+            style: {
+              color: '#fff'
+            }
+          },
+          stackLabels: {
+            enabled: true,
+            formatter: function() {
+              return '';//return this.total;//''+ (Math.round (this.total*1) / 1);
+            },
+            style: {
+              fontWeight: 'bold',
+              color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+          }
+
+        }, { // Secondary yAxis
+          title: {
+            text: 'Importance',
+            style: {
+              color: "#0f0"//'#4572A7'
+            }
+          },
+          min: 0,
+          labels: {
+            formatter: function() {
+              return this.value +' %';
+            },
+            style: {
+              color: "#0f0"//'#4572A7'
+            }
+          },
+          stackLabels: {
+            enabled: true,
+            formatter: function() {
+              return  (Math.round (this.total*1) / 1) +' %';
+            },
+            style: {
+              fontWeight: 'bold',
+              color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+          },
+          opposite: true
+        }
+        ],
+      tooltip: {
+        formatter: function() {
+          if (this.series.name=='satisfaction line')
+            return false;
+          if (this.series.name == 'attribute importance') {
+            return this.x +' - importance: '+ this.y +'%';
+          } else {
+            window.console && window.console.log(this)
+
+            return this.series.name+"<br>"+this.x + ' score: '+this.y;
+          }
+
+        }
+      },
+      legend: {
+        layout: 'horizontal',
+        align: 'center',
+        x: 0,
+        verticalAlign: 'bottom',
+        y: 0,
+        floating: false,
+        backgroundColor: '#FFFFFF',
+        itemStyle: {
+          color: '#000'
+        },
+        itemHoverStyle: {
+          color: '#777'
+        },
+        itemHiddenStyle: {
+          color: '#777'
+        },
+        itemWidth: 500,
+        width: 500
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          dataLabels: {
+            enabled: false,//true,
+            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+          },
+          cursor: 'pointer',
+          point: {
+            events: {
+              click: function() {
+                //alert(this.link);
+                window.open(this.link);
+                self.focus();
+              }
+            }
+          }
+        }
+      },
+      series: [
+        {
+          name: 'satisfaction line',
+          color: '#ddd',
+          type: 'spline',
+          legendIndex: 998,
+          yAxis: 0,
+          <%
+             satisfaction = []
+             @importance.each { satisfaction.push(1) }
+            %>
+          data: <%= satisfaction.to_json %>
+        },
+        {
+          name: 'attribute importance',
+          color: '#0f0',
+          type: 'spline',
+          yAxis: 1,
+          legendIndex: 999,
+          data: <%= @importance.to_json %>
+        },
+<% @products.each_with_index do |product_name,index|%>
+          {
+            name: '<%= product_name %>' ,
+            color: '<%= colors[index] rescue '' %>',
+            type: 'column',
+            stack: <%=  index %>,
+            legendIndex: <%= 10+index %>,
+            yAxis: 0,
+            data: <%= raw(@scores[product_name].to_json) %> },
+<% end %>
+
+
+        ]
+    });
+
+
+  });
+
+</script>

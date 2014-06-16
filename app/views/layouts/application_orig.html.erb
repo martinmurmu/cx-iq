@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="Amplified Analytics aggregates and analyzes online customer product reviews. Our algorithms deliver granular and normalized research data, that we make available to our customers through stand-alone Social CRM tools for Enterprise Feedback Management (EFM) and Customer Business Intelligence (CBI) to enable them to improve their customer&#8217;s experiences." />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta name="google-site-verification" content="F-7WJPb6QA30641hMDfcNGfBzkjiVjfzYnDGb-igtHE" />
+  <title>Amplified Analytics: New Generation Market Intelligence</title>
+  <meta name="keywords" content="online market research, customer satisfaction, consumer electronics, computer products, satisfaction ratings, customer satisfaction ratings, market research reports, market research, market research data, market research companies, product rating, customer satisfaction survey, satisfaction survey, focus groups, online panel, market research services, consumer reports, market intelligence">
+  <meta name="description" content="Online Market Research and Customer Satisfaction Reports"/>
+  <meta name="robots" content="all" />
+  <script src="/a4j/g/3_3_2.SR1/org/ajax4jsf/framework.pack.js" type="text/javascript"></script>
+  <script src="/a4j/g/3_3_2.SR1/org/richfaces/ui.pack.js" type="text/javascript"></script>
+  <link class="component" href="/a4j/s/3_3_2.SR1org/richfaces/renderkit/html/css/basic_classes.xcss/DATB/eAF7sqpgb-jyGdIAFrMEaw__" rel="stylesheet" type="text/css" />
+  <link class="component" href="/a4j/s/3_3_2.SR1org/richfaces/renderkit/html/css/extended_classes.xcss/DATB/eAF7sqpgb-jyGdIAFrMEaw__" media="rich-extended-skinning" rel="stylesheet" type="text/css" />
+  <link class="component" href="/a4j/s/3_3_2.SR1/org/richfaces/skin.xcss/DATB/eAF7sqpgb-jyGdIAFrMEaw__" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">window.RICH_FACES_EXTENDED_SKINNING_ON=true;</script>
+  <%= javascript_include_tag 'jquery-1.4.1.min', 'jquery.cycle.all.2.74' %>
+  <%= stylesheet_link_tag 'style.css', 'Modal.css' %>
+  <script src="/widgets/1240735ewidget_common.js" type="text/javascript"></script>
+  <script src="/widgets/login/43c7a641loginWidget.js" type="text/javascript">
+
+  </script><script src="/js/3b2eb6a9jquery.cookies.2.2.0.js" type="text/javascript"></script>
+  <script src="/js/f9ec8fd8seam_remote_core.js" type="text/javascript"></script>
+  <script src="/js/1ab7f2a2seam_remote_components.js" type="text/javascript"></script>
+  <script src="/js/8e4b28eetracking.js" type="text/javascript"></script><link rel="shortcut icon" href="/images/favicon.ico" />
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-7257899-1']);
+		_gaq.push(['_trackPageview']);
+	</script>
+
+	<script type="text/javascript">
+		A4J.AJAX.onError = function(req,status,message)
+		{
+			// swallowing this, as we're relying on the server-side error handling
+		};
+
+		A4J.AJAX.onExpired = function(loc,expiredMsg)
+		{
+			window.location.href = "/Home?se=1";		};
+	</script>
+
+		<!--  initialize the slideshow when the DOM is ready -->
+		<script type="text/javascript">
+//		<![CDATA[
+		   jQuery(document).ready(function() {
+			   jQuery('#s7').after('<div id="s7nav">').cycle({
+				fx:    'fade',
+				pause: 1,
+				speed:50,
+				delay: -1000,
+				pager: '#s7nav'
+			});
+
+			   jQuery('#s6').after('<div id="s6nav">').cycle({
+				fx:      'scrollLeft',
+				speed:    300,
+				timeout:  5000,
+				pause: 1,
+				delay: -2000,
+				pager: '#s6nav'
+			});
+
+		});
+//		]]>
+		</script>
+
+		<script type="text/javascript">
+			var redirect = false;
+
+			document.observe("aai:loginEvent", function(event)
+			{
+				if (redirect)
+				{
+					loadPRM();
+				}
+			});
+
+			function setRedirect()
+			{
+				redirect = true;
+			}
+
+			function loadPRM()
+			{
+				Richfaces.showModalPanel('loadingPanel');
+				$("prm_start_form").submit();
+				return true;
+			}
+		</script>
+
+</head>
+
+<body><script id="j_id4" type="text/javascript">LOG.registerPopup('L','LogWindow',800,600,LOG.ALL);</script>
+
+    <div id="fullouterpagewrap"><a id="Logo" name="Logo" href="/Home"></a>
+
+      <div id="TopLogin">
+<form id="topLogin_form" name="topLogin_form" method="post" action="/Home" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="topLogin_form" value="topLogin_form" />
+<span id="topLogin_form:j_id8"><table class="topLogin_table" border="0" cellspacing="5" width="100%">
+<tbody>
+
+<tr>
+<td class="topLogin_prompt"><span class="topLogin_text">Already a member?</span></td>
+<td class="topLogin_cell"><input type="submit" name="topLogin_form:j_id16" value="Log In" onclick="Richfaces.showModalPanel('loginPanel'); return false;" class="topLogin_text topLogin_button" /></td>
+</tr>
+</tbody>
+</table>
+</span><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="j_id1" autocomplete="off" />
+</form>
+
+    <div id="LoginPanelOuter"><div id="loginSubview:loginPanel" style="display: none;"><input autocomplete="off" id="loginSubview:loginPanelOpenedState" name="loginSubview:loginPanelOpenedState" type="hidden" /><div class="rich-modalpanel " id="loginSubview:loginPanelContainer" style="position: absolute; display: none; z-index: 100; background-color: inherit;"><div class="rich-mpnl-mask-div-opaque rich-mpnl-mask-div" id="loginSubview:loginPanelDiv" style="z-index: -1;"><button class="rich-mpnl-button" id="loginSubview:loginPanelFirstHref"></button></div><div class="rich-mpnl-panel"><div class="rich-mp-container" id="loginSubview:loginPanelCDiv" style="position: absolute; left: 0px; top: 0px; z-index: 9;"><div class="rich-mpnl-shadow" id="loginSubview:loginPanelShadowDiv"></div><div class="rich-mpnl-ovf-hd rich-mpnl-trim rich-mpnl-content" id="loginSubview:loginPanelContentDiv" style="background-color: #FFFFFF"><table border="0" cellpadding="0" cellspacing="0" class="rich-mp-content-table" id="loginSubview:loginPanelContentTable" style="height: 100%; width: 100%;"><tr style="height: 99%"><td class="rich-mpnl-body" valign="top">
+<form id="loginSubview:loginForm" name="loginSubview:loginForm" method="post" action="/Home" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="loginSubview:loginForm" value="loginSubview:loginForm" />
+<span id="loginSubview:loginForm:loginFormRegion">
+
+			<div id="modal_wrap">
+
+				<div id="content_top_modal">
+					<div id="header_content">
+						<p class="Heading2">Sign In (<a id="loginSubview:loginForm:registerLink" name="loginSubview:loginForm:registerLink" href="#" onclick="onRegister()" class="blueHyperLink">Not yet a member?</a>)
+						</p>
+					</div>
+				</div>
+
+				<div id="content_modal" style="margin-left: 20px;"><span id="loginSubview:loginForm:signinRegion:status"><span id="loginSubview:loginForm:signinRegion:status.start" style="display: none">
+							<div class="loading_large" style="left: 250px; top: 110px;"></div></span><span id="loginSubview:loginForm:signinRegion:status.stop"><dl id="loginSubview:loginForm:j_id29" class="rich-messages" style="display: none; "><dt></dt></dl></span></span>
+
+					<table width="100%">
+						<tr>
+							<td width="75%">
+
+							<table width="100%" cellspacing="5">
+								<tr>
+									<td width="100%"><span class="label1">Email Address</span>
+									</td>
+								</tr>
+								<tr>
+									<td><input id="loginSubview:loginForm:emailAddress" type="text" name="loginSubview:loginForm:emailAddress" class="shadowEditBox" style="width: 400px; margin-left: 0px;" tabindex="1" /></td>
+
+								</tr>
+								<tr>
+									<td><span class="label1">Password</span>
+									</td>
+								</tr>
+								<tr>
+									<td><input id="loginSubview:loginForm:password" type="password" name="loginSubview:loginForm:password" value="" style="width: 400px; margin-left: 0px;" tabindex="2" class="shadowEditBox" /></td>
+								</tr>
+
+								<tr>
+									<td><a class="blueHyperLinkSmall" href="#" id="loginSubview:loginForm:forgotPwdLink" name="loginSubview:loginForm:forgotPwdLink" onclick="A4J.AJAX.Submit('loginSubview:loginForm',event,{'oncomplete':function(request,event,data){Richfaces.showModalPanel('loginPanel'); Richfaces.showModalPanel('forgotPwdPanel');},'similarityGroupingId':'loginSubview:loginForm:forgotPwdLink','parameters':{'loginSubview:loginForm:forgotPwdLink':'loginSubview:loginForm:forgotPwdLink'} ,'containerId':'loginSubview:loginForm:signinRegion','actionUrl':'/Home'} );return false;">
+			        		Forgot your password?</a> <br />
+									</td>
+								</tr>
+								<tr>
+									<td><input id="loginSubview:loginForm:rememberMe" type="checkbox" name="loginSubview:loginForm:rememberMe" tabindex="3" /><label class="label1">
+Remember me</label>
+
+									</td>
+								</tr>
+								<tr>
+									<td><script language="JavaScript" type="text/javascript">document.forms['loginSubview:loginForm'].onkeypress = new Function("event", "{var keycode;if (window.event) keycode = window.event.keyCode;else if (event) keycode = event.which;else return true;if (keycode == 13) { document.getElementById('loginSubview:loginForm:signinButton').click();return false; } else return true; }");</script><input id="loginSubview:loginForm:signinButton" name="loginSubview:loginForm:signinButton" onclick="jQuery(':button').attr('disabled', 'disabled');A4J.AJAX.Submit('loginSubview:loginForm',event,{'status':'loginSubview:loginForm:signinRegion:status','oncomplete':function(request,event,data){jQuery(':button').removeAttr('disabled'); },'similarityGroupingId':'loginSubview:loginForm:signinButton','parameters':{'loginSubview:loginForm:signinButton':'loginSubview:loginForm:signinButton'} ,'containerId':'loginSubview:loginForm:signinRegion','actionUrl':'/Home'} );return false;" value="Sign In" style="width: 80px;" tabindex="4" type="button" /><input id="loginSubview:loginForm:cancelBtn" name="loginSubview:loginForm:cancelBtn" onclick="Richfaces.componentControl.performOperation(event,'onclick','#loginSubview\\:loginPanel','hide');A4J.AJAX.Submit('loginSubview:loginForm',event,{'similarityGroupingId':'loginSubview:loginForm:cancelBtn','parameters':{'loginSubview:loginForm:cancelBtn':'loginSubview:loginForm:cancelBtn'} ,'containerId':'loginSubview:loginForm:signinRegion','actionUrl':'/Home'} );return false;" value="Cancel" style="width: 80px;" tabindex="5" type="button" />
+									</td>
+								</tr>
+							</table>
+							</td>
+
+							<td valign="top"><img src="/images/smallLogo.PNG" /></td>
+						</tr>
+					</table>
+				</div>
+			</div></span><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="j_id1" autocomplete="off" />
+</form>
+<form id="loginSubview:authTokenHolder" name="loginSubview:authTokenHolder" method="post" action="/Home" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="loginSubview:authTokenHolder" value="loginSubview:authTokenHolder" />
+<input id="loginSubview:authTokenHolder:aai_auth_token" type="hidden" name="loginSubview:authTokenHolder:aai_auth_token" /><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="j_id1" autocomplete="off" />
+</form><div id="loginSubview:registerPanel" style="display: none;"><input autocomplete="off" id="loginSubview:registerPanelOpenedState" name="loginSubview:registerPanelOpenedState" type="hidden" /><div class="rich-modalpanel " id="loginSubview:registerPanelContainer" style="position: absolute; display: none; z-index: 100; background-color: inherit;"><div class="rich-mpnl-mask-div-opaque rich-mpnl-mask-div" id="loginSubview:registerPanelDiv" style="z-index: -1;"><button class="rich-mpnl-button" id="loginSubview:registerPanelFirstHref"></button></div><div class="rich-mpnl-panel"><div class="rich-mp-container" id="loginSubview:registerPanelCDiv" style="position: absolute; left: 0px; top: 0px; z-index: 9;"><div class="rich-mpnl-shadow" id="loginSubview:registerPanelShadowDiv"></div><div class="rich-mpnl-ovf-hd rich-mpnl-trim rich-mpnl-content" id="loginSubview:registerPanelContentDiv" style="background-color: #FFFFFF"><table border="0" cellpadding="0" cellspacing="0" class="rich-mp-content-table" id="loginSubview:registerPanelContentTable" style="height: 100%; width: 100%;"><tr style="height: 99%"><td class="rich-mpnl-body" valign="top">
+        <div id="modal_wrap">
+
+            <div id="content_top_modal">
+                <div id="header_content"><span class="Heading2">Register below or </span><a id="loginSubview:loginLink" name="loginSubview:loginLink" href="#" onclick="Richfaces.hideModalPanel('registerPanel'); Richfaces.showModalPanel('loginPanel');" style="font-size: 20px;" class="blueHyperLink">click here to login</a>
+					<p>All fields are required unless otherwise noted.</p>
+                </div>
+            </div>
+            <br />
+            <div id="content_modal" style="margin-left: 20px;">
+<form id="loginSubview:registerForm" name="loginSubview:registerForm" method="post" action="/Home" enctype="application/x-www-form-urlencoded">
+
+<input type="hidden" name="loginSubview:registerForm" value="loginSubview:registerForm" />
+<span id="loginSubview:registerForm:regRegion:status"><span id="loginSubview:registerForm:regRegion:status.start" style="display: none">
+							<div class="loading_large" style="left: 250px; top: 110px;"></div></span><span id="loginSubview:registerForm:regRegion:status.stop"><dl id="loginSubview:registerForm:j_id56" class="rich-messages" style="display: none; "><dt></dt></dl></span></span>
+		                <table width="100%" cellspacing="5">
+		                    <tr>
+		                    	<td><span class="label1" style="padding: 0px;">Email Address *</span>
+		                        </td>
+		                    </tr>
+		                    <tr>
+
+		                    	<td><input id="loginSubview:registerForm:emailAddress" type="text" name="loginSubview:registerForm:emailAddress" class="shadowEditBox" style="width: 400px; margin-left: 0px;" tabindex="1" />
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                    	<td><span class="label1" style="padding: 0px;">Password *</span><span class="label1" style="font-size: 9px;">Password must be at least 6 symbols long, no spaces</span>
+								</td>
+			                </tr>
+							<tr>
+
+							    <td><input id="loginSubview:registerForm:password" type="password" name="loginSubview:registerForm:password" value="" style="width: 400px; margin-left: 0px;" tabindex="2" class="shadowEditBox" /></td>
+							</tr>
+							<tr>
+							    <td><span class="label1" style="padding: 0px;">Confirm Password *</span></td>
+							</tr>
+							<tr>
+								<td><input id="loginSubview:registerForm:conf_password" type="password" name="loginSubview:registerForm:conf_password" value="" style="width: 400px; margin-left: 0px;" tabindex="3" class="shadowEditBox" /></td>
+		                    </tr>
+
+		                    <tr>
+		                    	<td><span class="label1" style="padding: 0px;">First &amp; Last Name</span><span class="label1" style="font-size: 9px;">(Optional)</span>
+								</td>
+		                    </tr>
+		                    <tr>
+		                    	<td><input id="loginSubview:registerForm:firstName" type="text" name="loginSubview:registerForm:firstName" class="shadowEditBox" maxlength="100" style="width: 400px; margin-left: 0px;" tabindex="4" /></td>
+		                    </tr>
+
+		                    <tr>
+		                    	<td><input id="loginSubview:registerForm:terms" type="checkbox" name="loginSubview:registerForm:terms" tabindex="5" /><label class="label1">
+
+		                                I agree to the<a id="loginSubview:registerForm:termsLink" name="loginSubview:registerForm:termsLink" href="#" onclick="window.open('/TermsOfService', 'ts_window', 'status=1, toolbar=1, location=0, menubar=0, resizable=1, height=600, width=800, scrollbars=1');" class="blueHyperLinkSmall">
+		                                    'Terms of Service'</a></label>
+		                    	</td>
+		                    </tr>
+						</table>
+
+					<br />
+	                <table width="50%" cellspacing="5">
+		                    <tr>
+		                        <td><script language="JavaScript" type="text/javascript">document.forms['loginSubview:registerForm'].onkeypress = new Function("event", "{var keycode;if (window.event) keycode = window.event.keyCode;else if (event) keycode = event.which;else return true;if (keycode == 13) { document.getElementById('loginSubview:registerForm:j_id77:regSubmit').click();return false; } else return true; }");</script><input class="actionButton" id="loginSubview:registerForm:j_id77:regSubmit" name="loginSubview:registerForm:j_id77:regSubmit" onclick="jQuery(':button').attr('disabled', 'disabled');A4J.AJAX.Submit('loginSubview:registerForm',event,{'oncomplete':function(request,event,data){jQuery(':button').removeAttr('disabled')},'similarityGroupingId':'loginSubview:registerForm:j_id77:regSubmit','parameters':{'loginSubview:registerForm:j_id77:regSubmit':'loginSubview:registerForm:j_id77:regSubmit'} ,'actionUrl':'/Home'} );return false;" value="Register" style="width: 80px;" tabindex="6" type="button" />
+		                        </td>
+		                        <td><input class="actionButton" id="loginSubview:registerForm:j_id77:cancelButton" name="loginSubview:registerForm:j_id77:cancelButton" onclick="Richfaces.componentControl.performOperation(event,'onclick','#loginSubview\\:registerPanel','hide');A4J.AJAX.Submit('loginSubview:registerForm',event,{'similarityGroupingId':'loginSubview:registerForm:j_id77:cancelButton','parameters':{'loginSubview:registerForm:j_id77:cancelButton':'loginSubview:registerForm:j_id77:cancelButton'} ,'actionUrl':'/Home'} );return false;" value="Cancel" style="width: 80px;" tabindex="7" type="button" />
+		                        </td>
+		                    </tr>
+
+	                </table>
+					<br />
+					<br /><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="j_id1" autocomplete="off" />
+</form>
+            </div>
+        </div></td></tr></table></div></div></div><div class="rich-mpnl-mask-div rich-mpnl-mask-div-transparent" id="loginSubview:registerPanelCursorDiv" style="z-index: -200;"><button class="rich-mpnl-button" id="loginSubview:registerPanelLastHref"></button></div><script type="text/javascript">new ModalPanel('loginSubview:registerPanel',
+				{
+					width: 475,
+					height: 510,
+
+					minWidth: -1,
+					minHeight: -1,
+
+					resizeable: false,
+					moveable: false,
+
+					left: "auto",
+					top: "auto",
+
+					zindex: 100,onresize: '',onmove: '',onshow: '',onhide: '',onbeforeshow: '',onbeforehide: '',
+					domElementAttachment: "",
+					keepVisualState: false,
+					showWhenRendered: false,
+					selectBehavior: "disable",
+
+					autosized: false,
+					overlapEmbedObjects: false});</script></div><script type="text/javascript"></script></div><div id="loginSubview:j_id90:forgotPwdPanel" style="display: none;"><input autocomplete="off" id="loginSubview:j_id90:forgotPwdPanelOpenedState" name="loginSubview:j_id90:forgotPwdPanelOpenedState" type="hidden" /><div class="rich-modalpanel " id="loginSubview:j_id90:forgotPwdPanelContainer" style="position: absolute; display: none; z-index: 100; background-color: inherit;"><div class="rich-mpnl-mask-div-opaque rich-mpnl-mask-div" id="loginSubview:j_id90:forgotPwdPanelDiv" style="z-index: -1;"><button class="rich-mpnl-button" id="loginSubview:j_id90:forgotPwdPanelFirstHref"></button></div><div class="rich-mpnl-panel"><div class="rich-mp-container" id="loginSubview:j_id90:forgotPwdPanelCDiv" style="position: absolute; left: 0px; top: 0px; z-index: 9;"><div class="rich-mpnl-shadow" id="loginSubview:j_id90:forgotPwdPanelShadowDiv"></div><div class="rich-mpnl-ovf-hd rich-mpnl-trim rich-mpnl-content" id="loginSubview:j_id90:forgotPwdPanelContentDiv"><table border="0" cellpadding="0" cellspacing="0" class="rich-mp-content-table" id="loginSubview:j_id90:forgotPwdPanelContentTable" style="height: 100%; width: 100%;"><tr style="height: 99%"><td class="rich-mpnl-body" valign="top">
+        <div id="modal_wrap">
+            <div id="content_top_modal">
+
+                <div id="header_content">
+                    <p class="Heading2">
+                        Do you need help remembering your password?
+                    </p>
+                    <br />
+                    <p class="boldLabel">
+                        Provide us with your username/email below, and we'll send the password to the registered email address
+                    </p>
+                </div>
+            </div><form id="loginSubview:j_id90:retrievePasswordForm" name="loginSubview:j_id90:retrievePasswordForm" method="post" action="/Home">
+
+                <br />
+                <div id="content_modal" style="margin-left: 20px;"><img alt="" class="rich-spacer " height="30" id="loginSubview:j_id90:retrievePasswordForm:j_id94" src="/a4j/g/3_3_2.SR1images/spacer.gif" width="1" /><span id="loginSubview:j_id90:retrievePasswordForm:forgotPasswordRegion:status"><span id="loginSubview:j_id90:retrievePasswordForm:forgotPasswordRegion:status.start" style="display: none">
+							<div class="loading_large" style="left: 250px; top: 100px;"></div></span><span id="loginSubview:j_id90:retrievePasswordForm:forgotPasswordRegion:status.stop"><dl id="loginSubview:j_id90:retrievePasswordForm:j_id96" class="rich-messages" style="display: none; "><dt></dt></dl></span></span><img alt="" class="rich-spacer " height="20" id="loginSubview:j_id90:retrievePasswordForm:j_id97" src="/a4j/g/3_3_2.SR1images/spacer.gif" width="1" />
+                        <table width="100%">
+                            <tr>
+                                <td width="73%">
+                                    <table>
+                                        <tr>
+                                            <td><label class="label1">
+
+                                                    Email Address</label>
+                                            </td>
+                                        </tr>
+										<tr>
+											<td><input id="loginSubview:j_id90:retrievePasswordForm:emailAddress" type="text" name="loginSubview:j_id90:retrievePasswordForm:emailAddress" class="shadowEditBox" maxlength="100" style="margin-left: 0px; width: 300px;" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>
+                                                <br /><span id="loginSubview:j_id90:retrievePasswordForm:j_id103"><input id="loginSubview:j_id90:retrievePasswordForm:retrievePasswordButton" name="loginSubview:j_id90:retrievePasswordForm:retrievePasswordButton" onclick="jQuery(':button').attr('disabled', 'disabled');A4J.AJAX.Submit('loginSubview:j_id90:retrievePasswordForm',event,{'status':'loginSubview:j_id90:retrievePasswordForm:forgotPasswordRegion:status','oncomplete':function(request,event,data){jQuery(':button').removeAttr('disabled')},'similarityGroupingId':'loginSubview:j_id90:retrievePasswordForm:retrievePasswordButton','parameters':{'loginSubview:j_id90:retrievePasswordForm:retrievePasswordButton':'loginSubview:j_id90:retrievePasswordForm:retrievePasswordButton'} ,'containerId':'loginSubview:j_id90:retrievePasswordForm:forgotPasswordRegion','actionUrl':'/Home'} );return false;" value="Submit" style="width: 80px;" type="button" /><input id="loginSubview:j_id90:retrievePasswordForm:cancelButton" name="loginSubview:j_id90:retrievePasswordForm:cancelButton" onclick="Richfaces.componentControl.performOperation(event,'onclick','#loginSubview\\:j_id90\\:forgotPwdPanel','hide');A4J.AJAX.Submit('loginSubview:j_id90:retrievePasswordForm',event,{'similarityGroupingId':'loginSubview:j_id90:retrievePasswordForm:cancelButton','parameters':{'loginSubview:j_id90:retrievePasswordForm:cancelButton':'loginSubview:j_id90:retrievePasswordForm:cancelButton'} ,'containerId':'loginSubview:j_id90:retrievePasswordForm:forgotPasswordRegion','actionUrl':'/Home'} );return false;" value="Cancel" style="width: 80px;" type="button" /></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td valign="top"><img src="/images/smallLogo.PNG" />
+                                </td>
+                            </tr>
+
+                        </table>
+                </div><input type="hidden" autocomplete="off" name="loginSubview:j_id90:retrievePasswordForm" value="loginSubview:j_id90:retrievePasswordForm" /><input type="hidden" autocomplete="off" name="autoScroll" value="" /><input type="hidden" autocomplete="off" name="loginSubview:j_id90:retrievePasswordForm:j_idcl" value="" /><input type="hidden" autocomplete="off" name="loginSubview:j_id90:retrievePasswordForm:_link_hidden_" value="" /><script type="text/javascript">function clear_loginSubview_3Aj_id90_3AretrievePasswordForm() {
+_clearJSFFormParameters('loginSubview:j_id90:retrievePasswordForm','',['loginSubview:j_id90:retrievePasswordForm:j_idcl','loginSubview:j_id90:retrievePasswordForm:_link_hidden_']);
+}
+function clearFormHiddenParams_loginSubview_3Aj_id90_3AretrievePasswordForm(){clear_loginSubview_3Aj_id90_3AretrievePasswordForm();}
+function clearFormHiddenParams_loginSubview_j_id90_retrievePasswordForm(){clear_loginSubview_3Aj_id90_3AretrievePasswordForm();}
+clear_loginSubview_3Aj_id90_3AretrievePasswordForm();</script><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="j_id1" autocomplete="off" /></form>
+            <br />
+        </div></td></tr></table></div></div></div><div class="rich-mpnl-mask-div rich-mpnl-mask-div-transparent" id="loginSubview:j_id90:forgotPwdPanelCursorDiv" style="z-index: -200;"><button class="rich-mpnl-button" id="loginSubview:j_id90:forgotPwdPanelLastHref"></button></div><script type="text/javascript">new ModalPanel('loginSubview:j_id90:forgotPwdPanel',
+				{
+					width: 500,
+					height: 260,
+
+					minWidth: -1,
+					minHeight: -1,
+
+					resizeable: false,
+					moveable: false,
+
+					left: "auto",
+					top: "auto",
+
+					zindex: 100,onresize: '',onmove: '',onshow: '',onhide: '',onbeforeshow: '',onbeforehide: '',
+					domElementAttachment: "",
+					keepVisualState: false,
+					showWhenRendered: false,
+					selectBehavior: "disable",
+
+					autosized: false,
+					overlapEmbedObjects: false});</script></div><script type="text/javascript"></script></div></td></tr></table></div></div></div><div class="rich-mpnl-mask-div rich-mpnl-mask-div-transparent" id="loginSubview:loginPanelCursorDiv" style="z-index: -200;"><button class="rich-mpnl-button" id="loginSubview:loginPanelLastHref"></button></div><script type="text/javascript">new ModalPanel('loginSubview:loginPanel',
+				{
+					width: 550,
+					height: 300,
+
+					minWidth: -1,
+					minHeight: -1,
+
+					resizeable: false,
+					moveable: false,
+
+					left: "auto",
+					top: "auto",
+
+					zindex: 100,onresize: '',onmove: '',onshow: '',onhide: function(event){document.fire('aai:hideEvent')},onbeforeshow: '',onbeforehide: '',
+					domElementAttachment: "",
+					keepVisualState: false,
+					showWhenRendered: false,
+					selectBehavior: "disable",
+
+					autosized: false,
+					overlapEmbedObjects: false});</script></div><script type="text/javascript"></script></div>
+
+	</div>
+      </div>
+
+      <div id="Menu">
+    	  <ul>
+       		<li><a href="/ContactUs?return_url=/home.seam" class="navbut_contactus"></a></li>
+	        <li><a href="http://blog.amplifiedanalytics.com" class="navbut_blog"></a></li>
+       		<li><a href="/Products" class="navbut_products"></a> </li>
+       		<li><a href="/Home" class="navbut_home"></a></li>
+       	  </ul>
+      </div>
+
+      <!--END Menu-->
+      <!--END Logo-->
+
+    <div id="small_pagewrap_top">
+    </div>
+    <div id="pagewrap_middle">
+        <%= yield :top_content_area %>
+
+	    <div id="content_middle">
+        <%= yield %>
+	    </div>
+
+	    <!--END ContentMiddle-->
+	    <div id="content_bottom">
+	    </div>
+	    <!--END contentbottom-->
+	  </div>
+
+      <div id="footer">
+	   	  <p>&copy; 2010-2013 Customer Satisfaction Analytics Inc.</p>
+	   	  <ul>
+
+       		<li><a href="/Home">Home</a></li>|
+       		<li><a href="/Products">Products</a></li>|
+      	  	<li><a href="http://blog.amplifiedanalytics.com">Blog</a></li>|
+       		<li><a href="/ContactUs?return_url=/home.seam">Contact Us</a></li>
+		</ul>
+      </div>
+    </div>
+
+<!-- GOOGLE ANALYTICS START -->
+  <script type="text/javascript">
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+  </script>
+
+<!-- GOOGLE ANALYTICS END -->
+
+
+<!-- GETSATISFACTION START -->
+<!--
+	<script type="text/javascript" charset="utf-8">
+		  var is_ssl = ("https:" == document.location.protocol);
+		  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+		  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+
+	<script type="text/javascript" charset="utf-8">
+
+	  var feedback_widget_options = {};
+
+	  feedback_widget_options.display = "overlay";
+	  feedback_widget_options.company = "A";
+	  feedback_widget_options.placement = "left";
+	  feedback_widget_options.color = "#C8D2DB";
+	  feedback_widget_options.style = "question";
+
+	  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+
+	</script>
+-->
+<!-- GETSATISFACTION END -->
+
+
+ </body>
+</html>

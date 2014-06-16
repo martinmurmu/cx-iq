@@ -1,0 +1,62 @@
+<% if params[:product] && params[:product] != "" && @products.empty? %> 
+<%= render "/shared/search_not_found" %>
+
+<% end %>
+<% unless @products.empty? -%>
+<% form_remote_tag :url => index_product_group_products_path(@product_group), :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => {:id => "update_search_results_form"} do %>
+
+<%= hidden_field_tag 'page', params[:page].blank? ? 1 : params[:page] %>
+<%= hidden_field_tag "product", params['product'] %> 
+<%= hidden_field_tag 'type', params['type'] %>
+<%= hidden_field_tag 'form_action' %>
+
+<div class="accordion_bar"   style="margin: 30px 0 0 0 ">
+  <% if @products.next_page -%>
+    <%= image_submit_tag("/images/nxt_button.png", :class=>"header_btns", :onClick => "$('update_search_results_form').form_action.value='next_page'") %>
+  <% end -%>
+  <% if @products.previous_page -%>
+    <%= image_submit_tag("/images/prv_button.png", :class=>"header_btns", :onClick => "$('update_search_results_form').form_action.value='prev_page'") %>  
+  <% end -%>
+  <label class="rowdd"><%= page_entries_info(@products, :entry_name => 'product') %></label>
+</div>
+
+<table class="prm_table" cellspacing="0">
+  <tbody>
+    <tr>
+      <th class="sortable_column">Manufacturer</th>
+      <th class="sortable_column">Product name</th>
+      <th class="sortable_column">Category</th>
+      <th class="sortable_column" width="90px"></th>
+    </tr>
+    <% @products.each do |product| -%>
+    <tr>
+      <td><%= product.manufacturer %></td>
+      <td><%= link_to product["name"], product_path(product['id']) %></td>
+      <td><%= product.categories[0] %></td>
+      <td>
+        <% if @product_group.products.include? product -%>
+          <div class="subscribed_message">Added!</div>
+        <% else -%>
+          <div><%= link_to_remote "", :url  => {:controller => 'products', :action => "add_to_group", :id => product.id, :product_group_id => params[:product_group_id]}, :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => { :class=>"addtomylistbtn_search" }, :with => "'product=#{escape_javascript(params[:product])}&type=#{params[:type]}&page=#{params[:page]}'" %>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+<div id="bottombar">
+  <ul>
+    <% if @products.next_page -%>
+      <li class="fl_right"><%= image_submit_tag("/images/nextbtnonwhite.png", :onClick => "$('update_search_results_form').form_action.value='next_page'") %></li>
+    <% end -%>
+    <% if @products.previous_page -%>
+      <li class="fl_right"><%= image_submit_tag("/images/prv_btn_onwhite.png", :onClick => "$('update_search_results_form').form_action.value='prev_page'") %></li> 
+    <% end -%>
+    <li class="fl_right"><label><%= page_entries_info(@products, :entry_name => 'product') %></label>
+  </ul>
+</div>
+<% end -%>
+<% end -%>
+
+<%= render 'group_products' %>

@@ -1,0 +1,148 @@
+
+#modal_wrap
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #FEFEFE;
+}
+
+#content_top_modal
+{
+	height: 50px; 
+	width: 100%; 
+	margin: 0 auto; 
+	background: url(../images/contbg_top.jpg) no-repeat top center; 
+}
+
+#header_content {
+	position: relative; 
+	padding-bottom: 5px;
+	width: 100%; 
+	left: 20px; 
+	top: 10px;
+	padding-left: 2px;
+}
+
+#content_top
+{
+	position: relative;
+	height: 100%;
+}
+
+.rich-mpnl-body 
+{
+	padding: 0;
+}
+
+.message
+{
+	width: 90%;
+	position: relative;
+	left: 5px;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.errorMessage
+{
+	color: #FF0000;
+/*	
+	font-size: 100%;
+*/	
+}
+
+.infoMessage
+{
+	color: #009933;
+}
+
+.loadingMessage
+{
+	display: block;
+	color: #000000;
+}
+
+
+/*
+#content_top_modal #content_area_modal {position: relative; width: 90%; left: 50px; top: 20px}
+#content_top_modal #content_area_modal p {font-size: 24px; font-weight: bold;}
+*/
+
+
+/*
+.rich-mpnl-header { display: none; }
+.rich-mpnl-body 
+{
+	background-color: #3F8FC3;
+	padding: 0;
+	
+}
+
+.rich-modalpanel
+{
+	background:transparent url(../images/pagewrap_middle.jpg) repeat-y scroll center top;
+	margin:0 auto;
+	width:99%;
+	z-index:3;
+}
+.modalBody {
+	background: url(../images/bodybg.jpg) repeat-x left top; 
+	height: auto !Important; 
+	z-index: 1; 
+	background-color: #FFFFFF;
+}
+
+.modalwrap {
+	width: 100%; 
+	margin: 0 auto; 
+	background: url(../images/pagewrap_middle.jpg) repeat-y top center; 
+	z-index: 2;
+}
+
+.outerLayer 
+{
+	width: 100%; 
+	height:90%
+	margin: 0 auto; 
+	background: url(../images/pagewrap_middle.jpg) repeat-y top center; 
+	z-index: 2;
+}
+
+
+.header {
+	position: static; 
+	height: 2px; 
+	width: 100%; 
+	margin: 0 auto; 
+	background: url(../images/contbg_top.jpg) no-repeat top center; 
+	z-index: 3;
+}
+
+
+.contentLayer {
+	position: static; 
+	width: 100%;
+	height: 90%; 
+	margin: 0 auto; 
+	background: url(../images/contbg_middle.jpg) repeat-y top center; 
+	z-index: 3;
+	padding: 5px;
+}
+
+.contentLayerBody {
+	position: relative; 
+	width: 100%;
+	left: 0px; 
+	top: 10px;
+}
+
+.bottomLayer {
+	width: 100%; 
+	height: 10px; 
+	margin: 0 auto;
+	background: url(../images/contbg_bottom.jpg) no-repeat top center;
+}
+*/

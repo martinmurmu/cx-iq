@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Amplified Analytics | <%= @page_title %></title>
+<meta name="keywords" content="customer reviews,feedback from customer,Voice of Customer,word of mouth marketing,Market Intelligence,Customer Intelligence,Opinion Mining,Sentiment Analysis,online marketing research,Customer Insights">
+<meta name="description" content="Online marketing research software and service focused on customers' opinion mining, voice of customer analysis and customer satisfaction measurements">
+<%= stylesheet_link_tag 'reviews.css', 'panel.css', 'style.css', 'Modal.css', 'prd_widget', '/aai/css/prm_style.css', '/css/global.css', '/stylesheets/prototip.css' %>
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link href="favicon.ico" rel="shortcut icon"/>
+<script type="text/javascript" src="/javascripts/fancybox/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/javascripts/fancybox/jquery.fancybox-1.3.0.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="/javascripts/fancybox/jquery.fancybox-1.3.0.css" media="screen" />
+	<script type="text/javascript">
+		$(document).ready(function() {
+		        if($("area#BOX"))
+			$("area#BOX").fancybox({
+				'titleShow'     : false,
+				'transitionIn'	: 'elastic',
+				'transitionOut'	: 'elastic'
+			});
+
+
+		});
+	</script>
+<%= yield :header %>
+
+
+<%= render 'shared/google_analytics_head' %>
+<%= render 'shared/quantcast' %>
+</head>
+<style>
+  .content-wrap > .content {
+    height: auto;
+  }
+  #products_pagewrap_top {
+    top: 30px;
+    background: none;
+  }
+  #pagewrap_middle {
+    background: none;
+  }
+  #pagewrap_middle {
+    margin: 30px auto 0;
+    padding-bottom: 15px;
+  }
+  .prodnav_WOMin {
+    background: url("/images/wom/subnavWOMinactive.png") no-repeat scroll 0 0 transparent;
+  }
+  .prodnav_PRM {
+    background: url("/images/products/subnavPRMactive_new.png") no-repeat scroll 0 0 transparent;
+  }
+  .prodnav_WOM {
+    background: url("/images/wom/subnavWOMactive_new.png") no-repeat scroll 0 0 transparent;
+  }
+  .prodnav_Methodologyac {
+    background: url("/images/products/subnavotheractive_new.png") no-repeat scroll 0 0 transparent;
+  }
+  #products_pagewrap_top p.introtext, p.intropoints {
+    color: #666666;
+    text-shadow: none;
+  }
+
+  #content_top {
+    background: url("/images/contbg_top_new.png") no-repeat scroll center top transparent;
+    padding: 10px 10px 0 20px;
+  }
+  #content_bottom {
+    background: url("/images/contbg_bottom_new.png") no-repeat scroll 0 0 transparent;
+  }
+  h1 {
+    margin: 0 10px 10px 22px;
+  }
+  #subnav li {
+    line-height: 40px;
+  }
+  #subnav li a.inactive {
+    font-size: 14px;
+    font-weight: bold;
+    color: #504b4b;
+    margin-left: 12px;
+  }
+</style>
+<body>
+    <div class="wrap">
+    	<div class="header">
+        	<div class="logo"><a href="http://www.amplifiedanalytics.com/"><img src="/images/cx_logo.png" alt="Amplified Analytics" border="0" /></a></div>
+            <div class="login-menu">
+            	<ul>
+            	    <% if user_signed_in? -%>
+          	        <li>
+                    <a href=<%= new_user_registration_path %>>Register</a>
+                    </li>
+                    <li>|</li>                    
+          	        <li>
+                	    <a href="<%= edit_user_registration_path %><%= "?return_url=#{request.url}" unless devise_controller? -%>">My Account</a>
+                	  </li>
+                    <li>|</li>
+                    <li>
+                      <a href="<%= destroy_user_session_path %>">Log Out</a>
+                	  </li>
+                	<% else %>
+                  	<!--<li>
+                	  <a href=<%= new_user_registration_path %>>Register</a>
+                	  </li>
+                    <li>|</li>-->
+                    <li>
+                    <a href=<%= new_user_session_path %>>Customer Login</a>
+                    </li>
+                  <% end %>
+                </ul>
+            </div>
+            <div class="nav-menu">
+            	<ul>
+                	<li><a href="/" class=<%= @menu_current == 'home' ? 'menu-current':'' %>>Home</a></li>
+                    <li><a href="/Products" class=<%= @menu_current == 'products' ? 'menu-current':'' %>>Products</a></li>
+                    <li><a href="/Services" class=<%= @menu_current == 'services' ? 'menu-current':'' %>>Services</a></li>
+                    <li><a href="/Methodology" class=<%= @menu_current == 'methodology' ? 'menu-current':'' %>>Methodology</a></li>
+                    <li><a href="http://blog.amplifiedanalytics.com/">Blog</a></li>
+                    <li><a href="/Contact-Us" class=<%= @menu_current == 'contact_us' ? 'menu-current':'' %>>Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-wrap">
+            <div class="content">
+              <%= yield %>
+              <div style="height: 16px; width: 843px; margin: 0 auto 30px; clear:both; background: url('/images/pagewrap_bot_new.png') no-repeat scroll 0 0 transparent;background: none;"></div>
+            </div>
+        </div>
+        <div class="footer">
+        	<div class="footer-menu">
+            	<ul>
+                	<li><a href=<%= root_path %>>Home</a></li>
+                    <li>|</li>
+                    <li><a href=<%= products_path %>>Products</a></li>
+                    <li>|</li>
+                    <li><a href=<%= services_path %>>Services</a></li>
+                    <li>|</li>
+                    <li><a href=<%= methodology_path %>>Methodology</a></li>
+                    <li>|</li>
+                    <li><a href="http://blog.amplifiedanalytics.com/">Blog</a></li>
+                    <li>|</li>
+                    <li><a href=<%= contact_us_path %>>Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="Copyright">
+            	<p>© 2013 <a href="http://www.amplifiedanalytics.com/">Amplified Analytics</a> INC.</p>
+            </div>
+        </div>
+    </div>
+    <%= render 'shared/google_analytics' if RAILS_ENV == 'production' -%>
+    <%#= render 'shared/get_satisfaction' -%>
+</body>
+</html>

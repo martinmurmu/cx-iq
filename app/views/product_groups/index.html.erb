@@ -1,0 +1,49 @@
+<% content_for :top_content_area do -%>
+    <div id="content_top">
+      <div id="content_area">
+        <p>
+          <img src="/images/account/myaccountheader.png" alt="My Current Product Category Subscriptions" width="102" height="28" style="padding-top: 10px;" />
+        </p>
+      </div>
+      <div id="message_area"></div>
+    </div>
+<% end -%>
+
+<div id="content_area">
+  <div id="account_tabs">
+    <%= link_to "", edit_user_registration_path, :id=> 'tab_1' -%>
+    <%= link_to "", my_products_product_groups_path, :id=> 'tab_3' -%>
+    <%= link_to "", product_groups_path, :id=> 'tab_2', :class=>"active" -%>
+  </div>
+
+  <div class="clearer"></div>
+  <div class="form-wrap">
+    <table id="subscriptions" style="border:1px solid #c8c8c8; background:#fff;">
+      <tr>
+        <th width="70%" id="subsCat">List Name </th>
+        <th width="30%">Action</th>
+      </tr>
+      <% @groups.each do |group| -%>
+      <tr>
+        <td id="subsCat" class="<%= cycle("", "odd") -%>"><%= link_to group.name, product_group_products_path(group) -%></td>
+        <td>
+          <%= link_to 'Rename', edit_product_group_path(group) -%> |
+          <%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete -%>
+          <%#= link_to 'Produce CIA report', produce_cia_report_settings_product_group_path(group) -%>
+        </td>
+      </tr>
+      <% end -%>
+    </table>
+  </div><!--end form-wrap-->
+  <div style='float:left;position:absolute;margin-top:10px'>
+	<a href=http://youtu.be/bvxphwHJjTQ target=_blank class='button yellow'>Help Video</a>
+  </div>
+  <div style='float:right;margin-top:10px;margin-right:10px;'>
+    <ul>
+      <li>
+        <a class='button' href="/product_groups/new">Create new product list</a>
+     </li>
+    </ul>
+  </div><!--end actionBar-->
+  <div class="clearer"></div>
+</div>

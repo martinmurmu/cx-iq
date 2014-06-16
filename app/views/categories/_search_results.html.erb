@@ -1,0 +1,63 @@
+<%= link_to 'Back to full category list', categories_path %>
+<% form_remote_tag :url => search_categories_path, :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => {:id => "update_search_results_form"} do %>
+
+<%= hidden_field_tag 'page', params[:page].blank? ? 1 : params[:page] %>
+<%= hidden_field_tag 'product', params['product'] %> 
+<%= hidden_field_tag 'type', params['type'] %>
+<%= hidden_field_tag 'form_action' %>
+
+<% if @categories && @categories.count==0 %>
+<div style='height:10px'></div>
+<%= render :partial => "/shared/search_not_found", :locals => { :name => "category" } %>
+<% else %>
+  <div class="accordion_bar"   style="margin: 30px 0 0 0 ">
+    <% if @categories.next_page -%>
+      <%= image_submit_tag("/images/nxt_button.png", :class=>"header_btns", :onClick => "$('update_search_results_form').form_action.value='next_page'") %>
+    <% end -%>
+    <% if @categories.previous_page -%>
+      <%= image_submit_tag("/images/prv_button.png", :class=>"header_btns", :onClick => "$('update_search_results_form').form_action.value='prev_page'") %>  
+    <% end -%>
+    <label class="rowdd"><%= page_entries_info(@categories, :entry_name => 'category') %></label>
+  </div>
+  <table class="prm_table" cellspacing="0">
+    <tbody>
+      <tr>
+        <th class="sortable_column">Manufacturer</th>
+        <th class="sortable_column">Product name</th>
+        <th class="sortable_column">Category</th>
+        <th class="sortable_column" width="80px"></th>
+      </tr>
+      <% @categories.each do |category| -%>
+      <tr>
+        <td><%= category["manufacturer"] %></td>
+        <td><%= category["product"] %></td>
+        <td><%= category["categories"][0]["fullPath"] %></td>
+        <td>
+    <% if category["categories"][0]["subscribed"] -%>
+      <div class="subscribed_message">Subscribed!</div>
+    <% else -%>
+      <div><%= link_to_remote "", :url  => {:controller => 'categories', :action => "subscribe", :id => category["categories"][0]["id"]}, :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => { :class=>"selectbtn_search" }, :with => "'origin=search&product=#{params[:product]}&type=#{params[:type]}&page=#{params[:page]}'" %>
+      </div>
+    <% end %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+
+  <div id="bottombar">
+    <ul>
+      <% if @categories.next_page -%>
+        <li class="fl_right"><%= image_submit_tag("/images/nextbtnonwhite.png", :onClick => "$('update_search_results_form').form_action.value='next_page'") %></li>
+      <% end -%>
+      <% if @categories.previous_page -%>
+        <li class="fl_right"><%= image_submit_tag("/images/prv_btn_onwhite.png", :onClick => "$('update_search_results_form').form_action.value='prev_page'") %></li> 
+      <% end -%>
+      <li class="fl_right"><label><%= page_entries_info(@categories, :entry_name => 'category') %></label>
+    </ul>
+  </div>
+  <% end -%>
+
+<% end %>
+
+<%= render 'subscribed_categories' %>

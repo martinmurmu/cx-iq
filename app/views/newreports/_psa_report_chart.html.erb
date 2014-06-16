@@ -1,0 +1,196 @@
+<style>
+#filter .selected {
+  border-bottom: 2px solid #000;
+}
+#filter a {
+  color: #000;
+  text-decoration: none;
+  margin: 0 10px;
+}
+#filter a:hover {
+  border-bottom: 2px solid #000;
+}
+</style>
+<div id=filter style='margin-left:30px;font-size:12px;margin-top:20px;'>
+<%= filter_link(:importance,nil,"any importance") %>
+<%= filter_link(:importance,"1","importance>1%") %>
+<%= filter_link(:importance,"5","importance>5%") %>
+<%= filter_link(:importance,"10","importance>10%") %>
+</div>
+<%= javascript_include_tag "highcharts/highcharts",  "highcharts/modules/exporting"  %>
+
+<script type="text/javascript">
+  <% empty_column = 0.00000000001%>
+  var empty_column = <%= empty_column %>;
+
+  var negative_opinions = [<%= attributes_info.map{|i|"{y: #{(i[:negative_opinions].to_f/product_info[:opionions_amount]*100).round(0)}, link: '#{escape_javascript i[:link]}'}"}.join(",") %>]
+  var positive_opinions = [<%= attributes_info.map{|i|"{y: #{(i[:positive_opinions].to_f/product_info[:opionions_amount]*100).round(0)}, link: '#{escape_javascript i[:link]}'}"}.join(",") %>]
+  var importance = [<%= attributes_info.map{|i| (i[:importance]*100).to_f }.join(",") %>]
+
+  console && console.log(negative_opinions)
+  console && console.log(positive_opinions)
+  var chart;
+  $(document).ready(function() {
+    chart = new Highcharts.Chart({
+      chart: {
+        renderTo: '<%= chart_container %>',
+        zoomType: 'xy'
+      },
+      title: {
+        text: '<%= escape_javascript product_info["PRODUCT NAME"] %>'
+      },
+      subtitle: {
+        text: 'Number of customers: <%= product_info["NUMBER OF REVIEWS"] %>, Total number of opinions expressed: <%= product_info[:opionions_amount] %>'
+      },
+      xAxis: [{
+          categories: [<%= attributes_info.map{|i|"'#{i[:attribute]}'"}.join(",") %>],
+          labels: {
+            rotation: -45,
+            align: 'right'
+         }
+        }],
+      yAxis: [{ // Primary yAxis
+          labels: {
+            formatter: function() {
+              return this.value +'';
+            },
+            style: {
+              color: '#89A54E'
+            }
+          },
+          title: {
+            text: '-',
+            style: {
+              color: '#fff'
+            }
+          }
+        },
+        { // Secondary yAxis
+          enabled: false,
+          title: {
+            text: '',
+            style: {
+              color: "#fff"//'#4572A7'
+            }
+          },
+          labels: {
+            formatter: function() {
+              return this.value +' %';
+            },
+            style: {
+              color: "#fff"//'#4572A7'
+            }
+          },
+          stackLabels: {
+            enabled: true,
+            formatter: function() {
+              if(this.total==empty_column) return '';
+              return ''+ (Math.round (this.total*1) / 1) +' %';
+            },
+            style: {
+              fontWeight: 'bold',
+              color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+          },
+          opposite: true
+        }],
+      tooltip: {
+        formatter: function() {
+/*          if (this.series.name != 'Opinion score') {
+            return false;
+          }*/
+          var i = this.point.x
+          return "importance: "+parseInt(importance[i])+"%";
+          //" | opinions: "+(negative_opinions[i].y + positive_opinions[i].y)
+        }
+      },
+      legend: {
+        enabled: true,
+        layout: 'horizontal',
+        align: 'center',
+        x: 0,
+        verticalAlign: 'bottom',
+        y: 0,
+        floating: false,
+        backgroundColor: '#FFFFFF',
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          dataLabels: {
+            enabled: false,//true,
+            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+          },
+          cursor: 'pointer',
+          point: {
+            events: {
+              click: function() {
+                console && console.log(this.x)
+                var url = negative_opinions[this.x]["link"]
+                console && console.log(url)
+                window.open(url);
+                self.focus();
+              }
+            }
+          }
+        }
+      },
+      series: [
+
+/*        {
+          name: 'Negative opinions',
+          color: '#bd6a6a',
+          type: 'column',
+          yAxis: 1,
+          data: [<%= attributes_info.map{|i|"{y: #{(i[:negative_opinions].to_f/product_info[:opionions_amount]*100).round(0)}, link: '#{escape_javascript i[:link]}'}"}.join(",") %>] },
+
+        {
+          name: 'Positive opinions',
+          color: '#4572A7',
+          type: 'column',
+          display: false,
+          yAxis: 1,
+          data: [<%= attributes_info.map{|i|"{y: #{(i[:positive_opinions].to_f/product_info[:opionions_amount]*100).round(0)}, link: '#{escape_javascript i[:link]}'}"}.join(",") %>] },
+*/
+        {
+          name: 'above expectations',
+          color: '#091',
+          type: 'column',
+          yAxis: 1,
+          data: [<%= attributes_info.map{|i|
+                    score = i[:opinion_score]
+                    score = (score-1)*100
+                    if score>0
+                      "%.2f" % score
+                    else
+                      empty_column
+                    end
+                 }.join(",") %>]
+        },
+        {
+          name: 'below expectations',
+          color: '#d10',
+          type: 'column',
+          yAxis: 1,
+          data: [<%= attributes_info.map{|i|
+                    score = i[:opinion_score]
+                    score = (score-1)*100
+                    if score<0
+                      "%.2f" % score
+                    else
+                      empty_column
+                    end
+
+                 }.join(",") %>]
+        }
+
+
+
+
+        ]
+    });
+
+
+  });
+
+</script>

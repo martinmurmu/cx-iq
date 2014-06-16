@@ -1,0 +1,25 @@
+one:
+  id: 1
+  product_category_id: 2840
+  manufacturer_id: 
+  sorting_field: 
+  sorting_order: 
+  number_of_reviews: 
+  csi_range: 
+  pfs_range: 
+  prs_range: 
+  pss_range: 
+  user_id: 1
+
+two:
+  id: 2
+  product_category_id: 
+  manufacturer_id: 
+  sorting_field: 
+  sorting_order: 
+  number_of_reviews: 
+  csi_range: 
+  pfs_range: 
+  prs_range: 
+  pss_range: 
+  user_id: 1 

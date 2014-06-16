@@ -1,0 +1,475 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>PSA Mockup</title>
+
+    <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+    <style type="text/css">
+
+        body { margin:20px 0; }
+
+        .centered {margin: 0 auto;}
+        
+        .bold {color: #000000; font-weight: bold;}
+        .small {font-size: 80%;}
+        .regular {color: #000000; font-weight: normal; }
+        .positive {color: #008811; font-weight: bold;}
+        .negative {color: #BB0000; font-weight: bold;}
+        .review_text {line-height: 1; font-size: 90%; font-family: "Lucida Grande","Trebuchet MS",Verdana,Arial,Tahoma,sans-serif;}
+
+        .review_title {font-weight: bold; color: #000000; line-height: 30px;}
+        .review_author {font-style: italic; font-family: arial; color: #000000;}
+        .review_date {color: #000000; font-size: 80%;}
+        .review_source {line-height: 30px; font-size: 80%;}
+
+        ul.review_attributes {
+            list-style: none;
+            margin-left: 0;
+            padding-left: 1em;
+            text-indent: -1em;
+        }
+
+    </style>
+<!--
+    <script type="text/javascript" src="js/gviz-api.js"></script>
+-->
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/jquery142.js"></script>
+    <link rel="stylesheet" href="css/jquery.tooltip.css" />
+    <script src="js/jquery.bgiframe.js" type="text/javascript"></script>
+    <script src="js/jquery.dimensions.js" type="text/javascript"></script>
+    <script src="js/jquery.tooltip.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/sprintf.js"></script>
+    <script type="text/javascript">
+//        google.load("jquery", "1.4.2");
+
+        google.load('visualization', '1', {packages: ['table']});
+
+        var psaData = [
+            {'attrName': 'Car', 'attrScore': 1.41, 'posReviews': 73, 'negReviews': 3},
+            {'attrName': 'Reliability', 'attrScore': 1.03, 'posReviews': 52, 'negReviews': 14},
+            {'attrName': 'Usability', 'attrScore': 1.50, 'posReviews': 32, 'negReviews': 0},
+            {'attrName': 'Price', 'attrScore': 0.23, 'posReviews': 24, 'negReviews': 2},
+            {'attrName': 'General', 'attrScore': 1.34, 'posReviews': 13, 'negReviews': 5},
+            {'attrName': 'Design', 'attrScore': 0.42, 'posReviews': 6, 'negReviews': 0},
+            {'attrName': 'Other', 'attrScore': 1.25, 'posReviews': 18, 'negReviews': 3}
+        ];
+
+        var snippets = [
+            {'id': 's00a1', 'attribute': 'Car', 'score': 1.23, 'html': '<div class="review_text"><span class="regular">... Excellent </span><span class="positive">Car</span><span class="regular">. Only thing I had to get changed was timing...</span></div>', 'reviewId': '0a1' },
+            {'id': 's00a2', 'attribute': 'Reliability', 'score': 1.45, 'html': 'Reliability snppet 2: ...ry smooth ride even when I drive it over 100 m/h. - The car [is very reliable] and quiet; sometimes I forget its running. - The seats are ..', 'reviewId': '0a2'  },
+            {'id': 's00a3', 'attribute': 'Car', 'score': 1.34, 'html': 'Car snppet 3: ...The car rides very smoothly, and is an all around excellent [car] . I have been very satisfied with this vehicle, and it hasn\'..', 'reviewId': '0a3' },
+            {'id': 's00a4', 'attribute': 'Reliability', 'score': 0.23, 'html': 'Reliability snppet 4: ...ne. Even my mechanic told a lady looking to buy a very good [reliable] car that was eco friendly to look at my car because it was ..', 'reviewId': '0a4' }
+        ];
+
+        var reviewsData = [
+            {'id': '0a1', 'score': 1.90, 'date': 'July 28, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Car', 'Reliability'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">Excellent </span><span class="positive">Car</span><span class="regular">. Only thing I had to get changed was timing belt at 80k miles because it was due at 60k. Nice pickup (should be as its a V6). Don\'t know why people buy GM or Ford if they can buy hyundai at almost same price. As releiable as Japanese cars. How long have you owned this vehicle?: 3 yrs or more</span></div>'},
+/*
+            {'score': 1.27, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Reliability', 'Usability'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 0.13, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Usability', 'Price'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 1.73, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Price', 'General'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 1.82, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['General', 'Design'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 0.44, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Design', 'Other'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 0.86, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Other', 'General', 'Price'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 1.01, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Reliability', 'Car'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 0.99, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Design', 'Price'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 0.38, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Reliability', 'Car'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 1.17, 'date': 'July 29, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Reliability', 'Car'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 1.25, 'date': 'June 16, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Price', 'Car'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 0.62, 'date': 'July 30, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Car', 'Usability'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">RELIABIITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'},
+            {'score': 0.87, 'date': 'September 2, 2009', 'author': 'sadieapple from Oshkosh, wi',
+                'source': 'http://www.kbb.com/new-cars/hyundai/sonata/2010/consumer-reviews?p=44',
+                'attributes': ['Usability', 'Design'], 'title': 'I love my Sonata',
+                'html': '<div class="review_text"><span class="regular">USABILITY REVIEW When I was looking for a new car a few years ago I drove a few different Toyotas, Kias and Hyundais. I was drawn to the Sonata initially for the great </span><span class="positive">pricing</span><span class="regular">. After driving other makes and models the Sonata was far more comfortable [usability::comfortable] and the engine was so much quieter then the others. My father has a older model Sonata and the improvements from his model [other_attributes::model] year to 2006 are awesome. Ive only had some minor paint issues [reliability::has * issues] and it has a few issues in the dead of winter, but other then that I would (and do) recommend the Sonata to anyone who is looking for a nice car at a great price. How long have you owned this vehicle?: 2 to 3 yrs </span></div>'}
+*/
+        ];
+
+        var productDetails = {'name': 'Hyundai', 'numReviews': 104, 'posReviews': 55, 'negReviews': 49, 'csi': 1.69};
+
+        function showReview(link, snippetId, reviewId)
+        {
+            var reviewHtml = sprintf('<div id="%s">', snippetId + reviewId);
+            for (var i = 0; i < reviewsData.length; i++)
+            {
+                var review = reviewsData[i];
+                if (review.id == reviewId)
+                {
+                    reviewHtml += getReviewHtml(review);
+                    break;
+                }
+            }
+            reviewHtml += '</div>';
+
+            var reviewHtmlElem = $(reviewHtml);
+            reviewHtmlElem.hide();
+            reviewHtmlElem.insertAfter($('#' + snippetId));
+            reviewHtmlElem.slideDown('fast');
+
+            var newAnchor = $('<a></a>');
+            newAnchor.html('Hide full review');
+            newAnchor.attr('href', '#');
+            newAnchor.attr('onclick', sprintf('hideReview($(this), \'%s\', \'%s\'); return false;', snippetId, reviewId));
+            link.replaceWith(newAnchor);
+        }
+
+        function hideReview(link, snippetId, reviewId)
+        {
+            $('#' + snippetId + reviewId).slideUp('fast', function() {
+              $('#' + snippetId + reviewId).remove();
+            });
+
+            var newAnchor = $('<a></a>');
+            newAnchor.html('Show full review');
+            newAnchor.attr('href', '#');
+            newAnchor.attr('onclick', sprintf('showReview($(this), \'%s\', \'%s\'); return false;', snippetId, reviewId));
+            link.replaceWith(newAnchor);
+
+        }
+
+        function getReviewHtml(dataItem)
+        {
+            var reviewHtml = '';
+
+            reviewHtml += '<span class="review_title">' + dataItem.title + '</span><br/>';
+            reviewHtml += '<span class="review_author">' + 'by ' + dataItem.author + '</span><br/>';
+            reviewHtml += '<span class="review_date">' + dataItem.date + '</span><br/>';
+            reviewHtml += '<span class="review_source"><a href="' + dataItem.source + '" target="_blank">Review source</a></span><br/>';
+
+            reviewHtml += dataItem.html;
+
+            return reviewHtml;
+        }
+
+        function getSnippetHtml(snippet)
+        {
+            var snippetHtml = sprintf('<div id="%s">', snippet.id);
+
+            snippetHtml += snippet.html;
+
+            snippetHtml += sprintf('<span class="review_source"><a href="#" onclick="showReview($(this), \'%s\', \'%s\'); return false;">see full review</a></span>', snippet.id, snippet.reviewId);
+
+            snippetHtml += '</div>';
+
+            return snippetHtml;
+
+        }
+
+        function getAttributesHtml(attributes)
+        {
+            var attrsHtml = '<ul class="review_attributes">';
+            $.each(attributes, function(i, attr) {
+                attrsHtml += sprintf('<li>&#187; %s</li>', attr);
+            });
+            attrsHtml += '</ul>';
+
+            return attrsHtml;
+        }
+
+        function renderAttributesTable()
+        {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Feature');
+            data.addColumn('number', 'Score');
+            data.addRows(psaData.length);
+
+            var defFormat = {'style': 'color: blue; text-decoration: underline; cursor: pointer;'};
+
+            for (var i = 0; i < psaData.length; i++)
+            {
+                data.setCell(i, 0, psaData[i].attrName, undefined, defFormat);
+                data.setCell(i, 1, psaData[i].attrScore);
+            }
+
+            var table = new google.visualization.Table(document.getElementById('visualization'));
+
+            var formatter = new google.visualization.TableBarFormat({width: 220, base: 1, drawZeroLine: true, min: 0, max: 2, colorPositive: 'green', colorNegative: 'red'});
+            formatter.format(data, 1); // Apply formatter to second column
+
+            table.draw(data, {allowHtml: true, showRowNumber: false, width: '100px'});
+
+            google.visualization.events.addListener(table, 'select', function() {
+                var selection = table.getSelection();
+
+                if (0 == selection.length)
+                {
+                    return;
+                }
+                var psaItem = psaData[selection[0].row]; // allow to select only 1 row
+
+                table.setSelection(null);
+
+                $('#specific_reviews').html(sprintf('for feature <span class="bold">%s</span><span class="small"> <a href="#" onclick="renderProductDetails(); renderReviewsTable(null, 0); return false;">(all features)</a></span>', psaItem.attrName));
+
+                renderReviewsDetails(psaItem, psaItem.attrName);
+                renderReviewsTable(psaItem.attrName, 0);
+
+            });
+
+        }
+
+        function renderReviewsDetails(item, attribute)
+        {
+            $('#details').html(
+                    sprintf('<p>Display <a href="#" onclick="renderReviewsTable(\'%s\', 0); return false;">all reviews (%d)</a> | only <a href="#" onclick="renderReviewsTable(\'%s\', 1); return false;">positive reviews (%d)</a> | only <a href="#" onclick="renderReviewsTable(\'%s\', -1); return false;">negative reviews (%d)</a></p>',
+                            attribute,
+                            (+item.negReviews + item.posReviews),
+                            attribute,
+                            item.posReviews,
+                            attribute,
+                            item.negReviews)
+                    );
+        }
+
+        // sign:
+        //      -1: negative reviews
+        //      0: all reviews
+        //      1: positive reviews
+        function renderReviewsTable(attribute, sign)
+        {
+            var reviewsTableData = new google.visualization.DataTable();
+            reviewsTableData.addColumn('number', 'Overall Review Score');
+//            reviewsTableData.addColumn('string', 'Review Attributes');
+            reviewsTableData.addColumn('string', 'Review Details');
+
+            var filteredSnippets = [];
+
+            $.each(snippets, function(i, snippet) {
+                if (attribute == null || attribute == '0' || snippet.attribute == attribute)
+                {
+                    if (sign == 0)
+                    {
+                        filteredSnippets.push(snippet);
+                    }
+                    else if (sign > 0 && snippet.score >= 1.0)
+                    {
+                        filteredSnippets.push(snippet);
+                    }
+                    else if (sign < 0 && snippet.score <= 1.0)
+                    {
+                        filteredSnippets.push(snippet);
+                    }
+                }
+            });
+
+            reviewsTableData.addRows(filteredSnippets.length);
+
+            $.each(filteredSnippets, function(i, snippet) {
+                reviewsTableData.setCell(i, 0, snippet.score);
+//                reviewsTableData.setCell(i, 1, getAttributesHtml(review.attributes));
+//                reviewsTableData.setCell(i, 2, getReviewHtml(snippet));
+                reviewsTableData.setCell(i, 1, getSnippetHtml(snippet));
+            });
+
+            var reviewsTable = new google.visualization.Table(document.getElementById('reviews'));
+
+            var formatter = new google.visualization.TableBarFormat({width: 70, base: 1, drawZeroLine: true, min: 0, max: 2, colorPositive: 'green', colorNegative: 'red'});
+            formatter.format(reviewsTableData, 0); // Apply formatter to second column
+
+            reviewsTable.draw(reviewsTableData, {allowHtml: true, showRowNumber: false});
+
+            $("#for_tooltip").tooltip({
+   bodyHandler: function() {
+     return "override !";
+   }
+});
+
+
+        }
+
+        function renderProductDetails()
+        {
+            $('#product_details').html(
+                    sprintf('<h2>%s</h2>', productDetails.name) +
+                    '<ul>' +
+                    sprintf('<li>Number of reviews: %d</li>', productDetails.numReviews) +
+                    sprintf('<li>Customer satisfaction index: %f</li>', productDetails.csi) +
+                    '</ul>'
+                    );
+            $('#specific_reviews').html("for all features");            
+            renderReviewsDetails(productDetails, 0);
+        }
+        
+        function makeURLString(args)
+        {
+        	var urlString = '';
+        	for (param in args)
+        	{
+        		urlString += param + '=' + args[param] + '&';
+        	}
+        	
+        	return urlString;
+        }
+
+        function renderAttributesScatter()
+        {
+        	var args = [];
+        	args['cht'] = 's';
+        	args['chtt'] = 'Features+Scores';
+        	
+		var chmParam = 'o,00FF00,0,0::1,5,0.0|';
+		var chemParam = '';
+		var chdReviews = '';
+		var chdScores = '';
+		for (var i = 0; i < psaData.length; i++)
+		{
+			var posReviews = psaData[i].posReviews;
+			var negReviews = psaData[i].negReviews;
+			var ratio = 0;
+			
+			var totReviews = posReviews + negReviews;
+			if (posReviews > negReviews)
+			{
+				ratio = posReviews / totReviews * 100;
+			}
+			else
+			{
+				ratio = -negReviews / totReviews * 100;
+			}
+
+			chmParam += sprintf('o,%s,0,%d:%d:1,10,0.0', (psaData[i].attrScore >= 1.0 ? '00ff00': 'ff0000'), i, i);
+
+			chdReviews += ratio + '';
+			chdScores += psaData[i].attrScore + '';
+
+			chemParam += sprintf('y;s=text_outline;d=000000,14,h,ffffff,_,%s;ds=0;dp=%d;of=-20,10', psaData[i].attrName, i);
+
+			if (i < psaData.length - 1)
+			{
+				chdReviews += ',';
+				chdScores += ',';
+				chmParam += '|';
+				chemParam += '|';
+			}
+		}
+		        	
+        	args['chd'] = 't:' + chdReviews + '|' + chdScores; //'t:-30,50,-20|0.3,1.5,1.6';
+        	args['chds'] = '-100,100,0.0,2.0';
+        	args['chs'] = '700x400';
+        	args['chxr'] = '0,-100,100|1,0,2,0.2|2,0,2,0.2|3,0,100|4,0,100';
+        	args['chxt'] = 'x,y,r,x,y';
+        	args['chxl'] = '3:|%+of+Negative+Reviews|%+of+Positive+Reviews|4:|Negative+Scores|Positive+Scores&';
+        	args['chxp'] = '3,25,75|4,25,75';
+        	args['chg'] = '50,50';
+        	args['chm'] = chmParam; //'o,00FF00,0,0::1,5,0.0|o,ff0000,0,0:0:1,10,0.0|o,00ff00,0,1:1:1,10,0.0|o,00ff00,0,2:2:1,10,0.0';
+        	args['chem'] = chemParam;// 'y;s=text_outline;d=000000,14,h,ffffff,_,Reliability;ds=0;dp=0;of=-20,10|y;s=text_outline;d=000000,14,h,ffffff,_,Functionality;ds=0;dp=1;of=-20,10|y;s=text_outline;d=000000,14,h,ffffff,_,Support;ds=0;dp=2;of=-20,10';
+//        	args['chof'] = 'validate';
+        	
+        	var chartArgs = makeURLString(args);
+        	
+        	var chartImg = $('#scores_scatter').append($('<img id="chart_img"/>'));
+        	$('#chart_img').attr('src', 'http://chart.apis.google.com/chart?' + chartArgs);
+        	
+        }
+
+
+        function drawVisualization()
+        {
+            renderProductDetails();
+            renderAttributesTable();
+            renderReviewsTable(null, 0);
+            renderAttributesScatter();
+        }
+
+        google.setOnLoadCallback(drawVisualization);
+        
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="span-24 last">
+		    <h1>Product Satisfaction Analysis</h1>
+            <hr/>
+	    </div>
+
+        <div class="span-9 prepend-3">
+                <img src="images/sonata.jpg" alt="Hyundai Sonata" width="205" height="131" />
+        </div>
+        <div class="span-12 last">
+            <div id="product_details"></div>
+        </div>
+
+        <hr/>
+
+
+        <div class="span-24 last">
+            <h3>Product features</h3>
+        </div>
+
+        <div class="span-24 last">
+            <div id="visualization" class="centered" style="width: 600px; height: 270px;"></div>
+        </div>
+        <div class="span-24 last">
+            <div id="scores_scatter" class="centered" style="width: 800px; height: 440px;">
+<!--
+                <img src="http://chart.apis.google.com/chart?cht=s&chtt=Features+Scores&chd=t:-30,50,-20|0.3,1.5,1.6&chds=-100,100,0.0,2.0&chs=600x340&chxr=0,-100,100|1,0,2,0.2|2,0,2,0.2|3,0,100|4,0,100&chxt=x,y,r,x,y&chxl=3:|%+of+Negative+Reviews|%+of+Positive+Reviews|4:|Negative+Scores|Positive+Scores&chxp=3,25,75|4,25,75&chg=50,50&chm=o,00FF00,0,0::1,5,0.0|o,ff0000,0,0:0:1,10,0.0|o,00ff00,0,1:1:1,10,0.0|o,00ff00,0,2:2:1,10,0.0&chem=y;s=text_outline;d=000000,14,h,ffffff,_,Reliability;ds=0;dp=0;of=-20,10|y;s=text_outline;d=000000,14,h,ffffff,_,Functionality;ds=0;dp=1;of=-20,10|y;s=text_outline;d=000000,14,h,ffffff,_,Support;ds=0;dp=2;of=-20,10" usemap="#psa_map" alt="Features Scores"/>
+-->                
+            </div>
+        </div>
+
+        <div class="span-24 last">
+            <h3>
+                Detailed product reviews
+                <div id="specific_reviews" style="display: inline;"></div>
+            </h3>
+        </div>
+
+        <div class="span-24 last">
+            <div id="details">
+            </div>
+        </div>
+
+        <div class="span-24 last">
+            <div id="reviews" style="width: 950px; height: 500px;">
+        </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
+​

@@ -1,0 +1,22 @@
+<div class='product_lookup'>
+  <%= form_tag(search_categories_path, :method => :get) %>
+    <table width="100%">
+      <tr>
+        <td width="60%" rowspan=2>          
+          <%= text_field_with_auto_complete :product, :name, {:value => params["product"].blank? ? "" : params["product"][:name], :class=>'longEditbox'} %>
+        </td>
+        <td width="20%" class="product_lookup_selector">
+          all words <%= radio_button_tag 'type', 'and', (params["type"]=="or" ? false : true) %>
+        </td>
+        <td width="20%" align="right" style="padding-right: 15px" rowspan=2>
+          <%= image_submit_tag "/aai/images/search-button.png" %>
+        </td>
+      </tr>
+      <tr>
+        <td width="20%" class="product_lookup_selector">
+          any word <%= radio_button_tag 'type', 'or', params["type"]=="or" ? true : false %>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

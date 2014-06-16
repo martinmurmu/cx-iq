@@ -1,0 +1,91 @@
+<style>#error {border:2px solid #ddd;padding:0;margin:0;-webkit-margin:0;padding-left:20px;}
+#error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+</style>
+<%
+  @menu_current = "contact_us"
+  @page_title = "Contact Us"
+%>
+<div class="text-head"><h1>
+  <% if !params[:schedule_demo] %>
+  Contact Us
+  <% else %>
+  Schedule Live Demo
+  <% end %>
+</h1><hr /></div>
+<div class="keyword-logo-demo" style='margin-top:-40px'><img src="images/keywords-logo.jpg" /></div>
+<div class="shedule-form">
+  <% form_for(@user_messages) do |f| %>
+<!--
+<%- flash.each do |key, msg| -%>
+  <div id="<%= key %>">
+    <%= msg %>
+  </div>
+<%- end -%>
+-->
+    <table width="580" height="270" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="50%" height="150" align="left" valign="top">
+          <label for="contact_first_name">First Name <span style="color:#666666;">*</span></label>
+          <%= f.text_field :name, :class=>"editbox1" %>
+          <label for="user_email">Email Address <span style="color:#666666;">*</span></label>
+          <%= f.text_field :email, :class=>"editbox1" %>
+          <label for="contact_company">Company</label>
+          <%= f.text_field :company, :class=>"editbox1" %>
+          <% if !params[:schedule_demo] %>
+          <div style='position:absolute;margin-left:-330px;margin-top:35px;'>
+          <%= recaptcha_tags %>
+          </div>
+          <% end %>
+        </td>
+        <td width="50%" height="150" align="left" valign="top">
+          <label for="contact_first_name">Message <span style="color:#666666;">*</span></label>
+          <%= f.text_area :message, :class=>"message-box" %>
+          <% if params[:schedule_demo] %>
+            <input type="hidden" value="true" name="schedule_demo" />
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td height="70" colspan="2" align="left" valign="bottom">
+          <% if !params[:schedule_demo] %>
+            <input id=message_submit class=validate type="image" tabindex="5" value="Create" style="float: right; margin-right: 30px;" src="images/BTN-submit.gif" name="commit" id="demo_messages_submit" alt="Submit">
+          <% else %>
+            <a id=message_submit class='livedemo' href="http://meetme.so/gregoryyankelovich" target="_blank" style="float: right; margin-right: 30px; " tabindex="5">
+              <img type="image" src="images/BTN-submit.gif" alt="Submit" style="border: none; outline: none;"/>
+            </a>
+          <% end %>
+
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+<hr class="hr-380px" />
+<div class="bottom-text"><p>Call today at <span style="font-size: 20px; font-weight: bold; color:#27488a;"> 415-373-2627 </span></p></div>
+</div>
+
+<script>
+$(function() {
+  $(".validate").click( function(event) {
+    var v = $("#user_messages_email").val();
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if($.trim(v)=="") {
+      $("#user_messages_email").css("border","1px solid red !important");
+      $("#user_messages_email").focus();
+      alert("Please enter email address.");
+      event.stopPropagation();
+      return false;
+    } else
+    if(reg.test(v)==false) {
+      $("#user_messages_email").css("border","1px solid red !important");
+      $("#user_messages_email").focus();
+      alert("Please enter valid email address.");
+      event.stopPropagation();
+      return false;
+    }
+    if($(this).hasClass("livedemo")) {
+         $('#new_user_messages').submit();
+    }
+  });
+});
+</script>

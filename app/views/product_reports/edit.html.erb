@@ -1,0 +1,52 @@
+<h1>Editing product_report</h1>
+
+<% form_for(@product_report) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :product_category_id %><br />
+    <%= f.text_field :product_category_id %>
+  </p>
+  <p>
+    <%= f.label :manufacturer_id %><br />
+    <%= f.text_field :manufacturer_id %>
+  </p>
+  <p>
+    <%= f.label :sorting_field %><br />
+    <%= f.text_field :sorting_field %>
+  </p>
+  <p>
+    <%= f.label :sorting_order %><br />
+    <%= f.text_field :sorting_order %>
+  </p>
+  <p>
+    <%= f.label :number_of_reviews %><br />
+    <%= f.text_field :number_of_reviews %>
+  </p>
+  <p>
+    <%= f.label :csi_range %><br />
+    <%= f.text_field :csi_range %>
+  </p>
+  <p>
+    <%= f.label :pfs_range %><br />
+    <%= f.text_field :pfs_range %>
+  </p>
+  <p>
+    <%= f.label :prs_range %><br />
+    <%= f.text_field :prs_range %>
+  </p>
+  <p>
+    <%= f.label :pss_range %><br />
+    <%= f.text_field :pss_range %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @product_report %> |
+<%= link_to 'Back', product_reports_path %>

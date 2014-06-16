@@ -1,0 +1,144 @@
+<% form_remote_tag :url => refresh_product_report_path(@report), :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => {:id => "update_product_report_form"} do %>
+  <div class="accordion_section">
+    <div class="accordion_bar">
+      <img src="/images/acc_head_left2.png" alt="" />
+      <img src="/images/acc_resultsheader.png" alt="" />
+      <img src="/images/acc_head_right.png" style="float: right;" alt=""  />
+      <% if @products.next_page -%>
+        <%= image_submit_tag("/images/nxt_button.png", :class=>"header_btns", :onClick => "$('update_product_report_form').form_action.value='next_page'") %>
+      <% end -%>
+      <% if @products.previous_page -%>
+        <%= image_submit_tag("/images/prv_button.png", :class=>"header_btns", :onClick => "$('update_product_report_form').form_action.value='prev_page'") %>
+      <% end -%>
+      <%= per_page_select(@report.items_per_page) %>
+      <label class="rowdd"><%= page_entries_info(@products) %></label>
+
+      <% if @report.filtered? -%>
+        <%= image_submit_tag("/images/clrfilter.png", :style=>"float:right;", :name=> "clear_filter", :value=>true) %>
+        <% if user_signed_in? -%>
+          <%= link_to(image_tag("/images/save_as_my_list.png", :border => 0, :style=>"float:right;"), new_from_product_report_product_groups_path(:report_id => @report.id)) -%>
+        <% end -%>
+      <% else -%>
+        <%= image_submit_tag("/images/filterout.png", :style=>"float:right;", :name=> "enable_filter", :value=>true) %>
+      <% end -%>
+      <%= hidden_field_tag 'form_action' %>
+      <%= hidden_field_tag 'page', params[:page].blank? ? 1 : params[:page] %>
+
+    </div>
+    <% if @products.blank? -%>
+      No products to show.
+    <% else -%>
+      <table class="prm_table" cellspacing="0">
+      <tr>
+        <% unless @report.filtered? -%>
+          <th id="selectall"><input type='checkbox' onClick="$$('#update_product_report_form input.check').each(function(box){box.checked=checked; box.parentNode.parentNode.className = box.checked ? 'active_row' : ''});" /></th>
+        <% end -%>
+        <th id="prod_name" class="sortable_column"><div class="sortable_column_text"><%= link_to_remote "Product Name", :url  => {:controller => 'product_reports', :action => "refresh", :id => @report.id}, :with => "'sort_by=product_name'", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')"%></div>
+          <% if @report.sorting_field == 5 -%>
+          <div class="sortable_column_icon"><%= column_sort_icon(@report.sorting_order) %></div>
+          <% end -%>
+        </th>
+        <th id="man_name" class="sortable_column"><div class="sortable_column_text"><%= link_to_remote "Manufacturer", :url  => {:controller => 'product_reports', :action => "refresh", :id => @report.id}, :with => "'sort_by=manufacturer'", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')"%></div>
+          <% if @report.sorting_field == 6 -%>
+          <div class="sortable_column_icon"><%= column_sort_icon(@report.sorting_order) %></div>
+          <% end -%>
+        </th>
+        <th class="sortable_column" width="48px"><div class="sortable_column_text"><%= link_to_remote "CSI", :url  => {:controller => 'product_reports', :action => "refresh", :id => @report.id}, :with => "'sort_by=CSI'", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')"%></div>
+          <% if @report.sorting_field == 1 -%>
+          <div class="sortable_column_icon"><%= column_sort_icon(@report.sorting_order) %></div>
+          <% end -%>
+          <img class="qmark" src="/images/q_mark.png" style="margin-bottom:4px" alt="" id="csi_table_header"/>
+        </th>
+        <th class="sortable_column" width="50px"><div class="sortable_column_text"><%= link_to_remote "PFS", :url  => {:controller => 'product_reports', :action => "refresh", :id => @report.id}, :with => "'sort_by=PFS'", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')" %></div>
+          <% if @report.sorting_field == 2 -%>
+          <div class="sortable_column_icon"><%= column_sort_icon(@report.sorting_order) %></div>
+          <% end -%>
+          <img class="qmark" src="/images/q_mark.png" style="margin-bottom:4px" alt="" id="pfs_table_header"/>
+        </th>
+        <th class="sortable_column" width="51px"><div class="sortable_column_text"><%= link_to_remote "PRS", :url  => {:controller => 'product_reports', :action => "refresh", :id => @report.id}, :with => "'sort_by=PRS'", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')" %></div>
+          <% if @report.sorting_field == 3 -%>
+          <div class="sortable_column_icon"><%= column_sort_icon(@report.sorting_order) %></div>
+          <% end -%>
+          <img class="qmark" src="/images/q_mark.png" style="margin-bottom:4px" alt="" id="prs_table_header"/>
+        </th>
+        <th class="sortable_column" width="50px"><div class="sortable_column_text"><%= link_to_remote "PSS", :url  => {:controller => 'product_reports', :action => "refresh", :id => @report.id}, :with => "'sort_by=PSS'", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')" %></div>
+          <% if @report.sorting_field == 4 -%>
+          <div class="sortable_column_icon"><%= column_sort_icon(@report.sorting_order) %></div>
+          <% end -%>
+          <img class="qmark" src="/images/q_mark.png" style="margin-bottom:4px" alt="" id="pss_table_header"/>
+        </th>
+        <th class="report_reviews_column<%= "_sorted" if @report.sorting_field == 7 -%> sortable_column">
+          <div class="sortable_column_text"><%= link_to_remote "No. of Reviews", :url  => {:controller => 'product_reports', :action => "refresh", :id => @report.id}, :with => "'sort_by=reviews_count'", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')" %></div>
+          <% if @report.sorting_field == 7 -%>
+          <div class="sortable_column_icon"><%= column_sort_icon(@report.sorting_order) %></div>
+          <% end -%>
+        </th>
+      </tr>
+      <% @products.each do |product| %>
+        <tr <%= "class=\"active_row\"" if !@report.filtered? && @filtered_products.include?(product.id) -%>>
+          <% unless @report.filtered? -%>
+            <td><%= check_box_tag "product_ids[]", product.id,  @filtered_products.include?(product.id), :id => "product_ids_#{product.id}", :class => 'check', :onclick => "this.parentNode.parentNode.className = this.checked ? 'active_row' : ''" %></td>
+          <% end -%>
+          <td><%=h product.name %></td>
+          <td><%=h @manufacturers[product.attributes['manufacturer']] %></td>
+          <td class="scores_col"><%=h product.csi_score.to_s[0,4] %></td>
+          <td class="scores_col"><%=h product.functionality_score.to_s[0,4] %></td>
+          <td class="scores_col"><%=h product.reliability_score.to_s[0,4] %></td>
+          <td class="scores_col"><%=h product.support_score.to_s[0,4] %></td>
+          <td class="reviews_col"><%= product.reviews_count %> <%= link_to 'View Reviews', product_reviews_path(product), :target => '_blank' %></td>
+        </tr>
+      <% end %>
+      </table>
+      <div id="bottombar">
+        <ul>
+          <% if user_signed_in? -%>
+          <li style="font-size: 1.2em; line-height: 1.8em; font-weight: bold; float:left; padding-top: 2px;">Export Options:</li>
+          <li><%= link_to_remote "<img src=\"/images/page_white_acrobat.png\" alt=\"pdf\" class=\"export_icons\"/>", :url  => mail_product_report_path( :id => @report.id, :format => 'pdf'), :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar'); " -%></li>
+          <li><%= link_to_remote "<img src=\"/images/page_white_excel.png\" alt=\"excel\" class=\"export_icons\"/>", :url  => mail_product_report_path( :id => @report.id, :format => 'csv'), :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar'); " -%></li>
+					<li>
+						<!-- AddThis Button BEGIN -->
+						<div id="add-this-btn-prm">
+							<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+								<a class="addthis_button_preferred_1"></a>
+								<a class="addthis_button_preferred_2"></a>
+								<a class="addthis_button_preferred_3"></a>
+								<a class="addthis_button_compact"></a>
+							</div>
+						</div>
+						<!-- AddThis Button END -->
+					</li>
+          <% else -%>
+            <li style="font-size: 1.2em; line-height: 1.8em; font-weight: bold; float:left; padding-top: 2px;"><%= link_to 'Reports for export', new_user_registration_path -%></li>
+          <% end -%>
+          <% if @products.next_page -%>
+            <li class="fl_right"><%= image_submit_tag("/images/nextbtnonwhite.png", :onClick => "$('update_product_report_form').form_action.value='next_page'") %></li>
+          <% end -%>
+          <% if @products.previous_page -%>
+            <li class="fl_right"><%= image_submit_tag("/images/prv_btn_onwhite.png", :onClick => "$('update_product_report_form').form_action.value='prev_page'") %></li>
+          <% end -%>
+          <li class="fl_right"><label><%= page_entries_info(@products) %></label>
+            <%= per_page_select(@report.items_per_page, "", "margin:2px 0;font-weight: bold;") %>
+          </li>
+        </ul>
+      </div>
+    <% end -%>
+    <script type="text/javascript" charset="utf-8">
+    new Tip('csi_table_header', "<b>Customer Satisfaction Index</b><br>The Customer Satisfaction Index is an aggregate measurement of the delta between a customer’s expectation of a product and their actual experience with it.", {effect: 'blind',
+        hook: { tip: 'bottomLeft', target: 'topRight' },
+        offset: { x: -10, y: -1 }, stem: 'bottomLeft'
+    });
+    new Tip('pfs_table_header', '<b>Product Functionality Score</b><br>This metric reflects the level of customer satisfaction with respect to the product meeting their expectations in terms of functionality, design and appearance.', {effect: 'blind',
+        hook: { tip: 'bottomLeft', target: 'topRight' },
+        offset: { x: -10, y: -1 }, stem: 'bottomLeft'
+    });
+    new Tip('prs_table_header', '<b>Product Reliability Score</b><br>This metric reflects the level of customer satisfaction with the product longevity and ability to perform as expected.', {effect: 'blind',
+        hook: { tip: 'bottomLeft', target: 'topRight' },
+        offset: { x: -10, y: -1 }, stem: 'bottomLeft'
+    });
+    new Tip('pss_table_header', '<b>Product Support Score</b><br>This metric reflects the level of customer satisfaction with all interactions involving the product ownership experience.', {effect: 'blind',
+        hook: { tip: 'bottomLeft', target: 'topRight' },
+        offset: { x: -10, y: -1 }, stem: 'bottomLeft'
+    });
+    </script>
+  </div>
+<% end -%>

@@ -1,0 +1,49 @@
+one:
+  id: 1
+  email: talrep2@gmail.com
+  encrypted_password: 40741853c380c25a80c6fcda14856331d1102adf #testtest
+  password_salt: fDY8qSJbAkFximE3WArU
+  confirmation_token:
+  confirmed_at: 2010-03-25 05:26:32
+  confirmation_sent_at: 2010-03-25 05:26:10
+  reset_password_token:
+  remember_token:
+  remember_created_at:
+  sign_in_count: 1
+  current_sign_in_at: 2010-03-25 05:26:32
+  last_sign_in_at: 2010-03-25 05:26:32
+  current_sign_in_ip: 127.0.0.1
+  last_sign_in_ip: 127.0.0.1
+  failed_attempts: 0
+  unlock_token: 
+  locked_at:
+  authentication_token: PFPP89t-rIpXqDRzPpMs
+  created_at: 2010-03-25 05:26:10
+  updated_at: 2010-03-25 05:26:32
+  last_name: V
+  first_name: Dmitry
+
+quentin:
+  id: 2
+  email: quentin@example.com
+  encrypted_password: 40741853c380c25a80c6fcda14856331d1102adf #testtest
+  password_salt: fDY8qSJbAkFximE3WArU
+  confirmation_token:
+  confirmed_at: 2010-03-25 05:26:32
+  confirmation_sent_at: 2010-03-25 05:26:10
+  reset_password_token:
+  remember_token:
+  remember_created_at:
+  sign_in_count: 1
+  current_sign_in_at: 2010-03-25 05:26:32
+  last_sign_in_at: 2010-03-25 05:26:32
+  current_sign_in_ip: 127.0.0.1
+  last_sign_in_ip: 127.0.0.1
+  failed_attempts: 0
+  unlock_token:
+  locked_at:
+  authentication_token: PFPP89t-rIpXqDRzPpMs
+  created_at: 2010-03-25 05:26:10
+  updated_at: 2010-03-25 05:26:32
+  last_name: Dmitry
+  first_name: V

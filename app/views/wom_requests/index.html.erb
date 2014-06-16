@@ -1,0 +1,36 @@
+<h1>Listing wom_requests</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Product name</th>
+    <th>Competitor a</th>
+    <th>Competitor b</th>
+    <th>Competitor c</th>
+    <th>Competitor d</th>
+    <th>Update frequency</th>
+    <th>Email</th>
+    <th>Company name</th>
+  </tr>
+
+<% @wom_requests.each do |wom_request| %>
+  <tr>
+    <td><%=h wom_request.user_id %></td>
+    <td><%=h wom_request.product_name %></td>
+    <td><%=h wom_request.competitor_a %></td>
+    <td><%=h wom_request.competitor_b %></td>
+    <td><%=h wom_request.competitor_c %></td>
+    <td><%=h wom_request.competitor_d %></td>
+    <td><%=h wom_request.update_frequency %></td>
+    <td><%=h wom_request.email %></td>
+    <td><%=h wom_request.company_name %></td>
+    <td><%= link_to 'Show', wom_request %></td>
+    <td><%= link_to 'Edit', edit_wom_request_path(wom_request) %></td>
+    <td><%= link_to 'Destroy', wom_request, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New wom_request', new_wom_request_path %>

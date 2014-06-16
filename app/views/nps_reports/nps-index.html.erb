@@ -1,0 +1,124 @@
+<%= stylesheet_link_tag '/css/additional' %>
+<% @page_title = 'Net Promoter Score Report - Amplified Analytics' -%>
+<% content_for :head_javascript do -%>
+<script type="text/javascript">
+	var add_this_script = "http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e7b48114c64d7b1&domready=1";
+	var addthis_config = {
+		services_exclude: 'print'
+	};
+
+	function load_addthis(){
+		var head;
+		var script;
+		head = $$('head')[0];
+		if (head)
+		{
+		  script = new Element('script', { type: 'text/javascript', src: add_this_script });
+		  head.appendChild(script);
+		}
+	}
+</script>
+<% end %>
+<div id="main_wrap" class="prm_body">
+  <br />
+  <div id="title">
+    <h1>Social NPS ® On-Demand Monitor <img src="/images/keywords.png" style="position:relative;width:100px;top:-20px;" align="right"/></h1>
+
+  </div>
+  <% unless current_user.guest? %>
+  <div class="accordion_section">
+    <div class=button_yellow style="margin-left:4px;margin-right:4px;margin-top: 25px;width:160px;">
+      <a href="<%= edit_nps_report_path(@report) %>">Customize your report</a>
+    </div>
+  </div>
+  <% else %>
+    <br /><br />
+  <% end %>
+  <% unless @report.blank? -%>
+  <script>
+    document.observe('dom:loaded', function() {<%= remote_function :url  => {:controller => 'nps_reports', :action => "refresh", :id => @report.id}, :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar');load_addthis();" %> });
+  </script>
+  <% end -%>
+
+  <div id="product_report">
+    <%= render :partial => '/nps_reports/results' if @report.blank? %>
+  </div>
+</div>
+
+<a style="display: none;" href="#popup-loader" id="example1"></a>
+<div style="display:none;">
+  <div id="popup-loader">
+    <img src="/images/44.gif" />
+  </div>
+</div>
+
+<%# content_for :head_javascript do -%>
+<%= javascript_include_tag 'jquery-1.4.1.min', '/js/serialize.min.js', '/js/jquery.tinysort.min.js', '/javascripts/fancybox/jquery.fancybox-1.3.0.pack.js' %>
+<link rel="stylesheet" type="text/css" href="/javascripts/fancybox/jquery.fancybox-1.3.0.css" media="screen" />
+<script type="text/javascript">
+  jQuery.noConflict();
+
+  jQuery("a#example1").fancybox({
+    'titleShow'     : false,
+    'hideOnOverlayClick':false,
+    'hideOnContentClick':false,
+    'showCloseButton':true
+  });
+
+  function show_loading_sbm(){
+    jQuery("#fancybox-loading").remove();
+    jQuery("a#example1").click();
+    jQuery("#fancybox-outer").css("background", "none");
+    jQuery(".fancy-bg").css("background", "none");
+  }
+
+  function hide_loading_sbm(){
+    jQuery.fancybox.close();
+    alert('There is not psa report setting for this product.');
+  }
+
+  function getting_aggerates_data(product_id){
+    show_loading_sbm();
+    report_type = 'psa';
+    var url = "/products/"+product_id+"/report_settings_get?type="+report_type;
+    var aggregates;
+    var mapping_keywords = '';
+    jQuery.get(url, function(data) {
+      if(!jQuery.trim(data).empty()) {
+        data = unserialize(data);
+        aggregates = [];
+        jQuery.each(data, function(index,val) {
+          var name = val[0];
+          var attributes = []
+          jQuery.each(val[1],function(i,val) {
+            attributes.push(val);
+          });
+          aggregates.push([name,attributes])
+        });
+        jQuery.each(aggregates, function(key, val) {
+            jQuery.each(val[1], function(key, sub_val) {
+                mapping_keywords += sub_val + " => " + val[0] + "\n";
+            });
+        });
+      }
+      jQuery('#pr_keywords_' + product_id).val(mapping_keywords);
+      jQuery('#mapping_' + product_id).val(mapping_keywords);
+      jQuery('#pr_form_' + product_id).submit();
+    });
+  }
+</script>
+
+<style>
+  #fancybox-title-wrap {
+    display: none;
+  }
+
+  #fancybox-close {
+    display: none !important;
+  }
+
+  #fancybox-outer div {
+    background: url();
+  }
+</style>
+<%# end %>

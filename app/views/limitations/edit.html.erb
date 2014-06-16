@@ -1,0 +1,29 @@
+<h1>Editing limitation</h1>
+
+<% form_for(@limitation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user_id %><br />
+    <%= @limitation.user %>
+    <%= f.hidden_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :my_lists %><br />
+    <%= f.text_field :my_lists %>
+  </p>
+  <p>
+    <%= f.label :products_per_list %><br />
+    <%= f.text_field :products_per_list %>
+  </p>
+  <p>
+    <%= f.label :prm_reports %><br />
+    <%= f.text_field :prm_reports %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @limitation %> |
+<%= link_to 'Back', limitations_path %>

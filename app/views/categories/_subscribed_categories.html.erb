@@ -1,0 +1,19 @@
+<div class="table_body" style="border:none;">
+  <table class="prm_table" cellspacing="0" style="width:737px;margin: 5px 3px 0 0px;">
+    <tr>
+      <th id="prod_name">Subscribed Categories (<%= current_user.categories.size %>)</th>  
+    </tr>
+    <% current_user.categories.each do |category| -%>
+    <tr class="subscribed_categories">
+		  <td><%= name_with_ancestors(category) %> <%= link_to_remote "Remove", :url  => {:controller => 'categories', :action => "unsubscribe", :id => category.id}, :loading => "Element.show('loading_bar')", :with => "'original_category_id=#{@category.id}&origin=#{@origin}&product=#{params[:product]}&type=#{params[:type]}&page=#{params[:page]}'", :complete => "Element.hide('loading_bar')", :html => {:class=>"unsubscribe"} %></td>
+ 		</tr>
+ 		<% end -%>
+  </table>
+  <div>
+  <%if current_user.guest? and session[:subscriptions] %>
+    If You would like to add more categories, please <a href=<%= new_user_registration_path %>>Register</a>
+    <% end %>
+  </div>
+  <a href="<%= new_product_report_path %>"><img style="float:right; padding-top: 5px;" src="/images/submit-button.jpg" /></a>
+</div>
+<div class="clearer"></div>

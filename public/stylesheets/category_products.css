@@ -1,0 +1,633 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {max-height: 100%; margin-bottom: 1px; height: 100%;}
+
+* {margin: 0; padding: 0;}
+* html #Pagewrap {height: 100%}
+
+/*ToolBox*/
+.clearer {clear:both;}
+body  {height: 100%; background: url(../images/bodybg.jpg) repeat-x left top; height: auto !Important;  background-color: #FFFFFF;}
+p, li {font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif; font-size: 12px; line-height: 17px; color: #555555;}
+a {outline: none; color: #716E6E; text-decoration:none;}
+a img {border:none;}
+ul {list-style: none inside; position: relative;}
+a[href^="mailto"]       { background: url(/stylesheets/blueprint/plugins/link-icons/icons/email.png) right center no-repeat; padding-right: 18px; }
+.centeredImage    {    text-align:center;    margin-top:0px;   margin-left: 30px;    margin-bottom:0px;    padding:0px;    }
+
+/*Typography*/
+p.disclaimers {font-size: 10px; text-align: right;}
+p {padding: 0px 10px 10px 3px}
+ 
+/*Lists*/
+#Methodology ol {padding: 0px 0px 10px 60px;}
+ 
+/*Headings */
+.h1 {font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-size: 24px; font-weight:bold; text-transform: uppercase; padding: 20px 20px 10px 20px;}
+ 
+/*Content Areas */
+#Logo {width: 416px; height: 123px; background: url(../images/logo.jpg) no-repeat top left; position: absolute; top: 3px;	z-index: 2;}
+
+/*PageWrap*/
+#fullouterpagewrap {width: 845px; height: auto; position: relative; margin: 0 auto;}
+
+
+#pagewrap_middle {width: 843px; top: 127px; height: auto !important; position: relative; margin: 0 auto; background: url(../images/pagewrap_middle.jpg) repeat-y top;}
+#pagewrap_middle_modal {width: 100%; margin: 0 auto; background: url(../images/pagewrap_middle.jpg) repeat-y top center; z-index: 2;}
+
+/*Footer*/
+#footer {width: 843px; height: 90px; position: relative; margin: 0 auto; background: url(../images/pagewrap_bottom.jpg) no-repeat;	top: 127px;	text-align:center;}
+#footer p {	padding:45px 0 0 0;	text-align:center; font-size: 11px;}
+#footer ul{	}
+#footer li {display: inline;list-style-type: none;text-align:center;margin: 0 5px 0 5px;font-size: 10px;}
+	
+/*Page Content*/	
+/* OLD
+#content_top {height: 56px;width: 797px;position: relative;margin: 0 auto;background: url(../images/contbg_top.jpg) no-repeat;}
+*/
+
+#content_top 
+{
+  position: static; 
+  height: auto; 
+  width: 797px; 
+  margin: 0 auto; 
+  background: url(../images/contbg_top.jpg) no-repeat top center; 
+  z-index: 3;
+}
+
+/* #content_top p {} */
+
+#content_area {overflow: hidden; padding: 5px 10px 0px 20px; }
+
+
+
+#content_middle {width: 797px;position: relative;margin: 0 auto;height: auto !important;background: url(../images/contbg_middle.jpg) repeat-y;}
+/* #content_middle p {padding: 5px 20px 10px 20px;} */
+
+#content_middle_modal {position: static; width: 100%; margin: 0 auto; background: url(../images/contbg_middle.jpg) repeat-y top center; z-index: 3;}
+#content_middle_modal #content_area_modal {position: relative; width: 90%; left: 50px; top: 10px;}
+
+
+#ProductsPRD #content_middle p {padding: 5px 306px 10px 20px;}
+#ProductsPRM #content_middle p {padding: 0px 20px 10px 400px;}
+#Methodology #content_middle p.terms {padding: 0px 20px 10px 20px;}
+
+#content_bottom {height: 11px;width: 797px;position: relative;margin: 0 auto;background: url(../images/contbg_bottom.jpg) no-repeat;}
+#content_bottom_modal {height: 11px; width: 100%; margin: 0 auto;background: url(../images/contbg_bottom.jpg) no-repeat top center;}
+
+#PRDwidgetgraphic_XXX_BAD_HACK {background: url(../images/products/PRDwidget.jpg) no-repeat top right; width: 297px; height: 314px; position: absolute; z-index: 10; right: 10px; top: -40px;}
+#PRMinterfacegraphic_XXX_BAD_HACK {background: url(../images/products/PRMinterfacepic.jpg) no-repeat top left; width: 357px; height: 306px; position: absolute; z-index: 10; left: 30px; top:-30px;}
+
+/*Main Nav Menu*/
+#Menu {position: absolute; z-index: 8;	height: 57px;  width: 100%; top: 45px;}
+#Menu ul {list-style-type: none;}
+#Menu ul li {float: right; display:inline;} 
+#Menu a {display:inline:}
+
+/*Nav Buttons */
+.navbut_home {width: 113px; height: 57px; background:url(../images/homebtn.jpg) no-repeat; position:relative;	display: block;}
+.navbut_products {width: 100px; height: 57px; background:url(../images/productsbtn.jpg) no-repeat; position: relative; display: block;}
+.navbut_blog {width: 101px; height: 57px; background:url(../images/blogbtn.jpg) no-repeat; position: relative; display: block;}
+.navbut_contactus { width: 126px; height: 57px; background: url(../images/contactusbtn.jpg) no-repeat; position: relative; display: block;}
+	
+/*Sub Nav Menu for Product Pages*/
+#subnav {position: absolute; z-index: 12; top: 9px; left: 609px; height: 300px;}
+#subnav ul {list-style-type: none;}
+#Menu li {display: block;}
+
+/* Login / Logoff controls at the top */
+#TopLogin
+{
+	position: absolute;
+	top: 10px;
+	left: 410px;
+	width: 425px;
+	height: auto;
+	float: right;
+	display: inline;
+	text-align: right;
+	
+}
+.topLogin_table
+{
+	top: 16px;
+	width: 200px;
+/*	float: right;*/
+}
+
+.topLogin_text
+{
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+.topLogin_button
+{
+	background-color: #2B92B2;
+	border: none;
+	height: 32px;
+	width: 44px;
+	text-align: center;
+	display: inline;
+	margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+	cursor:pointer; cursor:hand; /* this combo works for all browsers */
+}
+
+
+.prodnav_PRD {width: 261px; height: 50px; background: url(../images/products/subnavPRDactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_PRDin {width: 220px; height: 50px; background: url(../images/products/subnavPRDinactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_PRM {width: 264px; height: 47px; background: url(../images/products/subnavPRMactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_PRMin {width: 261px; height: 47px; background: url(../images/products/subnavPRMinactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_Methodologyin {width: 234px; height: 47px; background: url(../images/products/subnavotherinactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_Methodologyac {width: 261px; height: 47px; background: url(../images/products/subnavotheractive.jpg) no-repeat; positions: relative; display: block;}
+	
+/*Various Buttons*/
+#content_middle ul.btnlinks {list-style-type: none; padding: 10px 0 0 0px;}
+#content_middle li.btnlinks {display: inline;}
+
+#content_middle_modal ul.btnlinks {list-style-type: none; padding: 10px 0 0 8px;}
+#content_middle_modal li.btnlinks {display: inline;}
+
+
+#ProductsPRM #content_middle ul.btnlinks {list-style-type: none; padding: 10px 0 0 388px;}
+#ProductsPRM #content_middle li.btnlinks {display: inline;}
+
+.Heading2 {
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	font-size: 20px; 
+	font-weight: bold; 
+	color: #555555;
+}
+
+.boldLabel {
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	font-size: 15px; 
+	font-weight: bold; 
+	color: #555555;
+}
+
+.blueHyperLink {
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	color: #3F9AD3;
+	text-decoration:none;
+	font-size: 18px; 
+	font-weight: bold; 
+}
+
+.blueHyperLinkSmall {
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	color: #3F9AD3;
+	text-decoration:none;
+	font-size: 13px; 
+	font-weight: bold; 
+}
+
+.editbox1 {width: 200px; height:23px;  float:left; border: 1px solid #7F9DB9;  font-family:Arial; font-size:14px; color: #555555; padding: 3px 0 0 3px;}
+.longEditbox { width: 110%; height:25px;  float:left; margin:2px; border: 1px solid #7F9DB9;  font-family:Verdana; font-size:12px; color: #555555; padding: 2px;}
+
+.label1 {padding: 10px; font-family: Arial; font-size: 13px; font-weight: bold; color: #7E7E7E;}
+.label2 {padding: 10px; font-family: Arial; font-size: 11px; font-weight: bold; color: #7E7E7E;}
+.label3 {padding: 10px; font-family: Arial; font-size: 12px; font-weight: bold; color: #7E7E7E;}
+
+.selectBox {
+	width: 207px; 
+	height:25px;  
+	float:left; 
+/*	margin:2px;*/ 
+	border: 1px solid #7F9DB9;  
+	font-family:Verdana; 
+	font-size:12px; 
+	color: #555555; 
+	padding: 2px;
+}
+
+#small_pagewrap_top
+{
+	width: 843px; 
+	height: 35px; 
+	position: relative;	
+	top: 127px; 
+	margin: 0 auto; 
+	background: url(../images/pagewrap_top.jpg) no-repeat;
+}
+
+#pagewrap_top {width: 100%; height: 35px; margin: 0 auto; background: url(../images/pagewrap_top.jpg) no-repeat top center; z-index: 2; overflow: hidden; }
+
+
+.loading_large
+{
+	width: 31px;
+	height: 31px;
+	left: 300px;
+	top: 200px;
+	position: absolute;
+	background: url(../images/loading.gif) no-repeat;
+	z-index: 200;
+}
+
+.loading_msg
+{
+	width: 80px;
+	height: 31px;
+	background-color: #FF0000;
+	color: #FFFFFF;
+	font-family: Verdana;
+	font-size: 13px;
+	padding: 2px;
+	z-index: 200;
+}
+
+
+
+/******************
+	HOME PAGE
+*******************/
+
+#home_dials_image {
+	height: 179px;
+	width: 459px;
+	background: url(../images/home/dialpic.jpg) no-repeat;
+	position: absolute;
+	top: -20px;
+	left: 6px;
+	z-index: 3;
+}
+
+img.home_header_text
+{
+	position: absolute; 
+	top:10px; 
+	left:463px; 
+	z-index: 2;
+}
+
+img.home_promo_link
+{
+	position: absolute; 
+	top: 87px; 
+	left:631px; 
+	z-index: 3;
+}
+
+#home_pagewrap_top
+{
+	width: 843px; 
+	height: 164px; 
+	position: relative;	
+	top: 127px; 
+	margin: 0 auto; 
+	background: url(../images/pagewrap_top.jpg) no-repeat;
+}
+
+/******************
+	CONTACT US PAGE
+*******************/
+
+	#contact_wrap {position: relative; width: 98%; overflow: hidden; margin-top: 10px;}
+		#contact_wrap #contact_left { float: left; width: 290px; } 
+		#contact_wrap #contact_left .bg_shadow_small {height:44px; width:297px; background:url(../images/contactus/smlfieldboxshadow.jpg) no-repeat bottom; margin-left: -7px; z-index: 4;}
+		#contact_wrap #contact_left .shadow_inner_small {position: relative; height: 26px; width:279px; left: 8px; top: 8px; 
+			/*border: 2px; border-color: red; border-style: solid;*/
+			}
+		#contact_wrap #contact_left .shadow_textbox_small { position: relative; background: none; border: none; width:274px; height:24px; 
+			font-family:Verdana; font-size:16px; left: 3px; top: 5px; }
+	
+		#contact_wrap #contact_right {float: right; width: 449px; }
+		#contact_wrap #contact_right .bg_shadow_large {height:184px; width:449px; background:url(../images/contactus/largefieldboxshadow.jpg) no-repeat bottom; z-index: 4;}
+		#contact_wrap #contact_right .shadow_inner_large {position: relative; height: 168px; width: 433px; left: 6px; top: 6px; 
+			/* border: 2px; border-color: red; border-style: solid; */
+			}
+		#contact_wrap #contact_right .shadow_textbox_large { position: relative; background: none; border: none; width:430px; height:163px;
+	 		font-family:Verdana; font-size:14px; overflow: auto; left: 3px; top: 3px; }
+
+/******************
+	PRODUCTS PAGE
+*******************/
+
+
+#products_pagewrap_top
+{
+	width: 843px; 
+	height: 164px; 
+	position: relative;	
+	top: 127px; 
+	margin: 0 auto; 
+	background: url(../images/pagewrap_top.jpg) no-repeat;
+}
+
+#products_wrap {position: relative; width: 98%; overflow: hidden;}
+	#products_wrap #products_left { float: left; width: 465px; } 
+	#products_wrap #products_right { float: right; width: 280px;}
+/*	#products_wrap .widget_screen {top: -50px; position: absolute; z-index: 100; display: inline;}*/
+	 
+
+/******************
+	PRM PAGE
+*******************/
+
+#prm_wrap {position: relative; width: 98%; overflow: hidden;}
+	#prm_wrap #prm_left { float: left; width: 280px; } 
+	#prm_wrap #prm_right { float: right; width: 390px;}
+/*	#products_wrap .widget_screen {top: -50px; position: absolute; z-index: 100; display: inline;}*/
+	 
+
+/******************
+	PRD WIDGET (TRIAL) PAGE
+*******************/
+
+.rich-sb-cell-padding 
+{
+	padding: 5;
+	
+}
+
+.rich-sb-int 
+{
+	height: 25px;
+	font-size: 10pt;
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	
+}
+
+.prd_panel_wrapper 
+{
+	height: 380px;
+}
+
+.prd_panel_left 
+{
+	width: 60%;
+	float: left;
+}
+
+.prd_panel_right 
+{
+	width: 30%;
+	float: right;
+	padding-right: 40px;
+}
+
+/******************
+	ERROR PAGES
+*******************/
+
+#ErrorMessage {display: block; margin: 0 auto; height: 405px; width: 797px; background:url(../images/error/errormessage_bg.png) no-repeat top left;}
+#ErrorMessage_wrap {margin-right: 300px; margin-left: 36px; width: 488px;}
+#Error_header {display: block; text-indent: -9000px; height: 124px; width: 488px; background: url(../images/error/error_header_bg.png) no-repeat bottom left; overflow:hidden; text-align:left;}
+#ErrorMessage_wrap p {font-size: 14px; line-height: 19px;}
+	#Error_menu {margin-top: 0px; float: left; position:relative;}
+		#Error_menu ul {list-style-type:none;}
+		#Error_menu ul li {float:right; display:inline; padding-left: 19px;}
+
+#Error_Contactusbtn {background:url(../images/error/contactusbtn.png) no-repeat top right; width: 101px; height: 102px; position:relative; display: block;}
+#Error_Productsbtn {background:url(../images/error/productsbtn.png) no-repeat top right; width: 101px; height: 102px; position:relative; display: block;}
+#Error_Returnhomebtn {background:url(../images/error/homebtn.png) no-repeat top right; width: 101px; height: 102px; position:relative; display: block;}
+
+/******************
+	PRM Coming Soon styles
+*******************/
+
+.comingSoonEditBox {
+    border: 1px solid #999;
+    color: #888888;
+    float: left;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px 16px;
+    padding: 9px;
+    width: 85%;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: url(../images/products/formBG.png) repeat-x top left;
+    text-align: center;
+}
+
+#comingSoon {
+	background: url(../images/products/comingSoonbg.png) no-repeat top left;
+	width: 354px; height: 137px;
+	display: block;
+	text-align: center;
+	padding: 30px 0 0 0;
+}
+
+#comingsoonForm {
+	margin: 15px auto;
+}
+
+.comingSoonSubmitBtn {
+	background: url(../images/products/submitBtn.png) no-repeat top left;
+	width: 59px; height: 26px;
+	display: block;
+	margin: 5px auto;
+	position: relative;
+	background-position: 0 -26px;
+}
+
+.comingSoonSubmitBtn:hover {
+	background-position: 0 0;
+}
+
+/******************
+	ACCOUNT SETTINGS UI STYLING
+*******************/
+
+.form-wrap {
+	overflow: hidden;
+	background: #FFF url(/images/formBG.png) repeat-x;
+	border: 1px solid #d4d4d4;
+	margin-right: 10px;
+	padding: 20px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.form-wrap label {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #080808;
+	display: block;
+	padding-bottom: 7px;
+}
+
+.form-wrap input {
+	display: block;
+	margin-bottom: 7px;
+}
+
+.form-wrap input.editbox1 {
+	float: none;
+	display: block;
+	background: url(/images/inputBG.png) repeat-x;
+	border: 1px solid #a2a1a1;
+	height:30px;  
+	line-height: 26px;
+	font-size:12px; 
+	color: #555555; 
+	padding: 3px 0 0 3px;
+	width: 90%;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.form-wrap .col1 {
+	float: left;
+	width: 300px;
+	
+}
+
+.form-wrap .col2 {
+	float: right;
+	width: 300px;
+	margin-right: 6px;
+	
+}
+
+.actionBar {
+	float: right;
+	margin: 10px 10px 10px 0px;
+	clear: both;
+}
+
+	.actionBar ul {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.actionBar li {
+		float: left;
+		line-height: 23px;
+		margin-left: 5px;
+		list-style-position: outside;
+	}
+	
+	
+	.actionBar a {
+		height: 20px;
+		color: #2b92b2;
+		text-decoration: underline;
+		line-height: 23px;
+		font-size: 11px;
+	}
+	
+#subscriptions {
+	width: 99%;	
+	margin-right: 6px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+tr.odd {
+	background: #b6d7f0;	
+}
+
+#subscriptions th {
+	color: #FFF;
+	font-weight: bold;
+	font-size:13px;
+	height: 20px;
+	line-height: 30px;
+	background: #457b9e;
+}
+
+#subscriptions tr {
+	height: 30px;
+	border: 1px solid #FFF;
+	font-size: 11px;
+	text-align: center;
+}
+
+#subscriptions tr:hover {
+	background:#e1edf6 ;
+}
+
+#subscriptions th:hover {
+	background: #457b9e;
+}
+
+#subscriptions td, th {
+	
+	
+}
+
+	#subscriptions #subsCat {
+		text-align: left;
+		padding-left: 15px;
+	}
+	
+/******************
+	PRODUCT CATALOG POP-UP STYLING
+*******************/
+
+#productCatalog {
+	background: none;
+	padding: 5px;
+}
+
+#productCatalog h1, h2, h3, h4 {
+	color: #555555;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+}
+
+	#productCatalog h2 {
+		margin: 5px 3px 5px 3px;	
+	}
+	
+	#productCatalog a {
+		color: #2B92B2;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	
+	#productCatalog ul#alpha_nav {
+		display: block;	
+		overflow: hidden;
+		margin: 10px 3px 10px 3px;
+		padding: 0;
+	}
+	
+		#productCatalog ul#alpha_nav li {
+			border-right: thin #CCC solid;
+			display: inline;
+			float: left;
+			padding-right: 8px;
+			margin-right: 8px;
+		}
+	
+			#productCatalog ul#alpha_nav li a {
+				font-size: 15px;	
+			}
+			
+	#productCatalog table {
+	  width: 99%;	
+	  margin-right: 6px;
+	  font-family:Arial, Helvetica, sans-serif; font-size: 12px;
+	  text-align: left;
+	}
+
+	 	#productCatalog th, td, tr {
+		  line-height: 15px;
+		  padding-left: 6px;
+		  text-align: left;
+	 	 }
+		 
+		 #productCatalog tr {
+			height: 25px;
+		 }
+		
+		#productCatalog th {
+		  background: #457b9e;
+		  color: #FFF;
+		  font-size:16px; font-weight: bold; 
+		  line-height: 25px;
+	 	 }
+
+			/***NOT SURE THIS IS NEEDED #productCatalog tr:hover {
+				background:#e1edf6 ;
+			}
+			***/

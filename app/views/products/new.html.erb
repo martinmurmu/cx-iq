@@ -1,0 +1,43 @@
+<h1>New product</h1>
+
+<% form_for(@product) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :model %><br />
+    <%= f.text_field :model %>
+  </p>
+  <p>
+    <%= f.label :csi_score %><br />
+    <%= f.text_field :csi_score %>
+  </p>
+  <p>
+    <%= f.label :functionality_score %><br />
+    <%= f.text_field :functionality_score %>
+  </p>
+  <p>
+    <%= f.label :reliability_score %><br />
+    <%= f.text_field :reliability_score %>
+  </p>
+  <p>
+    <%= f.label :support_score %><br />
+    <%= f.text_field :support_score %>
+  </p>
+  <p>
+    <%= f.label :manufacturer %><br />
+    <%= f.text_field :manufacturer %>
+  </p>
+  <p>
+    <%= f.label :last_update %><br />
+    <%= f.datetime_select :last_update %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', products_path %>

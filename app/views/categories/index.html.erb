@@ -1,0 +1,19 @@
+<% @page_title = 'Market Research Product Selection - Amplified Analytics' -%>
+<div id="main_wrap"  class="prm_body" style="background: none; margin: 0 22px; width: 797px">
+  <br />
+  <h2 class="product_name_header">Product Reputation Market Intelligence Reporter</h2>
+  <div class="clearer"></div>   
+  <div id="loading_bar" style="display:none;"><img src="/images/loading.gif"></div>
+  <%= render 'product_lookup' %>
+  <div id="bread_nav">
+    <div id="bread_nav_leftedge"></div>
+    <ul>
+      <%= ancestors_navbar(@category) %>
+    </ul>
+    
+    <div id="bread_nav_rightedge"></div>
+  </div>
+  <div id="category_list">
+    <%= render :partial => 'categories' %>
+  </div>
+</div>                       

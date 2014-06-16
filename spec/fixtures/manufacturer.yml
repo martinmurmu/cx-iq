@@ -1,0 +1,11 @@
+sony:
+  id: "2da860f7216f34598e5cdc6fd7e3098c"
+  name: Sony
+
+smc:
+  id: "381f153a0e6e6dc7d3bf5dbef251b370"
+  name: SMC
+
+sanyo:
+  id: "bbd3850a8d23915d3d2282df4e4f41ab"
+  name: Sanyo

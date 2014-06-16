@@ -1,0 +1,45 @@
+<style>
+  table#market_report th {
+    min-width: 100px;
+    background: #ddd;
+  }
+  table#market_report td {
+    padding-left: 10px;
+}
+
+.my_href {
+  color: #000;
+  text-decoration: underline;
+  margin: 0 20px;
+}
+
+.my_href:hover {
+  color: #fff;
+  background: #000;
+  text-decoration: none;
+}
+
+</style>
+<a class="my_href" href="/market_report/?<%=  "lid=#{params[:lid]}" if params[:lid]%><%="url=#{params[:url]}" if params[:url]%>"><< report screen</a><br>
+<span style="margin:0 20px; font-size:28px;font-weight:bold;">Market Report - Raw Data</span>
+<a href="/market_report/csv_export?<%=  "lid=#{params[:lid]}" if params[:lid]%><%="url=#{params[:url]}" if params[:url]%>"><%=image_tag("csv_file.png",:style=>'margin-left:10px;vertical-align:top;margin-top:3px;')%></a>
+
+<table id="market_report">
+  <tr>
+    <th>Product<th>Attribute<th>Score<th>Importance
+      <% product = "" %>
+      <% @lines.each_with_index do |line, index| %>
+     <%   show_product = false
+          if product!=line[:product]
+                  product = line[:product]
+                  show_product = true
+               end
+        %>
+      <%= raw("<tr><td>&nbsp;") if show_product && index!=0%>
+  <tr>
+      <td> <strong><%= product if show_product %></strong>
+      <td> <%= line[:attribute] %>
+      <td> <%= line[:score].to_f.round(2) %>
+      <td> <%= line[:importance].to_f.round(2) %>%
+      <% end %>
+</table>

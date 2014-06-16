@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><%=h page_title %></title>
+    <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print" />
+    <!--[if lt IE 8]>
+      <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection" />
+    <![endif]-->
+    <link class="user" href="/stylesheets/category_products.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <%= render 'shared/google_analytics_head' -%>
+</head>
+
+<body id="productCatalog" class="prm_body">
+              
+  <h2><%= @category.name %> Product Listings</h2>
+  <p>Is your product missing? <%= mail_to "support@amplifiedanalytics.com", "Email us" -%> with the details and we'll add it to our growing list!</p>
+  
+  <ul id="alpha_nav">  
+    <li><%= link_to 'All', url_for(params.merge(:l => 'all')) %></li>
+    <li><%= link_to '0-9', url_for(params.merge(:l => 'numeric')) %></li>
+    <% ('A'..'Z').to_a.each do |l| -%>
+    <li><%= link_to l, url_for(params.merge(:l => l)) %></li>
+    <% end -%>
+  </ul><!--end alpha_nav ul-->
+  
+  <% unless @products.blank? -%>                                        
+    <table>   
+      <%
+      current_letter = @products.first.name[0,1].upcase
+      %>
+      <tr>
+          <th><%= current_letter %></th>                     	
+      </tr>
+      <% @products.each do |product| -%>
+      <% if product.name[0,1].upcase != current_letter 
+         current_letter = product.name[0,1].upcase 
+      -%>
+      <tr><th id="subsCat"> <%= current_letter %> </th></tr>
+      <% end -%>
+      <tr>
+          <td><%= link_to h(product.name), product %></td>
+      </tr>
+      <% end -%>
+    
+    
+    </table>
+  <% end -%>
+  
+  <%= will_paginate @products %>
+  <%= render 'shared/google_analytics' if RAILS_ENV == 'production' -%>
+</body>
+</html>

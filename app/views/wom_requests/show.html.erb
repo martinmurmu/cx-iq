@@ -1,0 +1,48 @@
+<p>
+  <b>User:</b>
+  <%=h @wom_request.user_id %>
+</p>
+
+<p>
+  <b>Product name:</b>
+  <%=h @wom_request.product_name %>
+</p>
+
+<p>
+  <b>Competitor a:</b>
+  <%=h @wom_request.competitor_a %>
+</p>
+
+<p>
+  <b>Competitor b:</b>
+  <%=h @wom_request.competitor_b %>
+</p>
+
+<p>
+  <b>Competitor c:</b>
+  <%=h @wom_request.competitor_c %>
+</p>
+
+<p>
+  <b>Competitor d:</b>
+  <%=h @wom_request.competitor_d %>
+</p>
+
+<p>
+  <b>Update frequency:</b>
+  <%=h @wom_request.update_frequency %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @wom_request.email %>
+</p>
+
+<p>
+  <b>Company name:</b>
+  <%=h @wom_request.company_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_wom_request_path(@wom_request) %> |
+<%= link_to 'Back', wom_requests_path %>

@@ -1,0 +1,22 @@
+<%= javascript_include_tag "jquery-1.4.4.min.js", "swfobject.js" %>
+
+      <div id="flash_content_1" class="open_flash_chart"></div> 
+      <script type="text/javascript"> 
+        swfobject.embedSWF("/open-flash-chart.swf", "flash_content_1", "480", "220", "9.0.0", "expressInstall.swf",{"data-file":
+        "<%= CGI.escape(url_for(:action=>:reformat_attribute_chart_source, :url => params[:url], :title => params[:title])) %>"});
+      </script>
+      <div class=period_links>
+      <% (0..(@data[:hrefs].count-1)).each do |i| %>
+        <div class=period_link>
+        <% if @data[:values][i].to_f!=1.0 %>
+          <a target=_blank href='<%= @data[:hrefs][i] %>'><%= @data[:labels][i] %></a>
+        <% else %>
+          <%= @data[:labels][i] %>
+        <% end %>
+        </div>
+      <% end %>
+      </div>
+    
+      <% if false %>
+      <img style='margin-top:80px;margin-left:10px;width:120px;' src=/images/scale_legend.png>
+      <% end %>

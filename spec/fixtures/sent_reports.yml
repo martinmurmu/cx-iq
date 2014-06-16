@@ -1,0 +1,26 @@
+
+one:
+  id: 1
+  user_id: 1
+  usage_id: 1
+  usage_type: ProductReport
+  sent_at:
+  output_format: pdf
+  complimentary: 1
+  created_at:
+  updated_at:
+  category_id: 2840
+  category_type: Category
+
+two:
+  id: 2
+  user_id: 1
+  usage_id: 1
+  usage_type: ProductReport
+  sent_at:
+  output_format: csv
+  complimentary: 0
+  created_at:
+  updated_at:
+  category_id: 2840
+  category_type: Category

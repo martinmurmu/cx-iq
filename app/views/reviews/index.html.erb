@@ -1,0 +1,170 @@
+<div id="main_wrapRev" class="prm_body">
+  <br />
+  <div id="title" style="float: left;">
+      <div id="market">
+          <h2><%= @product.try(:name) -%></h2>
+      </div>
+  </div>
+  <div id="rightPart" style="float: right;width: 215px;">
+      <ul id="categ" style="width: 215px;">
+          <li><%= image_tag("activeArrow.png") if params[:type] == 'f' -%>&nbsp;&nbsp;
+            <%= link_to "Product Functionality #{@product.functionality_reviews.size}/#{@product.reviews.size}",
+                url_for( params.merge({:type => 'f'}).except(:page) ),
+                :rel => 'nofollow', :class=> params[:type] == 'f' ? 'active' : 'inactive'
+            -%>
+          </li>
+          <li class="listSeparator"></li>
+          <li><%= image_tag("activeArrow.png") if params[:type] == 'r' -%>&nbsp;&nbsp;&nbsp;
+            <%= link_to "Product Reliability #{@product.reliability_reviews.size}/#{@product.reviews.size}",
+                url_for( params.merge({:type => 'r'}).except(:page) ),
+                :rel => 'nofollow', :class=> params[:type] == 'r' ? 'active' : 'inactive'
+            -%>
+          </li>
+          <li class="listSeparator"></li>
+          <li><%= image_tag("activeArrow.png") if params[:type] == 's' -%>&nbsp;&nbsp;&nbsp;
+            <%= link_to "Product Support #{@product.support_reviews.size}/#{@product.reviews.size}",
+                url_for( params.merge({:type => 's'}).except(:page) ),
+                :rel => 'nofollow', :class=> params[:type] == 's' ? 'active' : 'inactive'
+            -%>
+          </li>
+          <li class="listSeparator"></li>
+          <li><%= image_tag("activeArrow.png") if params[:type].blank? -%>&nbsp;&nbsp;&nbsp;
+            <%= link_to "All Reviews #{@product.reviews.size}/#{@product.reviews.size}",
+                url_for( params.except(:type).except(:page) ),
+                :rel => 'nofollow', :class=> params[:type].blank? ? 'active' : 'inactive'
+            -%>
+          </li>
+          <li class="listSeparator"></li>
+      </ul>
+      <div id="sort" style="width: 215px;padding-bottom:20px" class="sort-reviews">
+          <img src="/images/positiveFeedbackIcon.png" style="margin-top: 5px; float: left; margin-left: 15px;" alt="Sory by positive reviews"/>
+          <a style="float: right; margin-top: 13px; margin-right: 33px; font-weight: bold; font-size: 11px;" href="<%= url_for( params.merge({:sort => 'positive'}).except(:page) ) -%>">Sort by positive reviews</a> <br/>
+          <img style="clear: both; margin-top: 5px; float: left; margin-left: 15px;"src="/images/negativeFeedbackIcon.png" alt="Sory by negative reviews"/>
+          <a style="float: right; margin-top: 13px; margin-right: 30px; font-weight: bold; font-size: 11px;" href="<%= url_for( params.merge({:sort => 'negative'}).except(:page) ) -%>">Sort by negative reviews</a>
+      </div>
+      <div id="just-click-here">
+          <p style="text-align: center; padding-bottom: 10px; padding-right: 9px;">Don't have time to read all these reviews?</p>
+          <%= link_to(image_tag("just-click-here.png", {:style => "border:none;margin-left: 25px;"}),
+              "/V2P-Product-Reviews/Demo?product[name]=#{CGI::escape(@product.try(:name))}&x=0&y=0")
+          %>
+          <p style="text-align: center; padding-left: 0px; padding-right: 9px; padding-top: 10px;">to check the Reputations score</p>
+      </div>
+      <div id="write-own-review">
+        <%= link_to(image_tag("write-own-review.png", {:style => "border:none;margin-left: 25px;"}),
+                               new_product_review_path(:product_id => params[:product_id]))
+          %>
+      </div>
+    </div>
+
+    <div class="reviews_content" class="clearer">
+      <% @reviews.each do |review| -%>
+        <div>
+            <div class="rich-panel ">
+                <div class="rich-panel-header ">
+                    <table width="100%">
+                        <tbody>
+
+                            <tr>
+                                <td class="review_hdr_title"><%=h review.title -%></td>
+                                <td class=" review_hdr_info">
+                                    <img width="20" height="5" src="/a4j/g/3_3_2.SR1images/spacer.gif" class="rich-spacer " alt=""/>
+                                    <img src="/images/reviews/info.png" id="tip_<%= review.id -%>" alt=""/>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td class="review_hdr_title">
+                                    <span class="r_n">by <%=h review.reviewer_name.empty? ? "anonymous" : review.reviewer_name -%></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="j_id6:reviews_repeater:0:j_id21_body" class="rich-panel-body ">
+                  <%=h review.text -%>
+                </div>
+            </div>
+            <img width="1" height="10px" src="/a4j/g/3_3_2.SR1images/spacer.gif" id="j_id6:reviews_repeater:0:j_id50" class="rich-spacer " alt="" />
+        </div>
+
+        <script type="text/javascript" charset="utf-8">
+          new Tip('tip_<%= review.id -%>',
+            "<p><span class=\"tooltipData\">Review ID: <%=h review.id -%></span></p>" +
+            "<p><a target=\"_blank\" href=\"<%=h review.source_url -%>\">" +
+            "<span class=\"tooltipData\">URL: </span><span class=\"blueHyperLinkSmall\"><%=truncate(h(review.source_url), :length => 80) -%></span></a></p>",
+            {effect: 'blind',
+            hook: { tip: 'topRight', target: 'bottomLeft' },
+            hideAfter: 0.1, hideOn: false, offset: { x: 10, y: 0 }, stem: 'topRight', width: 470
+          });
+        </script>
+      <% end -%>
+    </div>
+    <div class="pagination clearer">&nbsp;
+        <%= will_paginate @reviews %>
+    </div>
+</div>
+
+<% if flash[:notice] %>
+
+<%= link_to("#","#flash-msg", {:id => "flash-notice-review", :style => "display:none;"}) -%>
+
+<div style="display:none;">
+	<div id="flash-msg">
+		&nbsp;<br />&nbsp;<br />
+		<span style="font-size: 14px;">
+		Thank you for contributing your review. Your contribution will help other customers, and product managers to provide better experience
+		</span>
+		&nbsp;<br />&nbsp;<br />&nbsp;<br />
+	</div>
+</div>
+
+<%= javascript_include_tag 'jquery-1.4.1.min', "jquery-ui-1.8.6.custom.min.js" %>
+<script type="text/javascript" src="/javascripts/fancybox/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/javascripts/fancybox/jquery.fancybox-1.3.0.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="/javascripts/fancybox/jquery.fancybox-1.3.0.css" media="screen" />
+<script type="text/javascript">
+	jQuery.noConflict();
+	jQuery(document).ready(function() {
+		jQuery('#flash-notice-review').fancybox().trigger('click');
+	});
+</script>
+<style>
+	#fancybox-title-wrap {
+	display: none;
+}
+</style>
+
+<!--[if IE 9]>
+	<style>
+		#fancybox-wrap {
+			width:874px !important;
+			height:88px !important;
+			opacity: 1 !important;
+			top: 270px !important;
+			left: 217.5px !important;
+		}
+	}
+	</style>
+<![endif]-->
+<!--[if IE 8]>
+	<style>
+		#fancybox-wrap {
+			width:874px !important;
+			height:88px !important;
+			opacity: 1 !important;
+			top: 270px !important;
+			left: 217.5px !important;
+		}
+	}
+	</style>
+<![endif]-->
+<!--[if IE 7]>
+	<style>
+		#fancybox-wrap {
+			top: 290px !important;
+		}
+	}
+	</style>
+<![endif]-->
+
+<% end %>

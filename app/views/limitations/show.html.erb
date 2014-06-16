@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @limitation.user %>
+</p>
+
+<p>
+  <b>My lists:</b>
+  <%=h @limitation.my_lists %>
+</p>
+
+<p>
+  <b>Products per list:</b>
+  <%=h @limitation.products_per_list %>
+</p>
+
+<p>
+  <b>Prm reports:</b>
+  <%=h @limitation.prm_reports %>
+</p>
+
+
+<%= link_to 'Edit', edit_limitation_path(@limitation) %> |
+<%= link_to 'Back', limitations_path %>

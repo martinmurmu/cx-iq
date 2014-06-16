@@ -1,0 +1,74 @@
+<style>
+.shedule-form, .sign-in-form, .sign-up-form {
+  height: auto;
+}
+.content-wrap > .content {
+  height: auto;
+  min-height: 520px;
+}
+
+</style>
+
+<div class="text-head"><h1 style='font-size:32px'>
+	<% if params[:type] == 'brand_cx_analysis'%>
+	Download Brand CX Analysis process flow
+	<% else %>
+	Download free "Recipe for Revenue Growth"
+	<% end %>
+</h1><hr />
+</div>
+<div class="sign-up-form">
+  <% form_for @paper_download do |f| -%>
+    <input type=hidden name=type value="<%= params[:type] %>">
+    <div style='position:absolute;margin-left:430px;margin-top:32px;color:#888;'>We respect your privacy.</div>
+	   <% if params[:type]=='brand_cx_analysis' %>
+	    <div style='position:absolute;margin-left:-240px;width:240px;margin-top:40px;color:#888;'>
+
+			<a class='fancybox' href="/images/brand_cx_analysis/1.png"><img style='width:230px;' src="/images/brand_cx_analysis/1.png"/></a>
+<br><br>
+			  <a class='fancybox' href="/images/brand_cx_analysis/2.png"><img style='width:230px;' src="/images/brand_cx_analysis/2.png"/></a>
+		</div>
+		<script>
+		$(function() {
+			$(".fancybox").fancybox({
+				speedIn : 50,
+				speedOut : 50,
+				transitionIn	: 'elastic',
+				transitionOut	: 'elastic'
+			});
+		})
+		</script>
+	   <% else %>
+	    <div style='position:absolute;margin-left:-240px;width:230px;margin-top:90px;color:#888;'>
+		   Plus, click to <a style='color:#999' target=_blank href=http://blog.amplifiedanalytics.com/feed/#>subscribe</a> for weekly updates about Customer Experience Management, Social Customer and Social CRM.
+		</div>
+	   <% end %>
+    <table>
+      <tr>
+        <td>
+          <%= f.error_messages %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="user_email">Email <span style="color:#666666;">*</span></label>
+          <%= f.text_field :email, :tabindex=>"1", :style=>"width: 400px; margin-left: 0px;", :class=>"editbox1" %>
+          <label for="user_first_name">First Name <span class="normal"> *</span></label>
+          <%= f.text_field :first_name, :tabindex=>"4", :style=>"width: 400px; margin-left: 0px;", :maxlength=>"100", :class=>"editbox1" %>
+          <label for="user_last_name">Last Name <span class="normal"> *</span></label>
+          <%= f.text_field :last_name, :tabindex=>"4", :style=>"width: 400px; margin-left: 0px;", :maxlength=>"100", :class=>"editbox1" %>
+          <label for="user_company">Company <span class="normal"> *</span></label>
+          <%= f.text_field :company, :tabindex=>"5", :style=>"width: 400px; margin-left: 0px;", :maxlength=>"100", :class=>"editbox1" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= nice_captcha %>
+          <p/>
+          <%= f.submit "Download", :tabindex=>"6", :style=>"width: 160px;", :class=>"actionButton", :id => "submit" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+<div style="clear:both;height:20px;"></div>

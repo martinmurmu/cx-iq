@@ -1,0 +1,110 @@
+<style>
+.content-wrap > .content {
+  height: auto;
+  min-height: 630px;
+}
+
+</style>
+
+<% content_for :header do -%>
+  <script src="/javascripts/jquery.tabs.pack.js" type="text/javascript"></script>
+  <script type="text/javascript">
+          $(function() {
+
+                $('#tabs-products').tabs({ fxFade: true, fxSpeed: 'slow' });
+     
+          });
+  </script>
+  <link rel="stylesheet" href="/css/tab.css" type="text/css" media="print, projection, screen">
+<% end -%>
+<% 
+  @menu_current = "products" 
+  @page_title = "Case Studies - Feedback from Customer Analysis"
+%>
+<h1 style="padding-left: 50px;">Case Studies</h1>
+<div class="share-icons" style="left:820px">
+      <div class="facebook"><a href="http://www.facebook.com/home.php#!/pages/Amplified-Analytics/125557687467210" title="Facebook"></a></div>
+      <div class="mail"><a href="mailto:support@amplifiedanalytics.com" title="Mail"></a></div>
+      <div class="twitter"><a href="http://twitter.com/piplzchoice" title="Twitter"></a></div>
+      <!-- <div class="fav"><a href="#" title="FAV"></a></div>
+      <div class="plus"><a href="#" title="Plus"></a></div> -->
+</div>
+<div id="tabs-products" style="top: 131px;">
+	<ul style="top: 85px;">
+    	<li class="first"><a href="#CI">CE Product Manager</a></li>
+        <li><a href="#MI">B2B Software Manufacturer</a></li>
+        <li class="last"><a href="#BEA">Restaurant Developer</a></li>
+    </ul>
+    <div id="CI" style="top: 131px;">
+    	<img src="/images/ScrShoot-MI-small.jpg" alt="Customer Intelligence" />
+    	<p style="width: 480px; top: 101px;">
+    	  As a Product Manager in Consumer Electronics industry, I used to spend
+ countless hours parsing demographics and research data with market
+ researchers on our team. Key metrics involving my product vs. its direct
+ competition are critical for forecasting product success and assessing how
+ to secure it. Historically, we had made most of our decisions based on
+ assumptions with very little direct evidence. Since finding Amplified
+ Analytics, however, we have been able to use their Market Intelligence
+ Analysis to get the exact information we need— what people who spend their
+ money on products like ours have to say about their experiences. These
+ specific measurements make it very easy for me and my team to focus on
+ critical information. The cost savings, too, are staggering, as we’ve been
+ able to shed hundreds of man hours in the process. Plus, we get the
+ research results within 24 hours— it used to take us 3-4 times longer just
+ to initiate a survey.  Amplified Analytics is win-win for us— it provides
+ us with the reliable feedback from customer analysis that we need to grow
+ our customer base and pick off the competition, while saving us time and
+ money.
+      </p>
+      
+    </div>
+    <div id="MI" style="top: 131px;">
+    	<img src="/images/ScrShoot-CI-small.jpg" alt="Customer Intelligence" />
+    	<p style="width: 480px; top: 101px;">As a B2B Software Manufacturer who sources most of our leads through our
+ website, we are obviously concerned about how visitors to our site feel
+ about it. We used to ask customers to give us their feedback through
+ online surveys, but the results were not very useful or dynamic— some
+ customers would leave a few comments, but most just would rate and score
+ our questions as asked. We really wanted to establish a meaningful
+ dialogue with them as individual users of our software. Like many
+ businesses, we had also tried a customer forum; however, all the survey
+ comments, forum communications and even our sales force notes could not
+ help us to parse any actionable insights out of the endless chatter and
+ stories. That is, until we found Amplified Analytics and their Customer
+ Intelligence Analysis software tool. CI analysis was just the solution we
+ needed to help cull clear signals and data out of all the “noise”. Now, we
+ encourage customers on our website to tell their stories as elaborately as
+ they want and in their own words. We use the Customer Intelligence we
+ gather to help us manage our release scopes and schedules based on this
+ detailed customer feedback. We are even considering publishing a CI
+ analysis summary and an associated next release plan, so that our
+ customers can see that their voice is truly driving our decisions.
+ Working with Amplified Analytics has really enhanced our dialogue with
+ customers and helped us perfect our offerings.</p>
+    </div>
+    <div id="BEA" style="top: 131px;">
+    	<img src="/images/ScrShoot-BEA-small.jpg" alt="Customer Intelligence" />
+    	<p style="width: 480px;">Having run 2 high-end restaurants in San Jose successfully, I decided to
+ court some new, potential investors with the hopes of opening a third
+ restaurant in a new part of the city. The catch was that this time around
+ the investors predicated funding on my developing a concise business plan.
+ Since I had little experience with market research, I needed to outsource
+ the work. Unfortunately, most bids I received were prohibitively expensive
+ or entirely generic in their approach. Then one of my investors turned me
+ on to online customer opinion mining and I found Amplified Analytics. From
+ go, they were right on target— they didn’t need me to come up with
+ assumptions about the profile or demographics of my target market.
+ Instead, I just gave them the names of 3 or 4 successful restaurants in my
+ niche to use as reference. Amplified Analytics was then able to use this
+ information to source detailed information on my contemporaries  online
+ that I used to create a roadmap for my new venture. It was a seamless and
+ elegant solution to my problem— the results were in my hands in a matter
+ of days and the cost was 20% below the lowest quote I had received from
+ other vendors. We’ve been open now for 5 months and I can safely say that
+ I have never experienced such a fast ramp-up after launching a restaurant.
+</p>
+    </div>
+</div>
+<div class="white-content-box" style="top: 131px;"></div>
+<div class="BTN-case-study" style="top: 540px;"><a href="/Contact-Us?price_quote=true"><img src="/images/button-price-quote.png" alt="Request Price Quote" border="0" /></a></div>
+<div class="BTN-shedule-live-demo" style="top: 540px; left: 678px;"><a href="/Contact-Us?schedule_demo=true"><img src="/images/button-schedule-demo.png" alt="Case Study" border="0" /></a></div>

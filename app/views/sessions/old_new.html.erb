@@ -1,0 +1,83 @@
+<div style="background-color: rgb(255, 255, 255); width: 550px;" id="loginSubview:loginPanelContentDiv">
+  <table cellspacing="0" cellpadding="0" border="0" style="height: 100%; width: 100%;" id="loginSubview:loginPanelContentTable" class="rich-mp-content-table">
+    <tbody>
+      <tr style="height: 99%;">
+        <td valign="top" class="rich-mpnl-body">
+          <% form_for resource_name, resource, :url => session_path(resource_name) do |f| -%>
+            <input type="hidden" value="loginSubview:loginForm" name="loginSubview:loginForm" autocomplete="off"> <span id="loginSubview:loginForm:loginFormRegion"></span>
+            <div id="modal_wrap">
+              <div id="content_top_modal">
+                <div id="header_content">
+                  <p class="Heading2">
+                    <span>Sign In (<%= link_to 'Not yet a member?', new_registration_path(resource_name),  :class=>"blueHyperLink" %>)</span>
+                  </p>
+                </div>
+              </div>
+              <div style="margin-left: 20px;" id="content_modal">
+                <span><span id="loginSubview:loginForm:signinRegion:status"><span style="display: none;" id="loginSubview:loginForm:signinRegion:status.start"></span></span></span>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td width="75%">
+                        <table width="100%" cellspacing="5">
+                          <tbody>
+                            <tr>
+                              <td width="100%">
+                                <span class="label1">Email Address</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <%= f.text_field :email, :tabindex=>"1", :style=>"width: 400px; margin-left: 0px;", :class=>"shadowEditBox" %>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span class="label1">Password</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <%= f.password_field :password, :class=>"shadowEditBox", :tabindex=>"2", :style=>"width: 400px; margin-left: 0px;" %>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <%= link_to 'Forgot your password?', new_password_path(resource_name), :class=>"blueHyperLinkSmall", :tabindex=>"0" %><br/>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <%= f.check_box :remember_me, :tabindex=>"3" %>
+                                <label class="label1">Remember me</label>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <%= f.submit "Sign In", :tabindex=>"4", :style=>"width: 80px;" %>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                      <td valign="top">
+                        <img src="/images/smallLogo.PNG">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          <% end -%>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="clearer"></div>
+  <div id="content_area" style="position:relative; padding-top: 20px;">
+    <%= link_to t('devise.confirmations.link'), new_confirmation_path(resource_name), :class=>"blueHyperLinkSmall" %><br />
+    <%= link_to t('devise.unlocks.link'), new_unlock_path(resource_name), :class=>"blueHyperLinkSmall" %><br />
+  </div>
+</div>
+
+

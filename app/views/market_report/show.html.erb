@@ -1,0 +1,38 @@
+<style>
+  .attribute_line:hover .value {
+    display: block;
+}
+  .attribute_line .value {
+    display: none;
+}
+
+  .attribute_line {
+    cursor: pointer;
+  }
+
+</style>
+<div class="button yellow" style="float:right;margin:0 10px;">Excel</div>
+<div class="button yellow" style="float:right">PDF</div>
+<h2>Market Intelligence Report</h2>
+<h2>Attributes in order of importance</h2>
+<% @report_lines.each do |line| %>
+<div style="margin-top:10px;border-top:1px solid black;padding-bottom:0px;padding-top:10px;">
+  <div style="margin-bottom:5px">
+    <strong><%= line[:attribute] %></strong>
+  </div>
+  <div style="margin-left:40px;">
+  <% line[:products].each_with_index do |p,i| %>
+    <div style="margin-bottom:5px;" class="attribute_line">
+      <div style="float:left;width:400px;">
+    <%= p[:product] %>
+      </div>
+      <div class="graph_line" style="margin-right:10px;margin-left:10px;border:1px solid black;float:left;background:<%= @colors[i] %>;width:<%= p[:value].to_f*100 %>px;height:20px;">
+      </div>
+      <div class="value"><%="%1.2f" % p[:value]%></div>
+      <div style="clear:both"></div>
+    </div>
+  <% end %>
+  </div>
+
+</div>
+<% end %>

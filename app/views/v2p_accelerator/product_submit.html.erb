@@ -1,0 +1,87 @@
+<% @page_title = 'Product Submit - Amplified Analytics' -%>
+
+<style>
+  .content-wrap > .content {
+    height: auto;
+  }
+  .error {
+    border: 1px solid red;
+  }
+  .mandatory {
+    color: red;
+  }
+  .field_name {
+    float: left;
+    width: 150px;
+  }
+  .clear {
+    clear: both;
+  }
+  #message {
+    color: #000;
+  }
+  #message p {
+    margin-bottom:10px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  #message h1 {
+    color: #000;
+    font-size: 20px;
+    line-height: 24px;
+  }
+</style>
+<%= stylesheet_link_tag '/css/additional.css' %>  
+<div style='padding:40px;font-size:14px;line-height:30px;'>
+  <div style="height:535px;padding:10px;border-radius:10px;">
+    <div style="float:left;width:360px;padding:0 0 0 10px;" id="message">
+      <p>
+      <h1>
+        Are you ready for on-demand measurement of Customer Experience without the expense and hassle of surveys? We can help.
+      </h1>
+      </p>
+      <p>&nbsp;</p>
+      <p>
+        Your company and your customers can benefit from a free trial of our Opinion Miner application and Customer Experience monitoring expertise if:<Br>
+      </p>
+      <p>
+        - you are responsible for a consumer product with at least 50 customer reviews available online<br>
+      </p>
+      <p>
+        - you are available to engage with one of our Customer Experience monitoring experts during the trial<br>
+      </p>
+      <p>
+        - you are in a position to launch a Customer Experience monitoring program should the free trial meet or exceed your business requirements<br>
+      </p>
+      <p>
+        If the above is a match, it gets exciting from here forward. Simply fill out the form to the right. We will be in touch with you shortly.<br>
+      </p>
+    </div>
+    <div style="background:#fff;float:right;padding:20px;border:1px solid #677;border-radius:10px;margin-bottom:20px;height:490px;width:385px;color:#333;">
+      <% if @errors.count>0 %>
+        <div style='background:#fdd;border:1px solid #f22;padding:10px;margin-bottom:10px;border-radius:5px;'>
+          <% @errors.each do |error| %>
+            <div style='color:red'><%= error %></div>
+          <% end %>
+        </div>
+      <% end %>
+      <%= form_tag( '/V2P-Product-Reviews/Product-Submit', :method => :post) %>
+      <div class="field_name">Your name<span class=mandatory>*</span>:</div>
+      <%=  text_field_tag 'username', params[:username], :class=>@error_fields[:username]?'error':'', :style=>"width:220px" %>
+      <div class="clear"></div>
+      <div class="field_name">Your Company Email<span class=mandatory>*</span>:</div>
+      <%= text_field_tag 'email', params[:email], :class=>@error_fields[:email]?'error':'', :style=>"width:220px" %><br>
+      <div class="clear"></div>
+      <div class="field_name">Your Company Name<span class=mandatory>*</span>:</div>
+      <%= text_field_tag 'manufacturer', params[:manufacturer], :class=>@error_fields[:manufacturer]?'error':'', :style=>"width:220px"%>
+      <div class="clear"></div>
+      <div class="field_name">Product reviews url<span class=mandatory>*</span>:</div>
+      <%= text_field_tag 'review_url_1', params[:review_url_1], :class=>@error_fields[:review_url_1]?'error':'', :style=>"width:220px" %>
+      <div class="clear"></div>
+      <div style="margin-top:20px"></div>
+      <%= recaptcha_tags %>
+      <%= submit_tag 'Submit', :class => 'button_yellow', :style => 'cursor:pointer;margin:10px;letter-spacing:0px;' -%>
+      </form>
+    </div>
+  </div>
+</div>

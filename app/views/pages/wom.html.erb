@@ -1,0 +1,87 @@
+<% @page_title = 'Word of Mouth Analysis - Amplified Analytics' -%>
+
+<% content_for :head_javascript do -%>
+  <%= javascript_include_tag 'jquery-1.4.1.min', 'jquery.cycle.all.2.74', 'jquery.simplemodal-1.3.5.min' %>
+
+  <script type="text/javascript">
+//  <![CDATA[
+    jQuery(function ($) {
+      $('#basic-modal .basic').click(function (e) {
+        $('#basic-modal-content').modal();
+          return false;
+      });
+    });
+
+
+    jQuery(function ($) {
+      $('#basic2-modal .basic2').click(function (e) {
+        $('#basic2-modal-content').modal();
+      	return false;
+      });
+    });
+//  ]]>
+  </script>
+<% end -%>
+
+<div id="products_pagewrap_top">
+  <h1 id="wom_header_new">Word of Mouth Analysis</h1>
+  <p class="intropoints">
+    1. Focus your promo budget on the products that win customer advocacy.<br>
+    2. Learn why consumers chose your competitor&#39;s product over yours<br>
+    3. Sync  your marketing message with what your customers value the most
+  </p>
+  <div id="subnav">
+    <ul>
+      <li><a class="prodnav_WOM" href="#"></a></li>
+      <li><%= link_to "Market Intelligence Reporter <sup>(tm)</sup>", products_prm_path, :class=>'prodnav_PRMin_new inactive' -%></li>
+      <li><%= link_to "Our Methodology", products_methodology_path, :class=>'prodnav_Methodologyin_new inactive' -%></li>
+    </ul>
+  </div>
+</div>
+
+<!--END Pagewraptop-->
+<div id="pagewrap_middle">
+  <div id="content_top">
+    <div id="content_area">
+      <h2 class="product_name_header_center">Customer Word of Mouth matters, it drives growth.</h2>
+    </div>
+  </div>
+
+  <div id="content_middle">
+    <div id="content_area">
+      <div id="wom_wrap">
+        <div id="basic2-modal">
+          <div id="wom_left">
+            <a href="#" class="basic2"><img src="/images/wom/womreport.jpg" border="0"></a>
+		  </div>
+	    </div>
+
+        <div id="basic-modal">
+          <div id="womVideo">
+            <a href="#" class="basic"><img src="/images/wom/womyoutube.jpg"></a>
+          </div>
+        </div>
+	    <div id="basic-modal-content">
+          <div>
+            <iframe class="youtube-player" type="text/html" src="http://www.youtube.com/v/wAzB1CAsYtM?fs=1&amp;hl=en_US" width="640" frameborder="0" height="385"></iframe>
+          </div>
+	    </div>
+        <div id="basic2-modal-content">
+          <div>
+            <iframe class="youtube-player" type="text/html" src="vid.html" width="640" frameborder="0" height="600"></iframe>
+          </div>
+	    </div>
+      </div>
+      <p>
+        <a href="<%= wom_request_path -%>?return_url=/Word-of-Mouth-Analysis" class="blue" style="float:right; margin-top: 10px"><img src='/images/wom/trynowclear.png'/></a>.
+      </p>
+      <h2 class="product_name_header_no_float">Make your marketing dollars work smarter - Help your customers to sell your product!</h2>
+      <br /><br />
+    </div>
+  </div>
+  <!--END ContentMiddle-->
+
+  <div id="content_bottom">
+  </div>
+  <!--END contentbottom-->
+</div>

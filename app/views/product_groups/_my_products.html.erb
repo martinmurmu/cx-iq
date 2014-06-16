@@ -1,0 +1,99 @@
+<div class="clearer"></div>
+<div class="form-wrap">
+  <table id="subscriptions" style="border:1px solid #c8c8c8; background:#fff;">
+    <tr>
+      <th width="50%" id="subsCat">Product name </th>
+      <th width="20%">Category</th>
+      <th width="30%">Action</th>
+    </tr>
+    <% @groups.each do |group| -%>
+      <% next if h(group.try(:products).try(:[],0).try(:name)).blank? %>
+      <tr>
+        <td id="subsCat" class="<%= cycle("", "odd") -%>"><%= link_to h(group.try(:products).try(:[],0).try(:name)), group.try(:products).try(:[],0) -%></td>
+        <td id="subsCat" class="<%= cycle("", "odd") -%>"><%= link_to h(group.try(:products).try(:[],0).try(:categories).try(:[], 0)), group.try(:products).try(:[],0).try(:categories).try(:[], 0) -%></td>
+        <td>
+          <%= link_to_remote "Remove", :url  => {:controller => 'product_groups', :action => "remove_product", :id => group.id}, :loading => "Element.show('loading_bar')", :with => "'product=#{params[:product]}&page=#{params[:page]}'", :complete => "Element.hide('loading_bar')" %> |
+          <%= link_to 'View CX Analysis', "#", {:onclick => "getting_aggerates_data('#{group.try(:products).try(:[],0).try(:id)}')"} -%> |
+          <%= link_to 'Produce trending report', produce_trending_report_settings_product_path(group.try(:products).try(:[],0)) rescue ''%>
+		      <% form_tag "/products/#{group.try(:products).try(:[],0).try(:id)}/produce_psa_report", :id => "pr_form_#{group.try(:products).try(:[],0).try(:id)}" do -%>
+		        <%= hidden_field_tag 'threshold', '0.0075', :id => "pr_threshold_#{group.try(:products).try(:[],0).try(:id)}" %>
+		        <%= hidden_field_tag 'keywords',  '', :id => "pr_keywords_#{group.try(:products).try(:[],0).try(:id)}" %>
+		        <%= hidden_field_tag 'mapping', '', :id => "mapping_#{group.try(:products).try(:[],0).try(:id)}" %>
+		      <% end %>
+        </td>
+      </tr>
+    <% end -%>
+  </table>
+</div><!--end form-wrap-->
+
+<a style="display: none;" href="#popup-loader" id="example1"></a>
+<div style="display:none;">
+	<div id="popup-loader">
+		<img src="/images/44.gif" />
+	</div>
+</div>
+
+<%# content_for :head_javascript do -%>
+<%= javascript_include_tag 'jquery-1.4.1.min', '/js/serialize.min.js', '/js/jquery.tinysort.min.js', '/javascripts/fancybox/jquery.fancybox-1.3.0.pack.js' %>
+<link rel="stylesheet" type="text/css" href="/javascripts/fancybox/jquery.fancybox-1.3.0.css" media="screen" />
+<script type="text/javascript">
+  jQuery.noConflict();
+
+	jQuery("a#example1").fancybox({
+		'titleShow'     : false,
+    'hideOnOverlayClick':false,
+   	'hideOnContentClick':false
+	});
+
+	function show_loading_sbm(){
+		jQuery("#fancybox-loading").remove();
+		jQuery("a#example1").click();
+		jQuery("#fancybox-outer").css("background", "none");
+		jQuery(".fancy-bg").css("background", "none");
+	}
+
+  function getting_aggerates_data(product_id){
+		show_loading_sbm();
+    report_type = 'psa';
+    var url = "/products/"+product_id+"/report_settings_get?type="+report_type;
+    var aggregates;
+    var mapping_keywords = '';
+    jQuery.get(url, function(data) {
+      if(!jQuery.trim(data).empty()) {
+        data = unserialize(data);
+        aggregates = [];
+        jQuery.each(data, function(index,val) {
+          var name = val[0];
+          var attributes = []
+          jQuery.each(val[1],function(i,val) {
+            attributes.push(val);
+          });
+          aggregates.push([name,attributes])
+        });
+        jQuery.each(aggregates, function(key, val) {
+            jQuery.each(val[1], function(key, sub_val) {
+                mapping_keywords += sub_val + " => " + val[0] + "\n";
+            });
+        });
+      }
+      jQuery('#pr_keywords_' + product_id).val(mapping_keywords);
+      jQuery('#mapping_' + product_id).val(mapping_keywords);
+      jQuery('#pr_form_' + product_id).submit();
+    });
+  }
+</script>
+
+<style>
+	#fancybox-title-wrap {
+		display: none;
+	}
+
+	#fancybox-close {
+		display: none !important;
+	}
+
+	#fancybox-outer div {
+		background: url();
+	}
+</style>
+<%# end %>

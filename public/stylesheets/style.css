@@ -1,0 +1,1199 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {max-height: 100%; margin-bottom: 1px; height: 100%;}
+
+* {margin: 0; padding: 0;}
+* html #Pagewrap {height: 100%}
+
+/*ToolBox*/
+.clearer {clear:both;}
+body  {height: 100%; background: url(../images/bodybg.jpg) repeat-x left top; height: auto !Important;  background-color: #FFFFFF;}
+p, li {font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif; font-size: 12px; line-height: 17px; color: #555555;}
+a {outline: none; color: #716E6E; text-decoration:none; font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;}
+a.blue {color: #2887a3; text-decoration:underline;}
+a img {border:none;}
+ul {list-style: none inside; position: relative;}
+a[href^="mailto"]       { background: url(../images/emailIcon.png) right center no-repeat; padding-right: 12px; }
+.centeredImage    {    text-align:center;    margin-top:0px;   margin-left: 30px;    margin-bottom:0px;    padding:0px;    }
+
+/*Typography*/
+p.disclaimers {font-size: 10px; text-align: right;}
+p {padding: 0px 10px 10px 3px}
+
+/*Lists*/
+#Methodology ol {padding: 0px 0px 10px 60px;}
+
+/*Headings */
+h1, h2, h3, h4, h5 {font-family: Arial, Helvetica, sans-serif; color: #555555;}
+
+h2 {font-size: 18px; margin-bottom: 5px;}
+
+h4 {font-size: 14px; margin-bottom: 2px;}
+
+.h1 {font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-size: 24px; font-weight:bold; text-transform: uppercase; padding: 20px 20px 10px 20px;}
+
+/*Various SEO-Friendly Page Headings*/
+h1#homepageheading { background: url(../images/home/indexheading.jpg) top left; display: block; width: 587px; height: 44px; text-indent:-9999px; }
+h1#products_header { background: url(../images/products/PRDpagemm.jpg) no-repeat scroll left top transparent; float: left; display: block; width: 337px; height: 39px; text-indent:-9999px; top: 10px; margin: 23px 0 0 22px; padding: 0; }
+
+/*Content Areas */
+a#Logo {width: 416px; height: 109px; background: url(../images/logo.jpg) no-repeat top left; position: absolute; top: 3px;	z-index: 2; text-indent: -9999px; left: -13px; }
+
+/*PageWrap*/
+#fullouterpagewrap {width: 845px; height: auto; margin: 0 auto;}
+
+
+#pagewrap_middle {height: auto !important; margin: 127px auto -127px; background: url(/images/pagewrap_middle.jpg) repeat-y top;}
+#pagewrap_middle_modal {width: 100%; margin: 0 auto; background: url(/images/pagewrap_middle.jpg) repeat-y top center; z-index: 2;}
+
+/*Footer*/
+#footer {width: 843px; height: 90px; position: relative; margin: 0 auto; background: url(/images/pagewrap_bottom.jpg) no-repeat;       top: 127px;     text-align:center;}
+#footer p {	padding:45px 0 0 0;	text-align:center; font-size: 11px;}
+#footer ul{	}
+#footer li {display: inline;list-style-type: none;text-align:center;margin: 0 5px 0 5px;font-size: 10px;}
+
+/*Page Content*/
+/* OLD
+#content_top {height: 56px;width: 797px;position: relative;margin: 0 auto;background: url(../images/contbg_top.jpg) no-repeat;}
+*/
+
+#content_topRev
+{
+  position: static;
+  height: auto;
+  width: 797px;
+  margin: 0 auto;
+  background: url(/images/contbg_topRev.jpg) no-repeat top center;
+  z-index: 3;
+}
+#content_top
+{
+  position: static;
+  height: auto;
+  width: 797px;
+  margin: 0 auto;
+  background: url(/images/contbg_top.jpg) no-repeat top center;
+  z-index: 3;
+}
+
+
+/* #content_top p {} */
+
+#content_area {padding: 5px 10px 0px 20px; overflow: hidden;}
+
+
+#content_middle {
+	width: 797px;
+	min-height:250px;
+	margin: 0 auto;
+	height: auto !important;
+	background: url(/images/contbg_middle.jpg) repeat-y;
+}
+
+/* #content_middle p {padding: 5px 20px 10px 20px;} */
+
+.content_height {height: 370px}
+
+#content_middle_modal {position: static; width: 100%; margin: 0 auto; background: url(/images/contbg_middle.jpg) repeat-y top center; z-index: 3;}
+#content_middle_modal #content_area_modal {position: relative; width: 90%; left: 50px; top: 10px;}
+
+
+#ProductsPRD #content_middle p {padding: 5px 306px 10px 20px;}
+h2.product_name_header {margin-top: 10px; font-size: 20px; float: left;}
+h2.product_name_header_center {margin-top: 10px; font-size: 20px;text-align: center;}
+h2.product_name_header_no_float {margin-top: 10px; font-size: 20px;}
+#ProductsPRM #content_middle p {padding: 0px 20px 10px 400px;}
+#Methodology #content_middle p.terms {padding: 0px 20px 10px 20px;}
+h3.meth_term_header {font-size: 15px;}
+
+#content_bottomRev {height: 11px;width: 797px;position: relative;margin: 0 auto;background: url(/images/contbg_bottomRev.jpg) no-repeat;}
+#content_bottom {height: 11px;width: 797px;position: relative;margin: 0 auto;background: url(/images/contbg_bottom.jpg) no-repeat;}
+#content_bottom_modal {height: 11px; width: 100%; margin: 0 auto;background: url(/images/contbg_bottom.jpg) no-repeat top center;}
+
+#PRDwidgetgraphic_XXX_BAD_HACK {background: url(/images/products/PRDwidget.jpg) no-repeat top right; width: 297px; height: 314px; position: absolute; z-index: 10; right: 10px; top: -40px;}
+#PRMinterfacegraphic_XXX_BAD_HACK {background: url(/images/products/PRMinterfacepic.jpg) no-repeat top left; width: 357px; height: 306px; position: absolute; z-index: 10; left: 30px; top:-30px;}
+
+/*Main Nav Menu*/
+/* #Menu {position: absolute; z-index: 10;	height: 57px; top: 45px; right: 0; }*/
+#Menu {position: absolute; z-index: 8;	height: 57px;  width: 100%; top: 45px;}
+#Menu ul {list-style-type: none;}
+#Menu ul li {float: right; display:inline;}
+#Menu a {display:inline:}
+
+/*Nav Buttons */
+.navbut_home {width: 84px; height: 57px; background:url(/images/homebtn.jpg) no-repeat; position:relative;	display: block;}
+.navbut_products {width: 93px; height: 57px; background:url(/images/productsbtn.jpg) no-repeat; position: relative; display: block;}
+.navbut_services {width: 89px; height: 57px; background:url(/images/servicesbtn.jpg) no-repeat; position: relative; display: block;}
+.navbut_blog {width: 62px; height: 57px; background:url(/images/blogbtn.jpg) no-repeat; position: relative; display: block;}
+.navbut_contactus { width: 112px; height: 57px; background: url(/images/contactusbtn.jpg) no-repeat; position: relative; display: block;}
+
+
+/*Sub Nav Menu for Product Pages*/
+#subnav {position: absolute; z-index: 12; top: 9px; left: 609px; height: 300px;}
+#subnav ul {list-style-type: none;}
+#Menu li {display: block;}
+
+/* Login / Logoff controls at the top */
+#TopLogin
+{
+	position: absolute;
+	top: 10px;
+	left: 410px;
+	width: 425px;
+	height: auto;
+	float: right;
+	display: inline;
+
+}
+
+#TopLogin td {
+	padding: 0 0 0 3px;
+}
+
+#TopLogin .topLogin_text
+{
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+#TopLogin .topLogin_button
+{
+	background-color: #2B92B2;
+	border: none;
+	height: 25px;
+	width: 52px;
+	cursor:pointer; cursor:hand; /* this combo works for all browsers */
+}
+
+#TopLogin .topMyAccount_button
+{
+	background-color: #2B92B2;
+	border: none;
+	height: 25px;
+	width: 80px;
+	cursor:pointer; cursor:hand; /* this combo works for all browsers */
+}
+
+#TopLogin .topLogin_table
+{
+	border-spacing: 2px;
+}
+
+#TopLogin .topLogin_prompt
+{
+	text-align: right;
+	padding: 0;
+}
+
+#TopLogin .topMyAccount_cell
+{
+	width: 20%;
+	padding: 0;
+}
+
+#TopLogin .topLogin_cell
+{
+	width: 12%;
+	padding: 0;
+}
+
+
+.prodnav_PRD {width: 261px; height: 50px; background: url(/images/products/subnavPRDactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_PRDin {width: 220px; height: 50px; background: url(/images/products/subnavPRDinactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_PRM {width: 264px; height: 47px; background: url(/images/products/subnavPRMactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_PRMin {width: 261px; height: 47px; background: url(/images/products/subnavPRMinactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_Methodologyin {width: 234px; height: 47px; background: url(/images/products/subnavotherinactive.jpg) no-repeat; positions: relative; display: block;}
+.prodnav_Methodologyac {width: 261px; height: 47px; background: url(/images/products/subnavotheractive.jpg) no-repeat; positions: relative; display: block;}
+
+/*Various Buttons*/
+#content_middle ul.btnlinks {list-style-type: none; padding: 10px 0 0 0px;}
+#content_middle li.btnlinks {display: inline;}
+
+#content_middle_modal ul.btnlinks {list-style-type: none; padding: 10px 0 0 8px;}
+#content_middle_modal li.btnlinks {display: inline;}
+
+
+#ProductsPRM #content_middle ul.btnlinks {list-style-type: none; padding: 10px 0 0 388px;}
+#ProductsPRM #content_middle li.btnlinks {display: inline;}
+
+.Heading2 {
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	color: #555555;
+}
+
+.boldLabel {
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	color: #555555;
+}
+
+.blueHyperLink {
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	color: #3F9AD3;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.blueHyperLinkSmall {
+	font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	color: #3F9AD3;
+	text-decoration:none;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.editbox1 {width: 200px; height:23px;  float:left; border: 1px solid #7F9DB9;  font-family:Verdana; font-size:14px; color: #555555; padding: 3px 0 0 3px;}
+
+/*.longEditbox { width: 110%; height:25px;  float:left; margin:2px; border: 1px solid #7F9DB9;  font-family:Verdana; font-size:12px; color: #555555; padding: 2px;}*/
+
+.longEditbox {
+	border:1px solid #999;
+	color:#555555;
+	float:left;
+	font-family:Arial;
+	font-size:90%;
+	font-weight:bold;
+	padding:9px;
+	padding-top: 11px;
+	width:110%; height: 17px; /* This one will actually be 110% on the website */
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background: url(/images/products/formBG.png) repeat-x top left;
+}
+
+.longEditbox_no_float {
+	border:1px solid #999;
+	color:#555555;
+	font-family:Arial;
+	font-size:90%;
+	font-weight:bold;
+	padding:9px;
+	padding-top: 11px;
+	width:110%; height: 17px; /* This one will actually be 110% on the website */
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background: url(/images/products/formBG.png) repeat-x top left;
+}
+
+.label1 {padding: 0px; font-family: Arial; font-size: 13px; font-weight: bold; color: #7E7E7E;}
+.label2 {padding: 10px; font-family: Arial; font-size: 11px; font-weight: bold; color: #7E7E7E;}
+.label3 {padding: 10px; font-family: Arial; font-size: 12px; font-weight: bold; color: #7E7E7E;}
+
+.selectBox {
+	width: 207px;
+	height:25px;
+	float:left;
+/*	margin:2px;*/
+	border: 1px solid #7F9DB9;
+	font-family:Verdana;
+	font-size:12px;
+	color: #555555;
+	padding: 2px;
+}
+
+#small_pagewrap_top
+{
+	width: 843px;
+	height: 15px; /*Changed for re-design 02.03.2010*/
+	position: relative;
+	top: 127px;
+	margin: 0 auto;
+	background: url(/images/pagewrap_top.jpg) no-repeat;
+}
+
+#pagewrap_top {width: 100%; height: 35px; margin: 0 auto; background: url(/images/pagewrap_top.jpg) no-repeat top center; z-index: 2; overflow: hidden; }
+
+
+.loading_large
+{
+	width: 31px;
+	height: 31px;
+	left: 300px;
+	top: 200px;
+	position: absolute;
+	background: url(/images/loading.gif) no-repeat;
+	z-index: 200;
+}
+
+.loading_msg
+{
+	width: 80px;
+	height: 31px;
+	background-color: #FF0000;
+	color: #FFFFFF;
+	font-family: Verdana;
+	font-size: 13px;
+	padding: 2px;
+	z-index: 200;
+}
+
+
+
+/******************
+	HOME PAGE
+*******************/
+
+#home_dials_image {
+	height: 179px;
+	width: 459px;
+	background: url(/images/home/dialpic.jpg) no-repeat;
+	position: absolute;
+	top: -20px;
+	left: 6px;
+	z-index: 3;
+}
+
+img.home_header_text
+{
+	position: absolute;
+	top:10px;
+	left:463px;
+	z-index: 2;
+}
+
+img.home_promo_link
+{
+	position: absolute;
+	top: 87px;
+	left:631px;
+	z-index: 3;
+}
+
+#home_pagewrap_top
+{
+	width: 843px;
+	height: 152px;
+	position: relative;
+	top: 127px;
+	margin: 0 auto;
+	padding-top: 12px;
+	background: url(/images/pagewrap_top.jpg) no-repeat;
+}
+
+
+#basic-modal-content {display:none;}
+
+/* Overlay */
+#simplemodal-overlay {background-color:#000; cursor:wait;}
+
+/* Container */
+#simplemodal-container {height:400px; width:670px; color:#bbb; background-color:#333; border:4px solid #444; padding:12px;}
+#simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; margin-bottom:12px; padding:4px 6px 6px;}
+#simplemodal-container a {color:#ddd;}
+#simplemodal-container a.modalCloseImg {background:url(/images/reviews/close.png) no-repeat; width:48px; height:48px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+#simplemodal-container #basic-modal-content {padding:8px;}
+
+#youtubeVideo {
+    float:right;
+    margin: 15px 15px 0 0;
+}
+
+/******************
+	CONTACT US PAGE
+*******************/
+
+	#contact_wrap {position: relative; width: 98%; overflow: hidden; margin-top: 10px;}
+		#contact_wrap #contact_left { float: left; width: 290px; }
+		#contact_wrap #contact_left .bg_shadow_small {height:44px; width:297px; background:url(/images/contactus/smlfieldboxshadow.jpg) no-repeat bottom; margin-left: -7px; z-index: 4;}
+		#contact_wrap #contact_left .shadow_inner_small {position: relative; height: 26px; width:279px; left: 8px; top: 8px;
+			/*border: 2px; border-color: red; border-style: solid;*/
+			}
+		#contact_wrap #contact_left .shadow_textbox_small { position: relative; background: none; border: none; width:274px; height:24px;
+			font-family:Verdana; font-size:16px; left: 3px; top: 5px; }
+
+		#contact_wrap #contact_right {float: right; width: 449px; }
+		#contact_wrap #contact_right .bg_shadow_large {height:184px; width:449px; background:url(/images/contactus/largefieldboxshadow.jpg) no-repeat bottom; z-index: 4;}
+		#contact_wrap #contact_right .shadow_inner_large {position: relative; height: 168px; width: 433px; left: 6px; top: 6px;
+			/* border: 2px; border-color: red; border-style: solid; */
+			}
+		#contact_wrap #contact_right .shadow_textbox_large { position: relative; background: none; border: none; width:430px; height:163px;
+	 		font-family:Verdana; font-size:14px; overflow: auto; left: 3px; top: 3px; }
+
+/******************
+	PRODUCTS PAGE
+*******************/
+
+
+#products_pagewrap_top
+{
+	width: 843px;
+	height: 164px;
+	position: relative;
+	top: 127px;
+	margin: 0 auto;
+	background: url(/images/pagewrap_top.jpg) no-repeat;
+}
+
+#products_pagewrap_top p.introtext { display: block; margin: 0 0 0 22px; padding: 0 10px 0 3px; float: left; color: #C8C8C8; width: 500px; font-size: 18px; text-shadow: -1px -1px 1px #011018; line-height: 30px; }
+
+#products_wrap {position: relative; width: 98%; overflow: hidden;}
+	#products_wrap #products_left { float: left; width: 465px; }
+	#products_wrap #products_right { float: right; width: 280px;}
+/*	#products_wrap .widget_screen {top: -50px; position: absolute; z-index: 100; display: inline;}*/
+
+
+/******************
+	SERVICES PAGE
+*******************/
+
+	#professionalserv { background:url(/images/services/professionalserv.png) bottom left no-repeat; height: 44px; width:181px; text-indent:-9999px; display:block;}
+	#opinionminingserv { background:url(/images/services/opinionminingserv.png) bottom left no-repeat; height: 44px; width:198px; text-indent:-9999px; display:block;}
+
+
+/******************
+	WELCOME TO PRM PAGE
+*******************/
+
+	#welcometoprm { background:url(/images/prm_welcome/welcometoprm.png) bottom left no-repeat; height: 44px; width:440px; text-indent:-9999px; display:block; }
+	#welcome_prm_content {list-style:disc inside; padding:0.1px 20px 0.1px 20px; color:#222 !important;}
+	#welcome_prm_content li { margin:15px 0; font-size:15px; line-height:27px; color: #222 !important; margin-top:30px;}
+
+    #welcome_prm_tour {float:left; width:351px; text-align:center; left: 100px; overflow:hidden; position: relative; -moz-box-shadow:0px 0px 10px #999999; border: 1px solid #999; }
+	#welcome_prm_about_tour { float:right; width:200px; text-align:	left; padding:100px 100px 0 0;}
+
+/******************
+	PRM PAGE
+*******************/
+
+a.returnMain {
+	display: block;
+	float: right;
+	font-family: Arial, helvetica;
+	font-weight: bold;
+	font-size: 100%;
+	color: #CCC;
+	position: relative;
+	top: 88px;
+	margin-right: 10px;
+}
+
+	a.returnMain:hover {
+		border-bottom: 1px dotted #CCC;
+	}
+
+  #prmir_showcase { background: url(/images/products/prmir_showcase_bg.jpg) no-repeat top left; display: block; width: 763px; overflow: hidden; }
+  #prmir_showcase #tour { width:350px; text-align:center; top: 30px; left: 210px; overflow:hidden; position: relative; -moz-box-shadow:0px 0px 10px #999999; border: 1px solid #999; }
+  #prmir_showcase #pricing { text-align:center; position: relative; top: 50px; left: 210px; display: block; width: 350px; height: 105px; margin: 0;}		#prmir_showcase #pricing p { text-align: center; margin: 0 35px; font-weight: bold; padding: 0;}
+  #prmir_showcase #pricing h4 { text-align: center; color: #333; font-weight: bold; padding: 0; margin: 5px 0 5px 0; font-size: 19px; }
+  #prmir_showcase #pricing a.existing_members { display: block; font-size: 70%; text-decoration: none; margin: 3px auto 0 auto; width: 239px; text-align: center; font-family: Arial, Helvetica, sans-serif;}
+  #prmir_showcase a.clickherebtn { background: url(/images/products/clickherebtn.png) no-repeat top left; display: block; height: 46px; width: 239px; position: relative; text-indent: -9999px; margin: 0 auto; }
+  #prmir_showcase a.clickherebtn:hover { background-position: 0 -46px; }
+  #prmir_showcase #pricing a.existing_members:hover { text-decoration:underline; }
+
+
+  #feature_list { width: 360px; display: block; float: left;	margin: 10px 0 0 30px; }
+  #feature_list li, h2 { }
+  #feature_list h2 { font-family: Arial, helvetica; text-shadow: 1px 1px 3px #fff; padding: 0 0 0 3px; }
+  #feature_list li { font-size: 17px;	text-shadow: 1px 1px 3px #fff; padding: 10px 0 20px 55px; margin: 10px 0 10px 0; border-bottom: 1px solid #d9d9d9; line-height: 125%;}
+  #feature_list li.lastchild { border: none; }
+  #feature_list li.mag_icon { background: url(/images/products/mag_icon.png) no-repeat 0% 43%; }
+  #feature_list li.comment_icon { background: url(/images/products/comment_icon.png) no-repeat 0% 43%; }
+  #feature_list li.paper_icon { background: url(/images/products/paper_icon.png) no-repeat 0% 43%; }
+  #feature_list li.pres_icon { background: url(/images/products/pres_icon.png) no-repeat 0% 43%; }
+
+  #faq { margin: 10px 0 0 0; float: right; width: 355px; }
+  #faq h2 { padding-left: 3px; }
+  #faq h4 { margin-right: 14px; margin-left: 3px; padding-top: 10px; font-size: 12px; }
+
+
+/******************
+	PRD WIDGET (TRIAL) PAGE
+*******************/
+
+.rich-sb-cell-padding
+{
+  padding: 5;
+}
+
+.rich-sb-int
+{
+  height: 25px; font-size: 10pt; font-family: Arial, Tahoma, "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+}
+
+.prd_panel_wrapper
+{
+  height: 380px;
+}
+
+.prd_panel_left
+{
+	width: 60%;
+	float: left;
+}
+
+.prd_panel_right
+{
+	width: 30%;
+	float: right;
+	padding-right: 40px;
+}
+
+/******************
+	ERROR PAGES
+*******************/
+
+#ErrorMessage {display: block; margin: 0 auto; height: 405px; width: 797px; background:url(/images/error/errormessage_bg.png) no-repeat top left;}
+#ErrorMessage_wrap {margin-right: 300px; margin-left: 36px; width: 488px;}
+#Error_header {display: block; text-indent: -9000px; height: 124px; width: 488px; background: url(/images/error/error_header_bg.png) no-repeat bottom left; overflow:hidden; text-align:left;}
+#ErrorMessage_wrap p {font-size: 14px; line-height: 19px;}
+	#Error_menu {margin-top: 0px; float: left; position:relative;}
+		#Error_menu ul {list-style-type:none;}
+		#Error_menu ul li {float:right; display:inline; padding-left: 19px;}
+
+#Error_Contactusbtn {background:url(/images/error/contactusbtn.png) no-repeat top right; width: 101px; height: 102px; position:relative; display: block;}
+#Error_Productsbtn {background:url(/images/error/productsbtn.png) no-repeat top right; width: 101px; height: 102px; position:relative; display: block;}
+#Error_Returnhomebtn {background:url(/images/error/homebtn.png) no-repeat top right; width: 101px; height: 102px; position:relative; display: block;}
+
+
+/******************
+	New edit box style with shadows
+*******************/
+.shadowEditBox{
+    border: 1px solid #999;
+    color: #888888;
+    float: left;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px 16px;
+    padding: 9px;
+    width: 85%;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: url(/images/products/formBG.png) repeat-x top left;
+    text-align: left;
+}
+
+/******************
+	PRM Coming Soon styles
+*******************/
+
+#comingSoon {
+	background: url(/images/products/comingSoonbg.png) no-repeat top left;
+	width: 354px; height: 137px;
+	display: block;
+	text-align: center;
+	padding: 30px 0 0 0;
+}
+
+#comingsoonForm {
+	margin: 15px auto;
+}
+
+	#comingsoonForm .shadowEditBox {
+		font-size: 110%;
+		height: 20px;
+		text-align: center;
+
+	}
+
+.comingSoonSubmitBtn {
+	background: url(/images/products/submitBtn.png) no-repeat top left;
+	width: 59px; height: 26px;
+	display: block;
+	margin: 5px auto;
+	position: relative;
+	background-position: 0 -26px;
+}
+
+.comingSoonSubmitBtn:hover {
+	background-position: 0 0;
+}
+
+
+
+/******************
+	PLANS page
+*******************/
+
+.subsbtn {
+	background: url(/images/sub_btn.png) no-repeat;
+	background-position: 0px 0px;
+	text-align:center;
+	display: block;
+	height: 29px; width: 62px;
+	float: none;
+	padding-bottom: 0;
+}
+.subsbtn:hover {
+	background-position: 0px -29px;
+}
+
+/******************
+	ACCOUNT SETTINGS UI STYLING
+*******************/
+
+#account_tabs {float:right; position:relative; top: 2px; right: 5px;}
+
+#account_tabs #tab_1 { background:url(../images/tab_general.png) top left no-repeat; width:87px; height:30px; float:right; position:relative; left:-11px; display:block;}
+#account_tabs #tab_1.active{
+	background-position: bottom left;
+	z-index:11;
+	left: -11px;
+}
+
+#account_tabs #tab_2 {
+	background:url(../images/tab_my_list.png) top left no-repeat;
+	width:89px;
+	height:30px;
+	float:right;
+	position:relative;
+	display:block;
+	z-index: 9;
+	left: 12px;
+}
+#account_tabs #tab_2.active{ background-position: bottom left; z-index:10; left: 12px;}
+
+#account_tabs #tab_3 {
+	background:url(../images/tab_my_productions.png) top left no-repeat;
+	width:107px;
+	height:30px;
+	float:right;
+	position:relative;
+	display:block;
+	z-index: 10;
+}
+#account_tabs #tab_3.active{ background-position: bottom left; z-index:12;}
+
+.form-wrap {
+	overflow: hidden;
+	background: #FFF url(/images/formBG.png) repeat-x;
+	border: 1px solid #d4d4d4;
+	margin-right: 10px;
+	padding: 20px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.prdct_name {
+    padding: 20px 10px 0px 20px;
+	font-size: 24px;
+	font-family: "Myriad Web Pro", "Myriad Pro Bold Cond";
+}
+
+	#add_btn {
+background: url(/images/add_btn.png) top left no-repeat;
+	display: block;
+	height: 42px;
+	width: 117px;
+	float: right;
+	margin-top: 70px;
+	margin-right: 8px;
+	margin-bottom: 20px;
+	}
+
+	#remove_btn {
+background: url(/images/remove_btn.png) top left no-repeat;
+	display: block;
+	height: 42px;
+	width: 174px;
+	float: right;
+	margin-top: 70px;
+	margin-right: 8px;
+	margin-bottom: 20px;
+	}
+
+	#produce_btn {
+background: url(/images/produce_ci_btn.png) top left no-repeat;
+	display: block;
+	height: 42px;
+	width: 158px;
+	float: right;
+	margin-top: 70px;
+	margin-right: 12px;
+	margin-bottom: 20px;
+	}
+
+
+.brd_nav {
+	background: url(/images/brdcrumb_middle.png) repeat-x;
+	width: 752px;
+	font-size: 1.1em;
+	font-weight: bold;
+	display:block;
+	float: left;
+	color: #555555;
+	text-transform:uppercase;
+	margin-top:30px;
+
+	}
+
+.brd_nav_leftedge {
+	display: block;
+	height: 34px; width: 10px;
+	float: left;
+	background: url(/images/brdcrumb_leftedge_no_table.png) no-repeat;
+
+}
+.brd_nav_rightedge {
+	display: block;
+	height: 34px; width: 10px;
+	background: url(/images/brdcrumb_rightedge_no_table.png) no-repeat;
+	float: right;
+}
+
+
+.brd_nav ul {
+width: 100%;
+}
+
+
+.brd_nav li {
+display: inline;
+float: left;
+
+}
+
+.brd_nav a {
+	padding: 6px 20px 0 10px;
+	text-decoration:none;
+	margin: 4px 0 0 0;
+	height: 25px;
+	display:block;
+	color: #555555;
+
+}
+
+.form-wrap label {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #080808;
+	display: block;
+	padding-bottom: 7px;
+}
+
+.form-wrap input {
+	display: block;
+	margin-bottom: 7px;
+}
+
+.form-wrap input.editbox1 {
+	float: none;
+	display: block;
+	background: url(/images/inputBG.png) repeat-x;
+	border: 1px solid #a2a1a1;
+	height:30px;
+	line-height: 26px;
+	font-size:12px;
+	color: #555555;
+	padding: 3px 0 0 3px;
+	width: 90%;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.form-wrap .col1 {
+	float: left;
+	width: 300px;
+
+}
+
+.form-wrap .col2 {
+	float: right;
+	width: 300px;
+	margin-right: 6px;
+
+}
+
+.actionBar {
+	float: right;
+	margin: 10px 10px 10px 0px;
+	clear: both;
+}
+
+	.actionBar ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	.actionBar li {
+		float: left;
+		line-height: 23px;
+		margin-left: 5px;
+		list-style-position: outside;
+	}
+
+
+	.actionBar a {
+		height: 20px;
+		color: #2b92b2;
+		text-decoration: underline;
+		line-height: 23px;
+		font-size: 11px;
+	}
+
+#subscriptions {
+	width: 100%;
+	margin-right: 6px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+tr.odd {
+	background: #b6d7f0;
+}
+
+#subscriptions th {
+	color: #FFF;
+	font-weight: bold;
+	font-size:13px;
+	height: 20px;
+	line-height: 30px;
+	background: #457b9e;
+}
+
+#subscriptions tr {
+	height: 30px;
+	border: 1px solid #FFF;
+	font-size: 11px;
+	text-align: center;
+}
+
+#subscriptions tr:hover {
+	background:#e1edf6 ;
+}
+
+#subscriptions th:hover {
+	background: #457b9e;
+}
+
+#subscriptions td, th {
+
+
+}
+
+#subscriptions #subsCat {
+	text-align: left;
+	padding-left: 15px;
+}
+
+/******************
+	RE-DESIGNED HOME PAGE STYLES
+*******************/
+
+#pagewrap_middle h1#homepageHeading1 { background: url(/images/home/homepageHeading1.png) no-repeat top left; display: block; height: 37px; width: 365px; float:left; text-indent: -9999px; margin: 0 0 0 22px;   }
+#pagewrap_middle p.introtext { display: block; margin: 0 0 0 20px; padding: 0 10px 0 3px; float: left; color: #D8D8D8; width: 500px; font-size: 13px; text-shadow: -1px -1px 1px #011018; }
+
+#pagewrap_middle .calltoaction {display: block; float: right; width: 240px; margin: 0 30px 0 0; }
+	#pagewrap_middle .calltoaction a.trynowBtn { background: url(/images/home/trynowBtn.png) no-repeat top left; display:block; height: 60px; width: 200px; text-indent: -9999px; }
+	#pagewrap_middle .calltoaction a.startBtn { background: url(/images/home/startBtn.png) no-repeat top left; display:block; height: 60px; width: 200px; text-indent: -9999px; }
+#pagewrap_middle .calltoaction p#trialMessage {background: url(/images/home/trialmessageh2.png) no-repeat top left; height: 24px; width: 226px; text-indent: -9999px; margin: 0 auto; }
+
+#mainShowcase {background: url(/images/home/mainShowcase.png) no-repeat top left; height:281px; width: 798px; display: block; overflow:hidden; position: relative; left: 23px; top: 0; z-index: 2;  }
+#mainShowcase #counterSection { position: relative; display: block; width: 250px; top: 90px; text-align: right; }
+#mainShowcase #counterSection h3 { font-size: 15px; }
+#mainShowcase #counterSection h4.smallcaps {font-size: 75%; text-transform: uppercase; color: #707070; font-weight: bold; }
+#mainShowcase #counterSection h4.smallcaps span {font-size: 70%;}
+#mainShowcase #counterSection p { position: relative; width: auto; float: none; margin: 0; padding: 0; text-shadow: none; color: #555555; }
+#mainShowcase #counterSection p.counters { font-size: 250%; font-weight: bold; margin: 15px 0 0 0; line-height: 100%; }
+
+a.rightLink {float: right; display: inline-block; font-size: 70%; font-weight: bold; margin: 0 20px 0 0;}
+	a.rightLink:hover {text-decoration: underline; }
+
+h5 {margin: 10px 0 5px 10px; }
+
+#logos { background: #FFF url(/images/home/s6Bg.png) no-repeat bottom left; margin: 20px 0 30px 0; padding: 0 10px; }
+	#s6 { height: 58px; width: 717px; margin: 20px 10px; }
+		ul.manufacturers {list-style:none; float: left; margin:0; padding: 0; height: 68px; width: 717px; overflow: hidden; }
+			ul.manufacturers li {float: left; margin: 0; }
+				ul.manufacturers img {border-right: 1px solid #EEE; }
+					ul.manufacturers img.last { border: none; }
+
+#s6nav, #s7nav {margin: 0 auto; text-align: center; display: block; position: relative; top: -10px; }
+
+#s6nav a, #s7nav a { position: relative; background: #FFF url(/images/home/lightCircle.png) no-repeat top left; display: inline-block; text-indent: -9999px; height: 8px; width: 8px; padding: 0 3px 0 0;  }
+	#s6nav a.activeSlide, #s7nav a.activeSlide {background: #FFF url(/images/home/darkCircle.png) no-repeat top left; }
+
+
+#products { background: #FFF url(/images/home/s7Bg.png) no-repeat bottom left; margin: 20px 0 30px 0; padding: 0 10px; overflow: hidden; }
+#s7 { position: relative; height: 185px; overflow: hidden; display: block; margin: 10px 0;  }
+ul.models { list-style-type: none; width: 740px; float: left; margin:0px; padding: 0;  background-color: transparent; }
+ul.models li { float: left; width: 22%; margin: 0; padding: 4px 11px; font-size: 65%; line-height: 13px; height: 25px; }
+
+
+.fieldWithErrors {
+  padding: 1px;
+  background-color: red;
+  display: table;
+}
+
+#loading_bar {
+  position:absolute;
+  width:300px;
+  top:320px;
+  left:50%;
+  margin-left:-150px;
+  text-align:center;
+  padding:7px 0 0 0;
+  z-index: 10;
+}
+
+/******************
+	WOM page
+*******************/
+
+p.intropoints {
+color:#C8C8C8;
+display:block;
+float:left;
+font-size:14px;
+line-height:30px;
+margin:0 0 0 22px;
+padding:0 10px 0 3px;
+text-shadow:-1px -1px 1px #011018;
+width:500px;
+}
+
+h1#wom_header {
+background:url("/images/wom/WOMpagemm.jpg") no-repeat scroll left top transparent;
+display:block;
+float:left;
+height:39px;
+margin:23px 0 0 22px;
+padding:0;
+text-indent:-9999px;
+top:10px;
+width:490px;
+}
+
+#one_bullet {
+background:url("/images/wom/one.png") no-repeat scroll left top transparent;
+width: 29px;
+height: 27px;
+position: relative;
+top: 62px;
+right: -20px;
+}
+
+#two_bullet {
+background:url("/images/wom/two.png") no-repeat scroll left top transparent;
+width: 29px;
+height: 27px;
+position: absolute;
+top: 92px;
+left: 20px;
+}
+
+#three_bullet {
+background:url("/images/wom/three.png") no-repeat scroll left top transparent;
+width: 29px;
+height: 27px;
+position: relative;
+top: 94px;
+right: -20px;
+}
+
+.prodnav_WOM {
+background:url("/images/wom/subnavWOMactive.jpg") no-repeat;
+display:block;
+positions: relative;
+height:50px;
+width:261px;
+}
+
+.prodnav_WOMin {
+background:url("/images/wom/subnavWOMinactive.jpg") no-repeat;
+positions: relative;
+display:block;
+height:50px;
+width:261px;
+}
+
+#wom_wrap{
+height: 360px;
+}
+
+#wom_left {
+float:left;
+width:300px;
+}
+
+#wom_mid {
+width: 200px;
+}
+
+#wom_right {
+float: right;
+width: 469px;
+}
+
+#womVideo {
+float:right;
+margin:0 5px 0 0;
+}
+
+p.scrollingtext {
+display:block;
+color: #000;
+font-size:14px;
+line-height:30px;
+margin:0 0 0 22px;
+text-shadow:-1px -1px 1px #c6c4c4;
+width:700px;
+}
+
+#basic2-modal-content {
+display:none;
+height: 600px;
+}
+
+/******************
+	end of WOM page
+*******************/
+a#fewAttributes {
+    display: block;
+    background: url('/images/product_reports/fewButtonNormal.png') no-repeat center; width: 126px;
+    height: 25px;
+    float: left;
+    margin-right: 28px;
+}
+a#fewAttributes:hover {
+    background: url('/images/product_reports/fewButtonHover.png') no-repeat center;
+    width: 126px;
+    height: 25px;
+}
+a#fewAttributes:active {
+    background: url('/images/product_reports/fewButtonActive.png') no-repeat center;
+    width: 126px;
+    height: 25px;
+}
+
+a#moreAttributes {
+    display: block;
+    background: url('/images/product_reports/moreButtonNormal.png') no-repeat center; width: 126px;
+    height: 25px;
+    float: left;
+    margin-left: 28px;
+}
+a#moreAttributes:hover {
+    background: url('/images/product_reports/moreButtonHover.png') no-repeat center;
+    width: 126px;
+    height: 25px;
+}
+a#moreAttributes:active {
+    background: url('/images/product_reports/moreButtonActive.png') no-repeat center;
+    width: 126px;
+    height: 25px;
+}
+
+a#apply {
+    display: block;
+    background: url('/images/product_reports/applyNormal.png') no-repeat center;
+    width: 80px;
+    height: 26px;
+    float: left;
+    cursor: pointer;
+    margin-right: 10px;
+}
+a#apply:hover {
+    background: url('/images/product_reports/applyHover.png') no-repeat center;
+    width: 80px;
+    height: 26px;
+}
+a#apply:active {
+    background: url('/images/product_reports/applyActive.png') no-repeat center;
+    width: 80px;
+    height: 26px;
+}
+a#default {
+    display: block;
+    background: url('/images/product_reports/defaultNormal.png') no-repeat center;
+    width: 79px;
+    height: 25px;
+    float: left;
+    cursor: pointer;
+}
+a#default:hover {
+    background: url('/images/product_reports/defaultHover.png') no-repeat center;
+    width: 79px;
+    height: 25px;
+}
+a#default:active {
+    background: url('/images/product_reports/defaultActive.png') no-repeat center;
+    width: 79px;
+    height: 25px;
+}
+
+a#pr_add {
+    display: block;
+    background: url('/images/product_reports/addNormal.png') no-repeat center;
+    width: 102px;
+    height: 26px;
+    float: left;
+    cursor: pointer;
+    margin-left: 181px;
+    margin-top: 3px;
+}
+a#pr_add:hover {
+    background: url('/images/product_reports/addHover.png') no-repeat center;
+    width: 102px;
+    height: 26px;
+}
+a#pr_add:active {
+    background: url('/images/product_reports/addActive.png') no-repeat center;
+    width: 102px;
+    height: 26px;
+}
+
+a#pr_aggregate {
+    display: block;
+    background: url('/images/product_reports/aggregateNormal.png') no-repeat center;
+    width: 102px;
+    height: 27px;
+    float: left;
+    cursor: pointer;
+}
+a#pr_aggregate:hover {
+    background: url('/images/product_reports/aggregateHover.png') no-repeat center;
+    width: 102px;
+    height: 27px;
+}
+a#pr_aggregate:active {
+    background: url('/images/product_reports/aggregateActive.png') no-repeat center;
+    width: 102px;
+    height: 27px;
+}
+
+
+#slider { float: left; margin-top: 8px; }
+#seekBar { width: 560px; margin: 0 auto; position: relative; z-index: 100;  padding-top: 35px}
+#attributes { width: 700px; float: left; margin: 50px 0 0 50px;}
+#attributes h4 { font-size: 16px; font-family: Helvetica; color: #a0a0a0; }
+#pr_checkboxes { margin-top: 25px; float: left; overflow-y: auto; height: 280px; width: 194px; position: relative; }
+
+#midColumn {  float: right; width: 282px; margin-top: 100px; }
+select#Select1 { width: 209px; height: 229px; background: url('/images/product_reports/selectBox.png') no-repeat; border: none; overflow:auto;  }
+select#Select1:focus { outline: none; }
+
+#toolTip { width: 165px; height: 35px; background: url('/images/product_reports/tooltip.png') no-repeat; float: left; margin-left: 115px; margin-top: -35px; display: none; position: absolute;}
+#Select1 { margin-left: 8px; margin-top: 20px; float:right; }
+
+#applySettings { display: block; width: 271px; height: 28px; background: url('/images/product_reports/applySettingsNormal.png') no-repeat; text-indent: -9999px; margin: 350px auto 0; }
+#applySettings:hover { background: url('/images/product_reports/applySettingsHover.png') no-repeat; }
+#applySettings:active { background:  url('/images/product_reports/applySettingsActive.png') no-repeat; }
+input#pr_text { width: 157px; height: 21px; background: url('/images/product_reports/input.png') no-repeat; border: none; padding: 1px 4px 1px 4px; margin: 2px 0 0 15px; font-family: Helvetica; font-size: 10px; font-style: italic; color: #a0a0a0; font-weight: bold; float: left;}
+input#pr_text:focus {outline: none;}
+#applyDiv { width: 170px; margin: 0 auto; padding-top: 5px; }
+
+#add-this-btn-prm {
+	width: 155px;
+	height: 60px;
+	margin-left: 150px;
+	position: absolute;
+	z-index: 1;
+	top: -5px;
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#add-this-btn-prm {
+		top: -5px;
+	}
+}

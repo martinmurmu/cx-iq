@@ -1,0 +1,65 @@
+<div id="add-review-page">
+  <div id="add-review-logo-title">
+    <h1>Review</h1>
+    <%= image_tag("logo-with-title.png",{:style => "border:none;margin-top:15px;"})
+  %>
+  </div>
+  <div id="add-review-desc">
+    <h2><%= @product.name %></h2>
+    <p>
+      We deeply care to learn about your experience with this product. This
+      knowledge will help the manufacturer to build better products, and help to
+      other consumers to make sound purchase decisions.
+      <br /><br />
+      The rating is optional
+    </p>
+  </div>
+  <div id ="add-rating-review">
+    <p>How would you rate it?</p>
+    <form>
+        <span id="stars-cap"></span>
+        <div id="stars-wrapper">
+          <select name="selrate" class="rating_score">
+                <option value="0.4">Very poor</option>
+                <option value="0.8">Not that bad</option>
+                <option value="1.2">Average</option>
+                <option value="1.6">Good</option>
+                <option value="2">Perfect</option>
+            </select>
+        </div>
+    </form>
+  </div>
+  <div id="add-review-form">
+    <p>Share your opinion</p><br />
+    <div id="add-review-textarea">
+      <% form_tag "/reviews", :id => "add-review" do %>
+        <%= text_area_tag("review[text]", nil, {:id => "add-review-text"}) %>
+        <%= hidden_field_tag("review[product_id]", @product.id) %>
+        <%= hidden_field_tag("review[csi_score]", 0) %>
+        <%= hidden_field_tag("review[reviewer_name]", @current_user.reviewer_name) %>
+        <%= image_submit_tag "finish-review.png", {:id => "add-review-finish-img"} %>
+      <span id="add-review-cancel">
+        <%= link_to(image_tag("cancel-review.png", {:style => "border:none;"}),
+						"/reviews?product_id=#{@product.id}") %>&nbsp;&nbsp;&nbsp;
+      </span>
+      <% end %>
+    </div>
+  </div>
+  <div id="add-review-tip">
+    <%= image_tag("tip-add-review-text.png", {:style => "border:none"}) %>
+  </div>
+</div>
+
+<%= stylesheet_link_tag '/css/jquery.ui.stars.css' %>
+<%= javascript_include_tag 'jquery-1.4.1.min', "jquery-ui-1.8.6.custom.min.js", 'jquery.ui.stars.js' %>
+<script>
+  jQuery.noConflict();
+  jQuery("#stars-wrapper").stars({
+    inputType: "select",
+    cancelShow: false
+  });
+
+  jQuery('.ui-stars-star').click(function() {
+    jQuery("#review_csi_score").val(jQuery(this).children("a").text());
+  });
+</script>

@@ -1,0 +1,44 @@
+#add-this-btn-prm {
+	margin-left: 0;
+	top: 3px;
+}
+
+#midColumn {
+	margin: 0 0 0 0;
+}
+
+#pagewrap_middle {
+	margin-bottom: -150px;
+}
+
+.content_bottom_ie7 {
+	height: 11px;
+	width: 797px;
+	background: url(/images/contbg_bottom.jpg) no-repeat;
+	margin-top: 25px !important;
+}
+
+#content_area {
+	overflow: auto;
+	padding-bottom: 3px !important;
+}
+
+#sort {
+	margin-top: 0px;
+}
+
+#just-click-here {
+	margin-top: 20px;
+}
+
+.pagination {
+	padding-bottom: 20px;
+}
+
+#add-review-desc {
+	margin-top: -130px;
+}
+
+#add-review-tip {
+	margin-top: -290px;
+	margin-right: 20px;

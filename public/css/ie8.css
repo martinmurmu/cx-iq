@@ -1,0 +1,18 @@
+.white-content-box {
+	behavior: url(javascripts/PIE.htc);
+}
+
+.nav-menu {
+	width: 470px;
+}
+
+#fancybox-outer{
+	top: 200.5px;
+	left: 552.5px;
+}
+
+#badge-best-web-tools {
+	position: absolute;
+	top: 430px;
+	right: 835px;
+}

@@ -1,0 +1,69 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+                  
+master:
+  id: 10
+  name: Categories
+  parent_id: NULL
+  attrib_right: 1
+  attrib_left: 18
+
+mp3_players:
+  id: 4140
+  name: MP3 Players & Accessories
+  parent_id: 4120
+  attrib_right: 16
+  attrib_left: 15
+
+laptops:
+  id: 3210
+  name: Laptops
+  parent_id: 2830
+  attrib_right: 22
+  attrib_left: 11
+
+digital_cameras: 
+  id: 2140
+  name: Digital Cameras
+  parent_id: 980
+  attrib_right: 4
+  attrib_left: 3
+
+card_readers:
+  id: 2920
+  name: Memory Card Readers
+  parent_id: 2840
+  attrib_right: 9
+  attrib_left: 8
+
+portables:
+  id: 4120
+  name: Portable Audio & Video
+  parent_id: 10
+  attrib_right: 17
+  attrib_left: 14
+
+computers:
+  id: 2830
+  name: Computers & Accessories
+  parent_id: 10
+  attrib_right: 13
+  attrib_left: 6
+
+cameras:
+  id: 980
+  name: Camera & Photo
+  parent_id: 10
+  products_count: 2
+  attrib_right: 5
+  attrib_left: 2
+
+computer_accessories:
+  id: 2840
+  name: Computer Accessories
+  parent_id: 2830
+  attrib_right: 10
+  attrib_left: 7
+  products_count: 2
+  
+  
+  

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%= render 'shared/head' %>
+<body>
+  <div id="loading_bar" style="display:none;"><img src="/images/loading.gif"></div>
+
+  <script
+  	type="text/javascript"
+  	src="<%= APP_CONFIG[:main_aai_site_url] -%>/widgets/widget_common.js">
+  </script>
+  <script
+  	type="text/javascript"
+  	src="<%= APP_CONFIG[:main_aai_site_url] -%>/widgets/reviews/reviewsController.js">
+  </script>
+  <script type="text/javascript" charset="utf-8">
+  	var reviews_widget_options = {};
+  	var reviews_widget = new __AAI.Widgets.reviews_widget(reviews_widget_options);
+  </script>
+
+
+  <div id="fullouterpagewrap">
+    <div style="position: relative">
+      <a id="Logo" name="Logo" href="/Home"></a>
+    </div>
+    <%= render 'shared/top_login' %>
+
+    <%= render 'shared/nav_menu' %>
+
+      <!--END Menu-->
+      <!--END Logo-->
+
+    <div id="small_pagewrap_top">
+    </div>
+    <div id="pagewrap_middle">
+
+    <% default_content_for :top_content_area do %>
+      <div id="content_top">
+        <div id="content_area">
+        </div>
+        <div id="message_area">
+        </div>
+      </div>
+    <% end %>
+
+	    <div id="content_middle">
+        <%= yield %>
+	    </div>
+
+	    <!--END ContentMiddle-->
+	    <div id="content_bottom" class="<%= @page_psa_setting ? 'content_bottom_ie7' : '' %>"></div>
+	    <!--END contentbottom-->
+	  </div>
+
+      <%= render 'shared/footer' %>
+    </div>
+
+<%= render 'shared/google_analytics' if RAILS_ENV == 'production' -%>
+
+<%#= render 'shared/get_satisfaction' -%>
+
+ </body>
+</html>

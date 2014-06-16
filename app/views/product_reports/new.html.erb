@@ -1,0 +1,124 @@
+<% if params[:auto] %>
+  <style>
+  body { display: none }
+  </style>
+  <%= javascript_include_tag "jquery-1.4.4.min" %>
+  <script>
+    function getCookie(name)
+    {
+      var re = new RegExp(name + "=([^;]+)");
+      var value = re.exec(document.cookie);
+      return (value != null) ? unescape(value[1]) : null;
+    }
+    $(function() {
+     var time = parseInt("<%= params[:time] %>")
+     var lastTime = getCookie("lastTime");
+     document.cookie = "lastTime="+time;
+     if(!lastTime || time>parseInt(lastTime)) {
+       $("form").submit();
+     } else {
+       history.back(1);
+     }
+    });
+  </script>
+
+<% end %>
+
+<% @page_title = 'Product Satisfaction Criteria - Amplified Analytics' -%>
+<% form_for(@product_report) do |f| %>
+  <%= f.error_messages %>
+<div id="main_wrap">
+  <br />
+  <img src="/images/prmir_beta_header.png" alt="Product Reputation Market Intelligence Reporter">
+  <div class="accordion_section">
+    <div class="accordion_bar">
+      <a style='position:absolute;font-size:18px;margin-top:7px;font-weight:bold;margin-left:25px;width:600px;color:#666;' href="#">Customization Menu</a><img src="/images/acc_head_right.png" style="float: right;" />
+      <img src="/images/acc_head_left2.png" />
+    </div>
+    <div class="clearer"></div>
+    <div id="criteria_wrap">
+      <div class="column">
+        <img style="float:left;" src="/images/1icon.png" />
+        <h2 class="filter_criteria_header">Select a Category or a List of Products</h2>
+        <div class="row_label" style="float: none; width: 100%; display:block;">
+          <label>Your subscribed Categories and saved Lists</label>
+        </div>
+        <br />
+        <%= product_category_select(@categories, @product_groups, @product_report.product_category) %>
+        <div class="row_label" style="float: none; width: 100%; display:block; padding-top: 3px;">
+          <a href="<%= categories_path -%>"><img src="/images/managecategories_btn.png" alt="Manage Subscriptions" /></a>
+        </div>
+        <br />
+        <div class="clearer"></div>
+        <img style="float:left;" src="/images/2icon.png" />
+        <h2 class="filter_criteria_header">Specify default properties (optional)</h2>
+        <label class="row_label" style="float: none; width: 100%; display:block;">Select a sort method</label><br />
+        <%= sort_method_select @product_report.sorting_field %>
+        <br />
+        <label class="row_label" style="float: none; width: 100%; display:block;">Select a primary sort order</label><br />
+        <%= sort_order_select @product_report.sorting_order%>
+      </div>
+      <div class="column" style="background: url(/images/colm_sep.png) no-repeat center left;">
+        <img style="float:left;" src="/images/3icon.png" />
+        <h2 class="filter_criteria_header">Specify any advanced filters (optional)</h2>
+        <label class="row_label">Manufacturer</label>
+        <div id="report_manufacturers_select">
+          <% if @product_report.category.blank? -%>
+            <%= manufacturer_select([]) %>
+          <% else %>
+            <%= manufacturer_select(@product_report.category.manufacturers, @product_report.manufacturer_ids) %>
+          <% end -%>
+        </div>
+        <div style="margin: 0 0 0 125px; width: 200px;font-size:110%">Ctrl-click to make multiple selections</div>
+        <br />
+        <label class="row_label">No. of reviews</label>
+        <%= number_of_reviews_select @product_report.number_of_reviews %>
+        <br />
+        <label class="row_label">Last update</label>
+        <%= last_updated_filter_select @product_report.last_updated_filter %>
+        <br />
+        <div class="row_label">
+          <label>CSI Range</label>
+          <%= image_tag '/images/question.gif', :id => 'csi_table_header', :class => 'product_report_q' %>
+        </div>
+        <%= rating_select 'csi_range', @product_report.attributes['csi_range'] %>
+        <br />
+        <div class="row_label">
+          <label>PFS Range</label>
+          <%= image_tag '/images/question.gif', :id => 'pfs_table_header', :class => 'product_report_q' %>
+        </div>
+        <%= rating_select 'pfs_range', @product_report.attributes['pfs_range'] %>
+        <br />
+        <div class="row_label">
+          <label>PRS Range</label>
+          <%= image_tag '/images/question.gif', :id => 'prs_table_header', :class => 'product_report_q' %>
+        </div>
+        <%= rating_select 'prs_range', @product_report.attributes['prs_range'] %>
+        <br />
+        <div class="row_label">
+          <label>PSS Range</label>
+          <%= image_tag '/images/question.gif', :id => 'pss_table_header', :class => 'product_report_q' %>
+        </div>
+        <%= rating_select 'pss_range', @product_report.attributes['pss_range'] %>
+        <br />
+        <script type="text/javascript" charset="utf-8">
+        new Tip('csi_table_header', "<b>Customer Satisfaction Index</b><br>The Customer Satisfaction Index is an aggregate measurement of the delta between a customer’s expectation of a product and their actual experience with it.", {effect: 'blind', hook: { tip: 'bottomLeft', target: 'topRight' }, offset: { x: -10, y: -1 }, stem: 'bottomLeft'});
+        new Tip('pfs_table_header', '<b>Product Functionality Score</b><br>This metric reflects the level of customer satisfaction with respect to the product meeting their expectations in terms of functionality, design and appearance.', {effect: 'blind', hook: { tip: 'bottomLeft', target: 'topRight' }, offset: { x: -10, y: -1 }, stem: 'bottomLeft'});
+        new Tip('prs_table_header', '<b>Product Reliability Score</b><br>This metric reflects the level of customer satisfaction with the product longevity and ability to perform as expected.', {effect: 'blind', hook: { tip: 'bottomLeft', target: 'topRight' }, offset: { x: -10, y: -1 }, stem: 'bottomLeft'});
+        new Tip('pss_table_header', '<b>Product Support Score</b><br>This metric reflects the level of customer satisfaction with all interactions involving the product ownership experience.', {effect: 'blind', hook: { tip: 'bottomLeft', target: 'topRight' }, offset: { x: -10, y: -1 }, stem: 'bottomLeft'});
+        </script>
+      </div>
+      <div class="clearer"></div>
+      <%= image_submit_tag("/images/gen_rpt_btn.jpg", :style=>"float: right; padding: 5px 5px;") %>
+      <div class="clearer"></div>
+    </div>
+  </div>
+
+  <div class="accordion_section">
+    <div class="accordion_bar">
+      <img src="/images/acc_head_left.png" /><img src="/images/acc_resultsheader.png"/><img src="/images/acc_head_right.png" style="float: right;" />
+    </div>
+  </div>
+</div>
+
+<% end %>

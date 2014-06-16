@@ -1,0 +1,61 @@
+<%= javascript_include_tag "jquery-1.4.4.min.js", "swfobject.js" %>
+
+      <div id="flash_content_1" class="open_flash_chart"></div>
+      <script type="text/javascript">
+        swfobject.embedSWF("/open-flash-chart.swf", "flash_content_1", "480", "220", "9.0.0", "expressInstall.swf",{"data-file":
+        "<%= CGI.escape(url_for(:action=>:customer_satisfaction_data, :url => params[:url])) %>"});
+      </script>
+      <img src=/images/scale_legend.png style='width:120px'>
+      <br>
+      <div class=period_links>
+      <% (0..(@data[:links].count-1)).each do |i| %>
+      <div class=period_link><a target=_blank href='<%= @data[:links][i] %>'><%= @data[:labels][i] %></a></div>
+      <% end %>
+      </div>
+      <br><div style='clear:both'></div>
+
+      <div id="flash_content_2" class="open_flash_chart"></div>
+      <script type="text/javascript">
+        swfobject.embedSWF("/open-flash-chart.swf", "flash_content_2", "480", "220", "9.0.0", "expressInstall.swf",{"data-file":
+        "<%= CGI.escape(url_for(:action=>:number_of_reviews_data, :url => params[:url])) %>"});
+      </script>
+
+
+
+<%= @content %>
+<% if !params[:big] %>
+  <div style='width:280px;height:220px;overflow:auto;float:left'>
+  <% i=0 %>
+  <% @products.each do |p| %>
+    <%= i+=1 %>. <a class=attribute target=chart_frame href='<%= p[:href] %>'><%= p[:html] %></a><br>
+  <% end %>
+  </div>
+  <iframe style='width:700px;height:300px;overflow:hidden;float:left' name=chart_frame frameBorder=0>
+  </iframe>
+<% end %>
+
+<%# if params[:big] %>
+  <%# @products.each do |p| %>
+<!--    <iframe style='width:800px;height:240px;overflow:hidden;' src='<%#= p[:href] %>' frameBorder=0></iframe> -->
+  <%# end %>
+<%# end %>
+
+<script>
+  $(function() {
+    product = $("h3").first().html();
+    product = $.trim(product.replace("Product:",""));
+    $("<title>"+product+"</title>").prependTo($("body"));
+    product = '"'+product+'"';
+    product += " Satisfaction Trending Report";
+    $("h3").first().html(product);
+
+    $("h3").first().detach().prependTo($("body"));
+
+    //$("h2").first().detach().prependTo($("body"));
+    $("table").first().hide();
+    $("table:eq(1), img[src$='scores.jpg'], img[src$='reviews.jpg']").hide();
+//    $("iframe").attr('src',$('a.attribute').first().attr('href'));
+    $('h2').remove();
+  });
+
+</script>  

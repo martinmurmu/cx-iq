@@ -1,0 +1,53 @@
+<p>
+  <b>Product category:</b>
+  <%=h @product_report.product_category_id %>
+</p>
+
+<p>
+  <b>Manufacturer:</b>
+  <%=h @product_report.manufacturer_id %>
+</p>
+
+<p>
+  <b>Sorting field:</b>
+  <%=h @product_report.sorting_field %>
+</p>
+
+<p>
+  <b>Sorting order:</b>
+  <%=h @product_report.sorting_order %>
+</p>
+
+<p>
+  <b>Number of reviews:</b>
+  <%=h @product_report.number_of_reviews %>
+</p>
+
+<p>
+  <b>Csi range:</b>
+  <%=h @product_report.csi_range %>
+</p>
+
+<p>
+  <b>Pfs range:</b>
+  <%=h @product_report.pfs_range %>
+</p>
+
+<p>
+  <b>Prs range:</b>
+  <%=h @product_report.prs_range %>
+</p>
+
+<p>
+  <b>Pss range:</b>
+  <%=h @product_report.pss_range %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @product_report.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_report_path(@product_report) %> |
+<%= link_to 'Back', product_reports_path %>

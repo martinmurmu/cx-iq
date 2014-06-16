@@ -1,0 +1,38 @@
+<h1>Listing product_reports</h1>
+
+<table>
+  <tr>
+    <th>Product category</th>
+    <th>Manufacturer</th>
+    <th>Sorting field</th>
+    <th>Sorting order</th>
+    <th>Number of reviews</th>
+    <th>Csi range</th>
+    <th>Pfs range</th>
+    <th>Prs range</th>
+    <th>Pss range</th>
+    <th>User</th>
+  </tr>
+
+<% @product_reports.each do |product_report| %>
+  <tr>
+    <td><%=h product_report.product_category_id %></td>
+    <td><%=h product_report.manufacturer_id %></td>
+    <td><%=h product_report.sorting_field %></td>
+    <td><%=h product_report.sorting_order %></td>
+    <td><%=h product_report.number_of_reviews %></td>
+    <td><%=h product_report.csi_range %></td>
+    <td><%=h product_report.pfs_range %></td>
+    <td><%=h product_report.prs_range %></td>
+    <td><%=h product_report.pss_range %></td>
+    <td><%=h product_report.user_id %></td>
+    <td><%= link_to 'Show', product_report %></td>
+    <td><%= link_to 'Edit', edit_product_report_path(product_report) %></td>
+    <td><%= link_to 'Destroy', product_report, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New product_report', new_product_report_path %>

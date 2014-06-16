@@ -1,0 +1,40 @@
+/* Checkboxes */
+span.attr_holder{
+  display: block;
+  height: 25px;
+}
+label.checkbox_checked {
+	background: #fff url(/images/product_reports/tick.png) no-repeat;
+	margin: 10px 0;
+	padding-left: 25px;
+        padding-bottom: 5px;
+    
+}
+label.checkbox_unchecked  {
+	background: #fff url(/images/product_reports/cross.png) no-repeat;	
+	margin: 10px 0;
+	padding-left: 25px;
+        padding-bottom: 5px;
+}
+
+span.attr_imp{
+    
+}
+
+/* Hover State */
+label:hover{
+	color: #575B60;
+}
+
+label.highlighted {
+	border: 1px solid #333;
+}
+
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+/* STOP EDITTING - DO NOT CHANGE OR REMOVE        */
+.crirHidden {
+	position: absolute;
+	left: -1000px;
+}
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+

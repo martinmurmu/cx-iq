@@ -1,0 +1,91 @@
+<% @page_title = "Customer Intelligence for #{@product_info["PRODUCT NAME"]}" if @product_info%>
+<style>
+  .content-wrap > .content {
+    height: auto;
+    min-height: 320px;
+  }
+</style>
+
+<% if err = flash[:error] %>
+  <div id="flash_error" style="width: 890px; height: auto; margin: 30px auto">
+    <%= err %>
+  </div>
+<% else %>
+  <%=  %>
+  <center>
+  <h1 id="head-cia-report" style='font-size:26px'>Customer Experience (CX) Analysis Dashboard</h1>
+</center>
+  <%= render :partial => "psa_report_chart",
+    :locals =>{
+    :chart_container => "psa_report_chart_container",
+    :product_info => @product_info,
+    :attributes_info => @attributes_info
+  } %>
+  <div class="cia-ico-position">
+    <div id="csv-report">
+      <%= link_to image_tag("csv_file.png"),
+        {:controller => "newreports", :action => "psa_report_csv", :old_report => params[:old_report]} %>
+    </div>
+  </div>
+  <div id="psa_report_chart_container">
+  </div>
+  <!-- AddThis Button BEGIN -->
+  <div id="add-this-cust-cia">
+    <div id="customize-cia-report">
+      <%= link_to(image_tag("button-cust-report.png"), produce_psa_report_settings_product_path(@product)) -%>
+    </div>
+    <div id="cia-report-video-thumb">
+    </div>
+    <div id="add-this-cia-btn">
+      <script type="text/javascript">
+        var addthis_config = {
+          services_exclude: 'print'
+        }
+      </script>
+      <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_compact"></a>
+      </div>
+      <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e7b48114c64d7b1"></script>
+    </div>
+  </div>
+  <!-- AddThis Button END -->
+<% end %>
+<% unless current_user.paying_customer? %>
+<div style="display:none">
+	<div id="cust-msg">This function is available only to our customers. Please <a id="cust-msg-contact" href="/Contact-Us">contact us</a> for a quote.</div>
+</div>
+<% end %>
+<% content_for :header do -%>
+  <script type="text/javascript">
+    $(function() {
+			<%= "$('#cust-cia-report').fancybox();" unless current_user.paying_customer? %>
+      $(".watch-video").click(function() {
+        $.fancybox({
+          'padding'		: 0,
+          'autoScale'		: false,
+          'transitionIn'	: 'none',
+          'transitionOut'	: 'none',
+          'title'			: this.title,
+          'width'			: 640,
+          'height'		: 385,
+          'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+          'type'			: 'swf',
+          'swf'			: {
+            'wmode'				: 'transparent',
+            'allowfullscreen'	: 'true'
+          }
+        });
+
+        return false;
+      });
+    });
+  </script>
+	<style>
+		#fancybox-title-wrap {
+			display: none;
+		}
+	</style>
+<% end -%>

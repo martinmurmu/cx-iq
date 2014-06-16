@@ -1,0 +1,53 @@
+<%= stylesheet_link_tag '/css/additional.css' %>  
+
+<% content_for :top_content_area do -%>
+    <div id="content_top">
+      <div id="content_area">
+        <h1><%= @product.name %></h1>
+        <h2>Product Management</h2>
+      </div>
+      <div id="message_area">
+      </div>
+    </div>
+<% end -%>
+
+<div id="content_area">
+  <br /><br />
+  <div class="prd_panel_left">
+    <table border='0' width='500px'>
+      <tr>
+        <th width='30%'></th>
+        <th width='70%'></th>
+      </tr>
+      <tr>
+        <td><b>Category:</b></td>
+        <td class="subscribed_categories"><%= name_with_ancestors @product.try(:categories).try(:[],0) -%></td>
+      </tr>
+      <tr>
+        <td><b>Manufacturer</b></td>
+        <td><%= @product.try(:manufacturer) -%></td>
+      </tr>
+      <tr>
+        <td><b>Number of reviews</b></td>
+        <td><%= link_to @product.try(:reviews).try(:size), product_reviews_path(@product), :target => '_blank' -%></td>
+      </tr>
+    </table>
+  </div>
+  <div class="prd_panel_right">
+    <%= render 'v2p_accelerator/widget' -%>
+  </div>  
+
+  <div class="clearer"></div>
+  <div id="table_products"></div>
+  <div class="clearer"></div>
+  <!--end form-wrap-->
+
+  <% if user_signed_in? -%>
+    <% unless current_user.my_products.include?(@product) -%>
+    <div><%= link_to_remote "Add to My Products", :url => { :controller => 'product_groups', :action => "create_my_product", :product_id => @product.id }, :html => {:id=>"add_btn",:class=>"button_yellow",:style=>"width:140px !important;height:20px;margin-right:20px;"} -%></div>
+    <% else -%>
+    <div><%= link_to '', produce_psa_report_settings_product_path(@product), :id=>"produce_btn" -%></div>
+    <% end -%>
+    <div class="clearer"></div>
+  <% end -%>
+</div>
