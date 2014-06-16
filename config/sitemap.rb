@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.amplifiedanalytics.com"
+SitemapGenerator::Sitemap.default_host = "http://www.cx-iq.com"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemap/'
 
 SitemapGenerator::Sitemap.create do

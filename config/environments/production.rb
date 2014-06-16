@@ -28,7 +28,7 @@ config.action_view.cache_template_loading            = true
 # config.threadsafe!
 
 config.action_controller.session = {
-  :host => "amplifiedanalytics.com"
+  :host => "cx-iq.com"
 }
 
-config.action_mailer.default_url_options = { :host => 'amplifiedanalytics.com' }
+config.action_mailer.default_url_options = { :host => 'cx-iq.com' }
