@@ -18,7 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :cron_log, "/home/production/cx-iq.com/current/log/cron_log.log"
+set :cron_log, "/home/production/amplifiedanalytics.com/current/log/cron_log.log"
 
 every 2.hours do
   rake "ferret:rebuild INDEXES=product"

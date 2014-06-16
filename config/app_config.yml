@@ -3,7 +3,7 @@ defaults: &defaults
   main_aai_site_url: http://svc2.amplifiedanalytics.com
   main_aai_site_url_postfix:
   report_generator: /Users/dd4/NetBeansProjects/AAI/report_generator/review_builder
-  hostname: http://www.cx-iq.com
+  hostname: http://www.amplifiedanalytics.com
   iq_hostname: http://qcamplifiedanalytics.iq2020.com
   notifications_email: talrep@gmail.com
 
@@ -18,7 +18,7 @@ production:
   notifications_email: greg@amplifiedanalytics.com
   <<: *defaults
 staging:
-  hostname: http://staging.cx-iq.com
+  hostname: http://aai-ror-staging.amplifiedanalytics.com
   iq_hostname: http://qcamplifiedanalytics.iq2020.com
   report_generator: /home/staging/report_generator/review_builder
   <<: *defaults

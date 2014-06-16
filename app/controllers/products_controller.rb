@@ -234,7 +234,7 @@ class ProductsController < ApplicationController
   end
 
   def produce_trending_report
-		@@server_name = "staging.cx-iq.com" #request.env["SERVER_NAME"]
+		@@server_name = "aai-ror-staging.amplifiedanalytics.com" #request.env["SERVER_NAME"]
     @product = Product.find params['id']
     if !@product.reviews.exists?(['recieve_date <= ? AND recieve_date >= ?', TrendingReportGenerator.generate_quarters.first[1], TrendingReportGenerator.generate_quarters.last[1]])
       render 'products/no_sufficient_data', :layout => "application_internal_as_all"

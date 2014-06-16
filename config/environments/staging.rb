@@ -27,6 +27,6 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 config.action_controller.session = {
-  :host => "staging.cx-iq.com"
+  :host => "aai-ror-staging.amplifiedanalytics.com"
 }
-config.action_mailer.default_url_options = { :host => 'staging.cx-iq.com' }
+config.action_mailer.default_url_options = { :host => 'aai-ror-staging.amplifiedanalytics.com' }

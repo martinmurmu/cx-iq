@@ -1,4 +1,4 @@
-set :application, "cx-iq.com"
+set :application, "aai_ror_staging.cx-iq.com"
 #set :repository,  "https://jetcharter.unfuddle.com/svn/jetcharter_dm/trunk/web"
 # Use Git source control
 set :scm, :git

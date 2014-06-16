@@ -8,7 +8,7 @@ class PaperDownloadsController < ApplicationController
     @paper_download = PaperDownload.new(params[:paper_download])
     captcha_ok = verify_nice_captcha #to generate 'try again' on recaptcha
     @paper_download.errors.add_to_base "Wrong captcha" if !captcha_ok
-    @paper_download.paper_link = "http://www.cx-iq.com/pdfs/recipe_for_revenue_growth.pdf"
+    @paper_download.paper_link = "http://www.amplifiedanalytics.com/pdfs/recipe_for_revenue_growth.pdf"
         
     if captcha_ok and @paper_download.save
       UserMailer.deliver_paper_download(@paper_download)

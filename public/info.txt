@@ -1,9 +1,9 @@
 # Contact info submission
 
-url: http://www.cx-iq.com
+url: http://www.amplifiedanalytics.com
 site owner: Amplified Analytics
 country:UK  
 phone: 415-373-2627 
-site_name: http://www.cx-iq.com
+site_name: http://www.amplifiedanalytics.com
 title: Amplified Analytics | Online marketing research
 description: Online marketing research software and service focused on customers' opinion mining, voice of customer analysis and customer satisfaction measurements         
