@@ -79,7 +79,7 @@ class V2pAcceleratorController < ApplicationController
       end
 
       if @errors.count == 0
-         recipient = 'greg@amplifiedanalytics.com'
+         recipient = 'greg@cx-iq.com'
          recipient = 'nazar.kuliev@gmail.com' if root_url.include? "localhost"
          #recipient = 'dmitry.verk@gmail.com'
 

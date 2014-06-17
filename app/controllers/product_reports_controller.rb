@@ -30,7 +30,7 @@ class ProductReportsController < ApplicationController
   def psa_report_completion
     user = User.find params[:user_id]
     product = Product.find params[:product_id]
-    UserMailer.deliver_psa_report_completion(user, "http://svc2.amplifiedanalytics.com/opinion/tmp/reports/#{user.id}/#{product.id}/REPORT.html")
+    UserMailer.deliver_psa_report_completion(user, "http://svc2.cx-iq.com/opinion/tmp/reports/#{user.id}/#{product.id}/REPORT.html")
 
     render :text => "ok"
   end

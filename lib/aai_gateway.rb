@@ -20,7 +20,7 @@ class AaiGateway
   end
 
   def self.psa_request(user_id, product_id)
-    url = URI.parse("http://svc2.amplifiedanalytics.com")
+    url = URI.parse("http://svc2.cx-iq.com")
     res = Net::HTTP.start(url.host, url.port) {|http|
       http.get(URI.encode("/seam/resource/services-v1/opinion/product?product=#{product_id}&user=#{user_id}"))
     }

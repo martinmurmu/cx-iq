@@ -1,6 +1,6 @@
 defaults: &defaults
   min_number_of_categories: 20
-  main_aai_site_url: http://svc2.amplifiedanalytics.com
+  main_aai_site_url: http://svc2.cx-iq.com
   main_aai_site_url_postfix:
   report_generator: /Users/dd4/NetBeansProjects/AAI/report_generator/review_builder
   hostname: http://www.cx-iq.com
@@ -15,7 +15,7 @@ development:
 production:
   report_generator: /home/production/report_generator/review_builder
   iq_hostname: http://ampanalytics.iq2020.com
-  notifications_email: greg@amplifiedanalytics.com
+  notifications_email: greg@cx-iq.com
   <<: *defaults
 staging:
   hostname: http://staging.cx-iq.com
