@@ -98,9 +98,9 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true,
   :address => 'smtp.gmail.com',
   :port => 587,
-  :domain => 'cx-iq.com',
+  :domain => 'amplifiedanalytics.com',
   :authentication => :plain,
-  :user_name => 'support@cx-iq.com',
+  :user_name => 'support@amplifiedanalytics.com',
   #:password => 'sdf'
   :password => 'felicia777'
 }

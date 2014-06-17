@@ -61,7 +61,7 @@ class UserMessagesController < ApplicationController
     respond_to do |format|
       if @user_messages.save
 
-	    recipient = 'greg@cx-iq.com'
+	    recipient = 'greg@amplifiedanalytics.com'
 	    #recipient = 'talrep@gmail.com'
 	    subject = "New Contact message"
 	    message = "From: #{@user_messages.name}\n Email: #{@user_messages.email}\nCompany: #{@user_messages.company}\nMessage:\n#{@user_messages.message}"

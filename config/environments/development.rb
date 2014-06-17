@@ -17,6 +17,6 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 
 config.action_controller.session = {
-  :host => "aailocal.cx-iq.com"
+  :host => "aailocal.amplifiedanalytics.com"
 }
-config.action_mailer.default_url_options = { :host => 'aailocal.cx-iq.com' }
+config.action_mailer.default_url_options = { :host => 'aailocal.amplifiedanalytics.com' }

@@ -49,7 +49,7 @@ class WomRequestsController < ApplicationController
 
     respond_to do |format|
       if captcha_ok and @wom_request.save
-        recipient = 'greg@cx-iq.com'
+        recipient = 'greg@amplifiedanalytics.com'
 	    subject = "New WOM request message"
 	    message = "Email: #{@wom_request.email}\nCompany: #{@wom_request.company_name}\nProduct Name:\n#{@wom_request.product_name}\nCompetitor1: #{@wom_request.competitor_a}\nCompetitor2: #{@wom_request.competitor_b}\nCompetitor3: #{@wom_request.competitor_c}\nCompetitor4: #{@wom_request.competitor_d}\nUpdate Frequency: #{@wom_request.update_frequency}"
         Emailer.deliver_wom_request(recipient, subject, message)
