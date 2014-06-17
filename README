@@ -8,7 +8,7 @@ Ferret server is used for autocomplete in some dropdown lists (seems started aut
 BACKGROUND WORKER
 
 reports are produced in background, to start background worker:
-"cd /home/production/amplifiedanalytics.com/current;RAILS_ENV=production script/delayed_job restart"
+"cd /home/production/cx-iq.com/current;RAILS_ENV=production script/delayed_job restart"
 This command is executed automatically on reboot with root cron (@reboot command).
 
 It should be started by "production" user (in theory), but for some reason (permission problems)
@@ -20,7 +20,7 @@ automatically, so should be restarted manually.
 
 DEPLOY
 
-branch master to be deployed to amplifiedanalytics.com
+branch master to be deployed to cx-iq.com
 with "cap production deploy"
 
 branch staging to be deployed to staging.cx-iq.com
