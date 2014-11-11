@@ -1,7 +1,7 @@
 #require "acts_as_ferret"
 
 class Product < ActiveRecord::Base
-  set_table_name "product"
+  self.table_name = "product"
   has_many :product_category
   has_many :categories, :through => :product_category
   has_many :reviews
@@ -14,25 +14,25 @@ class Product < ActiveRecord::Base
 
 #  acts_as_ferret :fields => [ :name ]
 
-  comma do
+  #comma do
 
-    name
-    manufacturer_name_from_preloaded_list 'Manufacturer'
-    csi_score
-    functionality_score
-    reliability_score
-    support_score
-    number_of_reviews
+  #  name
+  #  manufacturer_name_from_preloaded_list 'Manufacturer'
+  #  csi_score
+  #  functionality_score
+  #  reliability_score
+  #  support_score
+  #  number_of_reviews
 
-  end
+  #end
 
-  comma :nps do
-    name
-    manufacturer_name_from_preloaded_list 'Manufacturer'
-    nps_score
-    last_update
-    number_of_reviews
-  end
+  #comma :nps do
+  #  name
+  #  manufacturer_name_from_preloaded_list 'Manufacturer'
+  #  nps_score
+  #  last_update
+  #  number_of_reviews
+  #end
 
   def number_of_reviews
     @number_of_reviews ||= reviews_count

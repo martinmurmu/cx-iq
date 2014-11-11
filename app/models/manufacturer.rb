@@ -1,7 +1,7 @@
 class Manufacturer < ActiveRecord::Base
-  set_table_name "manufacturer"
+  self.table_name = "manufacturer"
   has_many :products
-  default_scope :conditions => 'hidden = 0'
+  default_scope ->{ where hidden: 0 }
   
   def to_s
     name

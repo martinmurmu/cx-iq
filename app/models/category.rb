@@ -1,10 +1,10 @@
 class Category < ActiveRecord::Base
-  set_table_name "category"
+  self.table_name = "category"
   has_many :product_categories, :dependent => :destroy
   has_many :products, :through => :product_categories
   has_many :product_reports, :as => :category
   has_many :sent_reports, :as => :category
-  acts_as_tree :order => "name"
+  #acts_as_tree :order => "name"
   
   def manufacturers
     q = "SELECT `manufacturer`.* FROM `manufacturer`  INNER JOIN `product` ON `manufacturer`.id = `product`.manufacturer INNER JOIN `product_category` ON `product`.id = `product_category`.product_id   WHERE ((`product_category`.category_id = #{id}))  GROUP BY `manufacturer` ORDER BY `manufacturer`.name"

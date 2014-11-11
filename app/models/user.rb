@@ -2,10 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :registerable, :database_authenticatable, :confirmable, :recoverable,
-         :rememberable, :trackable, :validatable, :lockable, :token_authenticatable
+         :rememberable, :trackable, :validatable, :lockable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :last_name, :first_name, :terms_of_service, :company
+  # attr_accessible :email, :password, :password_confirmation, :last_name, :first_name, :terms_of_service, :company
 
   validates_acceptance_of :terms_of_service, :accept => "1"
 
@@ -18,16 +18,16 @@ class User < ActiveRecord::Base
   has_many :nps_reports
 
   has_many :sent_reports
-  has_many :product_groups, :conditions => {:one_product_group => false}
+  has_many :product_groups,  ->{ where one_product_group: false}
 
-  has_many :my_one_product_groups, :class_name => 'ProductGroup', :conditions => {:one_product_group => true}
+  has_many :my_one_product_groups, ->{ where one_product_group: true }, class_name: 'ProductGroup'
 
   has_one :limitation
 
   after_create :add_default_roles
   after_create :add_legacy_user
 
-  default_value_for :send_review_updates, true
+  #default_value_for :send_review_updates, true
   
   def full_name
     [first_name, last_name].join ' '
