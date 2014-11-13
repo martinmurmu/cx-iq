@@ -44,7 +44,7 @@
         	<div class="logo"><a href="http://www.amplifiedanalytics.com/"><img src="/images/cx_logo.png" alt="Amplified Analytics" border="0" /></a></div>
             <div class="login-menu">
             	<ul>
-            	    <% if user_signed_in? -%>
+            	    <% unless current_user.guest? -%>
           	        <li>
                       <a href=<%= new_user_registration_path %>>Register</a>
                       </li>
@@ -105,7 +105,7 @@
             </div>
         </div>
     </div>
-    <%= render 'shared/google_analytics' if RAILS_ENV == 'production' -%>
+    <%= render 'shared/google_analytics' if Rails.env == 'production' -%>
     <%#= render 'shared/get_satisfaction' -%>
 </body>
 </html>

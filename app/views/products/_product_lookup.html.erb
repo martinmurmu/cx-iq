@@ -8,7 +8,7 @@
     <table width="100%" style='height:60px;' >
       <tr>
         <td width="70%" rowspan=2>
-          <%= text_field_with_auto_complete :product, :name, :tabindex=>"0", :class=>"longEditbox", :value => params["product"].blank? ? "" : params["product"], :name => 'product' %>
+          <%= text_field :name, autocomplete: product_groups_autocomplete_product_name_path, :tabindex=>"0", :class=>"longEditbox", :value => params["product"].blank? ? "" : params["product"], :name => 'product' %>
         </td>
         <td width="10%" class="product_lookup_selector">
         </td>

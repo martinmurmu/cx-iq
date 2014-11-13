@@ -18,7 +18,7 @@
 </h1><hr />
 </div>
 <div class="sign-up-form">
-  <% form_for @paper_download do |f| -%>
+  <%= form_for @paper_download do |f| -%>
     <input type=hidden name=type value="<%= params[:type] %>">
     <div style='position:absolute;margin-left:430px;margin-top:32px;color:#888;'>We respect your privacy.</div>
 	   <% if params[:type]=='brand_cx_analysis' %>
@@ -46,7 +46,11 @@
     <table>
       <tr>
         <td>
-          <%= f.error_messages %>
+          <ul>
+            <% @paper_download.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
         </td>
       </tr>
       <tr>

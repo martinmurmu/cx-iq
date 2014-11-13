@@ -77,7 +77,7 @@
             <div class="nav-menu">
             	<ul>
                 	<li><a href="/" class=<%= @menu_current == 'home' ? 'menu-current':'' %>>Home</a></li>
-                    <li><a href="/Products" class=<%= @menu_current == 'products' ? 'menu-current':'' %>>Products</a></li>
+                    <li><a href="/products" class=<%= @menu_current == 'products' ? 'menu-current':'' %>>Products</a></li>
                     <li><a href="/Services" class=<%= @menu_current == 'services' ? 'menu-current':'' %>>Services</a></li>
                     <li><a href="/Methodology" class=<%= @menu_current == 'methodology' ? 'menu-current':'' %>>Methodology</a></li>
                     <li><a href="http://blog.amplifiedanalytics.com/">Blog</a></li>
@@ -116,7 +116,7 @@
             </div>
         </div>
     </div>
-    <%= render 'shared/google_analytics' if RAILS_ENV == 'production' -%>
+    <%= render 'shared/google_analytics' if Rails.env == 'production' -%>
     <%#= render 'shared/get_satisfaction' -%>
 </body>
 </html>

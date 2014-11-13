@@ -83,8 +83,8 @@ class ProductsController < ApplicationController
       end
       return
     else
-      @products = Product.paginate :page => params[:page], :order => 'name ASC', :per_page => 20
-      @manufacturers = Manufacturer.names_by_ids(@products.map{|p| p.attributes['manufacturer']})
+      @products = Product.order('name asc').paginate :page => params[:page], :per_page => 20
+      @manufacturers = Manufacturer.where("id in (?)", @products.map{|p| p.attributes['manufacturer']}).collect(&:name)
     end
 
     respond_to do |format|

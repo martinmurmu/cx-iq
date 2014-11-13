@@ -5,7 +5,7 @@ class ProductGroup < ActiveRecord::Base
   has_many :product_reports, :as => :category
 #  has_many :manufacturers, :through => :product_groupings
 
-  default_value_for :one_product_group, false
+  #default_value_for :one_product_group, false
 
   validates_uniqueness_of :name, :scope => :user_id
   validates_length_of :name, :in => 1..50, :allow_nil => false

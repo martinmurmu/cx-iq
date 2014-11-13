@@ -6,6 +6,7 @@ class ProductGroupsController < ApplicationController
   before_filter :verify_paying_customer, :only => [:index, :my_products]
   require 'open-uri'
 
+  autocomplete :product, :name
 
   def auto_complete_for_product_name
     product_name = params["product"].try(:[],"name") || params["product"]
@@ -94,7 +95,7 @@ class ProductGroupsController < ApplicationController
   end
 
   def index
-    @groups = current_user.product_groups.all :order => 'name'
+    @groups = current_user.product_groups.all.order('name')
   end
 
   def my_products
@@ -107,7 +108,7 @@ class ProductGroupsController < ApplicationController
       if !params[:product].blank?
         @products = Product.find_with_ferret("\"#{params["product"]}\"*", :page => params[:page].blank? ? 1 : params[:page], :per_page => 15)
       else
-        @products = [].paginate
+        @products = []
       end
     @groups = current_user.my_one_product_groups
 

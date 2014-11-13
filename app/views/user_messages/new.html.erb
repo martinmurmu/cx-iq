@@ -14,7 +14,7 @@
 </h1><hr /></div>
 <div class="keyword-logo-demo" style='margin-top:-40px'><img src="images/keywords-logo.jpg" /></div>
 <div class="shedule-form">
-  <% form_for(@user_messages) do |f| %>
+  <%= form_for(@user_messages, url: user_messages_path ) do |f| %>
 <!--
 <%- flash.each do |key, msg| -%>
   <div id="<%= key %>">

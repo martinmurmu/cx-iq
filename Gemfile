@@ -50,7 +50,7 @@ gem 'hoe'
 gem 'hoptoad_notifier'
 gem 'json_pure'
 gem 'mechanize'
-gem 'mislav-will_paginate'
+gem 'will_paginate'
 gem 'prawn'
 #gem 'prawn-core'
 #gem 'prawn-format'
@@ -65,3 +65,11 @@ gem 'factory_girl'
 gem 'valuable'
 gem 'warden'
 gem 'whenever'
+gem 'hpricot'
+gem 'test-unit'
+gem 'rails3-jquery-autocomplete'
+group :test do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+end

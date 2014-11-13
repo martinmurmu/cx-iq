@@ -11,7 +11,7 @@ class UserMessagesController < ApplicationController
 #  end
 
   def index
-    redirect_to :action=>'new'
+    redirect_to action: 'new'
   end
 
   def thank_you
@@ -49,14 +49,14 @@ class UserMessagesController < ApplicationController
   # POST /user_messages
   # POST /user_messages.xml
   def create
-    @user_messages = UserMessages.new(params[:user_messages])
-    if !verify_recaptcha 
-      flash[:error] = "Wrong captcha"
-      respond_to do |format|
-        format.html { render :action => "new" }
-      end
-      return
-    end
+    @user_messages = UserMessages.new(user_messages_params)
+    #if !verify_recaptcha 
+    #  flash[:error] = "Wrong captcha"
+    #  respond_to do |format|
+    #    format.html { render :action => "new" }
+    #  end
+    #  return
+    #end
 
     respond_to do |format|
       if @user_messages.save
@@ -65,7 +65,7 @@ class UserMessagesController < ApplicationController
 	    #recipient = 'talrep@gmail.com'
 	    subject = "New Contact message"
 	    message = "From: #{@user_messages.name}\n Email: #{@user_messages.email}\nCompany: #{@user_messages.company}\nMessage:\n#{@user_messages.message}"
-        Emailer.deliver_contact(recipient, subject, message)
+        Emailer.contact(recipient, subject, message).deliver
         return if request.xhr?
 
 #        flash[:notice] = 'UserMessages was successfully created.'
@@ -106,4 +106,7 @@ class UserMessagesController < ApplicationController
 #      format.xml  { head :ok }
 #    end
 #  end
+  def user_messages_params
+    params.require(:user_messages).permit(:name, :email, :company, :message)
+  end
 end

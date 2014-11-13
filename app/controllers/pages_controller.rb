@@ -28,13 +28,13 @@ class PagesController < ApplicationController
 
   def prm_welcome
     #if redirected from sign in
-    if  (request.referrer.ends_with? "/users/sign_in") 
+    #unless  request.referer && (request.referrer.ends_with? "/users/sign_in") 
       #if it is not first sign in
-      if (current_user && current_user.sign_in_count.to_i>1)
-        redirect_to "/users/edit"
-        return
-      end
-    end
+   #   if (current_user && current_user.sign_in_count.to_i>1)
+   #     redirect_to "/users/edit"
+   #     return
+   #   end
+   # end
     
     #reset on first time welcome page display
     if !current_user.guest? && current_user.sign_in_count.to_i<=1
