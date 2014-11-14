@@ -1,3 +1,5 @@
+This feature is no longer required
+
 Feature: Client can access p2p reports 
   Scenario: Client nevigates to p2p reports
     When I come to application as a client
