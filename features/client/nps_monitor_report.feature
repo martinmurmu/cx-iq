@@ -10,6 +10,6 @@ Feature: Client can access nps monitor reports
     Then I should get the nps monitor report generated
     When I click on click to customize button
     And I select the attributes from attrbutes list
-    When I click on apply new settings
-    Then Customer Experience (CX) Analysis Dashboard should get generated
+    When I click on apply new settings OR NEW LIST OR NEW CATEGORY
+    Then Customer Experience (CX) Analysis Dashboard should get generated (NO) - NEW NPS REPORT SHOULD BE GENERATED
     
