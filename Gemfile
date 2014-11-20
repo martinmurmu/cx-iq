@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -68,6 +69,13 @@ gem 'whenever'
 gem 'hpricot'
 gem 'test-unit'
 gem 'rails3-jquery-autocomplete'
+gem 'dynamic_form'
+gem 'ferret'
+gem 'acts_as_ferret'
+gem 'prototype-rails'
+gem 'prototype_legacy_helper', '0.0.0', :git => 'git://github.com/rails/prototype_legacy_helper.git'
+gem 'acts_as_tree'
+gem 'delayed_job_active_record'
 group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended

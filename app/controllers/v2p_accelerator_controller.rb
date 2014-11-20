@@ -1,7 +1,7 @@
-require 'open-uri'
 class V2pAcceleratorController < ApplicationController
 
   layout "application"
+
   def demo
     if params['product']
       @product = Product.find_by_name params['product']['name']

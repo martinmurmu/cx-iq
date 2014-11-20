@@ -21,7 +21,7 @@
       </tr>
       <tr>
         <td><b>Category:</b></td>
-        <td class="subscribed_categories"><%= name_with_ancestors @product.try(:categories).try(:[],0) -%></td>
+        <td class="subscribed_categories"><%= @product.try(:categories).try(:[],0) -%></td>
       </tr>
       <tr>
         <td><b>Manufacturer</b></td>

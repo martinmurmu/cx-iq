@@ -1,4 +1,4 @@
-#require "acts_as_ferret"
+#require 'acts_as_ferret'
 
 class Product < ActiveRecord::Base
   self.table_name = "product"
@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
 
   attr_accessor :custom_csv_data
 
-#  acts_as_ferret :fields => [ :name ]
+  #acts_as_ferret :fields => [ :name ]
 
   #comma do
 
@@ -73,8 +73,9 @@ class Product < ActiveRecord::Base
       paginate[:per_page] = opts[:per_page]
       opts.delete :per_page
     end
-
-    ret = self.find(:all, opts)
+    
+    #ret = self.find(:all, opts)
+    ret = self.where(opts[:conditions]).order(opts[:order])
     if !paginate.blank?
       ret.paginate(paginate)
     else

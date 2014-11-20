@@ -8,7 +8,7 @@
   <div id="bread_nav">
     <div id="bread_nav_leftedge"></div>
     <ul>
-      <%= ancestors_navbar(@category) %>
+      <%= ancestors_navbar(@category).html_safe %>
     </ul>
     
     <div id="bread_nav_rightedge"></div>

@@ -3,7 +3,7 @@
     <table width="100%">
       <tr>
         <td width="60%" rowspan=2>          
-          <%= text_field_with_auto_complete :product, :name, {:value => params["product"].blank? ? "" : params["product"][:name], :class=>'longEditbox'} %>
+          <%= text_field :product, :name, {:value => params["product"].blank? ? "" : params["product"][:name], :class=>'longEditbox'} %>
         </td>
         <td width="20%" class="product_lookup_selector">
           all words <%= radio_button_tag 'type', 'and', (params["type"]=="or" ? false : true) %>

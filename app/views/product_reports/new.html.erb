@@ -25,7 +25,7 @@
 <% end %>
 
 <% @page_title = 'Product Satisfaction Criteria - Amplified Analytics' -%>
-<% form_for(@product_report) do |f| %>
+<%= form_for(@product_report) do |f| %>
   <%= f.error_messages %>
 <div id="main_wrap">
   <br />
@@ -44,7 +44,7 @@
           <label>Your subscribed Categories and saved Lists</label>
         </div>
         <br />
-        <%= product_category_select(@categories, @product_groups, @product_report.product_category) %>
+        <%= product_category_select(@categories, @product_groups, @product_report.product_category).html_safe %>
         <div class="row_label" style="float: none; width: 100%; display:block; padding-top: 3px;">
           <a href="<%= categories_path -%>"><img src="/images/managecategories_btn.png" alt="Manage Subscriptions" /></a>
         </div>
@@ -64,24 +64,24 @@
         <label class="row_label">Manufacturer</label>
         <div id="report_manufacturers_select">
           <% if @product_report.category.blank? -%>
-            <%= manufacturer_select([]) %>
+            <%= manufacturer_select([]).html_safe %>
           <% else %>
-            <%= manufacturer_select(@product_report.category.manufacturers, @product_report.manufacturer_ids) %>
+            <%= manufacturer_select(@product_report.category.manufacturers, @product_report.manufacturer_ids).html_safe %>
           <% end -%>
         </div>
         <div style="margin: 0 0 0 125px; width: 200px;font-size:110%">Ctrl-click to make multiple selections</div>
         <br />
         <label class="row_label">No. of reviews</label>
-        <%= number_of_reviews_select @product_report.number_of_reviews %>
+        <%= number_of_reviews_select(@product_report.number_of_reviews).html_safe %>
         <br />
         <label class="row_label">Last update</label>
-        <%= last_updated_filter_select @product_report.last_updated_filter %>
+        <%= last_updated_filter_select(@product_report.last_updated_filter).html_safe %>
         <br />
         <div class="row_label">
           <label>CSI Range</label>
           <%= image_tag '/images/question.gif', :id => 'csi_table_header', :class => 'product_report_q' %>
         </div>
-        <%= rating_select 'csi_range', @product_report.attributes['csi_range'] %>
+        <%= rating_select('csi_range', @product_report.attributes['csi_range']).html_safe %>
         <br />
         <div class="row_label">
           <label>PFS Range</label>

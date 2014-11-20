@@ -217,7 +217,7 @@ class ProductReportsController < ApplicationController
     elsif params['product_report']['product_category_id'].ends_with? 'group'
       group = ProductGroup.find(params['product_report']['product_category_id'].to_i)
     end
-    @product_report = ProductReport.new(params[:product_report].merge({:user_id => current_user.id}))
+    @product_report = ProductReport.new(product_report_params.merge({:user_id => current_user.id}))
     @product_report.category = group
     unless params[:report_manufacturer_ids].blank? || params[:report_manufacturer_ids].include?("all")
       params[:report_manufacturer_ids].each{|id|
@@ -279,7 +279,7 @@ class ProductReportsController < ApplicationController
 
 
     respond_to do |format|
-      if @product_report.update_attributes(params[:product_report])
+      if @product_report.update_attributes(product_report_params)
         #flash[:notice] = 'ProductReport was successfully updated.'
         format.html { redirect_to(product_report_products_path @product_report) }
         format.xml  { head :ok }
@@ -328,4 +328,8 @@ class ProductReportsController < ApplicationController
     @product_groups=current_user.product_groups
   end
   
+  def product_report_params
+    params.require(:product_report).permit(:product_category_id, :sorting_field,
+      :sorting_order, :csi_range, :pfs_range, :prs_range, :pss_range)
+  end  
 end

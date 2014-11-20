@@ -25,7 +25,7 @@
           <% end -%>
 		</div>
 	   </div>
-	   <div class="pw_dialbox_right"><%= v2p_widget_dial_image(@product, :functionality_score) %><img style="padding: 0px 3px 25px 0px;" alt="Help" src="/images/widget/question.gif" id="pfs_help">
+	   <div class="pw_dialbox_right"><%= v2p_widget_dial_image(@product, :functionality_score).html_safe %><img style="padding: 0px 3px 25px 0px;" alt="Help" src="/images/widget/question.gif" id="pfs_help">
 	   </div>
 	  </div>
 	  <div class="pw_dialbox">
@@ -39,7 +39,7 @@
           <% end -%>
 		</div>
 	   </div>
-	   <div class="pw_dialbox_right"><%= v2p_widget_dial_image(@product, :reliability_score) %><img style="padding: 0px 3px 25px 0px;" alt="Help" src="/images/widget/question.gif" id="prs_help">
+	   <div class="pw_dialbox_right"><%= v2p_widget_dial_image(@product, :reliability_score).html_safe %><img style="padding: 0px 3px 25px 0px;" alt="Help" src="/images/widget/question.gif" id="prs_help">
 	   </div>
 	  </div>
 	  <div class="pw_dialbox">
@@ -54,7 +54,7 @@
    	    </div>
   	   </div>
   	   <div class="pw_dialbox_right">
-           <%= v2p_widget_dial_image(@product, :support_score) %><img style="padding: 0px 3px 25px 0px;" alt="Help" src="/images/widget/question.gif" id="pss_help">
+           <%= v2p_widget_dial_image(@product, :support_score).html_safe %><img style="padding: 0px 3px 25px 0px;" alt="Help" src="/images/widget/question.gif" id="pss_help">
   	      </div>
 	    </div>
 	  </div>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get "/v2p_accelerator/auto_complete_product_name"
   get "/paper_downloads/test", :controller => 'paper_downloads', :action => 'test'
   resources :paper_downloads
 
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       get  :keywords 
       get  :keywords_proxy
     end
-    resources :products, :only => :index do
+    resources :products do
       collection do
         post :index
       end
@@ -47,6 +47,9 @@ Rails.application.routes.draw do
       post :filter
       post :refresh
       post :mail
+    end
+    collection do
+      get :update_manufacturers
     end
     resources :products, :shallow => true
   end

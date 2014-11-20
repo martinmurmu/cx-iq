@@ -31,7 +31,7 @@ module ProductReportsHelper
     end
 
 
-    select_tag "product_report[product_category_id]", options, :style=>"margin: 0 0 0 23px;", :onchange => "#{remote_function(:url  => {:action => "update_manufacturers"}, :with => "'category_id='+value", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')" )}"
+    select_tag "product_report[product_category_id]", options.html_safe, :style=>"margin: 0 0 0 23px;", :onchange => "#{remote_function(:url  => {:action => "update_manufacturers"}, :with => "'category_id='+value", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')" )}"
   end
   
   def manufacturer_select(manufacturers, selected=[])
@@ -44,7 +44,7 @@ module ProductReportsHelper
         options += "<option value=#{man.id}#{" SELECTED" if selected.include?(man.id)}>#{man.name}</option>"
       }
     end
-    select_tag "report_manufacturer_ids[]", options, :id => 'report_manufacturer_ids', :style=>"margin: 0 0 0 23px; height: 80px;", :multiple => true
+    select_tag "report_manufacturer_ids[]", options.html_safe, :id => 'report_manufacturer_ids', :style=>"margin: 0 0 0 23px; height: 80px;", :multiple => true
   end
   
   def number_of_reviews_select(selected=nil)
@@ -60,7 +60,7 @@ module ProductReportsHelper
     NpsReport::NpsOptions.each{|opt|
       options += "<option value=#{opt[:id]}#{" SELECTED" if selected==opt[:id] || (selected.nil? && opt[:id] == 1)}>#{opt[:name]}</option>"
     }
-    select_tag "product_report[nps_range]", options, :style=>"margin: 0 0 0 23px;"
+    select_tag "product_report[nps_range]", options.html_safe, :style=>"margin: 0 0 0 23px;"
   end
   
   def last_updated_filter_select(selected=nil)
@@ -76,7 +76,7 @@ module ProductReportsHelper
     ProductReport::RatingOptions.each{|opt|
       options += "<option value=#{opt[:id]}#{" SELECTED" if selected==opt[:id]}>#{opt[:name]}</option>"  
     }
-    select_tag "product_report[#{name}]", options, :style=>"margin: 0 0 0 23px;"    
+    select_tag "product_report[#{name}]", options.html_safe, :style=>"margin: 0 0 0 23px;"    
   end
   
   def sort_method_select(selected=nil)
@@ -84,7 +84,7 @@ module ProductReportsHelper
     ProductReport::SortMethod.each{|opt|
       options += "<option value=#{opt[:id]}#{" SELECTED" if selected==opt[:id]}>#{opt[:name]}</option>"  
     }
-    select_tag "product_report[sorting_field]", options, :style=>"margin: 0 0 0 23px;"
+    select_tag "product_report[sorting_field]", options.html_safe, :style=>"margin: 0 0 0 23px;"
   end
 
   def sort_method_select_nps(selected=nil)
@@ -92,7 +92,7 @@ module ProductReportsHelper
     NpsReport::SortMethodNps.each{|opt|
       options += "<option value=#{opt[:id]}#{" SELECTED" if selected==opt[:id]}>#{opt[:name]}</option>"
     }
-    select_tag "product_report[sorting_field]", options, :style=>"margin: 0 0 0 23px;"
+    select_tag "product_report[sorting_field]", options.html_safe, :style=>"margin: 0 0 0 23px;"
   end
   
   def sort_order_select(selected=nil)
@@ -100,13 +100,13 @@ module ProductReportsHelper
     NpsReport::SortOrder.each{|opt|
       options += "<option value=#{opt[:id]}#{" SELECTED" if selected==opt[:id]}>#{opt[:name]}</option>"  
     }
-    select_tag "product_report[sorting_order]", options, :style=>"margin: 0 0 0 23px;"
+    select_tag "product_report[sorting_order]", options.html_safe, :style=>"margin: 0 0 0 23px;"
   end
 
 
   
   def column_sort_icon(order)
-    "<img src=\"/images/sort_icons#{order == 1 ? '_up' : '_down'}.png\">"
+    "<img src=\"/images/sort_icons#{order == 1 ? '_up' : '_down'}.png\">".html_safe
   end
   
 end

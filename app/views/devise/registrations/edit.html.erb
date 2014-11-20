@@ -1,39 +1,64 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% content_for :top_content_area do %>
+    <div id="content_top">
+      <div id="content_area" >
+        <div style='position:absolute;margin-top:17px;margin-left:120px;font-size:14px;'>Welcome back <%= current_user.first_name %></div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+	    <p>
+        <img alt="My Account" style='padding-top:10px' src="/images/account/myaccountheader.png">
+        </p>
+      </div>
+      <div id="message_area"></div>
+    </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<div id="content_area">
+  <div id="account_tabs">
+    <%= link_to "", edit_user_registration_path, :id=> "tab_1", :class=>"active" %>
+    <%= link_to "", my_products_product_groups_path, :id=> 'tab_3' %>
+    <%= link_to "", product_groups_path, :id=> 'tab_2' %>
+  </div>
+<%= form_for resource_name, as: resource, :url => registration_path(resource_name), :html => { :method => :put, :id=>"settings" } do |f| %>
+  <dl class="rich-messages" id="myAccountForm:j_id128">
+    <dt><%= f.error_messages %></dt>
+  </dl>
+  <br>
+  <div class="clearer"></div>
+    <div class="form-wrap">
+      <div class="col1">
+      <%= f.label :email, "Email Address" %>
+      <%= f.text_field :email, :tabindex=>"1", :class=>"editbox1" %>
+      <%= f.label :first_name, "First Name" %>
+      <%= f.text_field :first_name, :tabindex=>"2", :class=>"editbox1" %>
+      <%= f.label :last_name, "Last Name" %>
+      <%= f.text_field :last_name, :tabindex=>"3", :class=>"editbox1" %>
+      <%= f.label :company, "Company" %>
+      <%= f.text_field :company, :tabindex=>"4", :class=>"editbox1" %>
+      </div><!--end col1-->
+      <div class="col2">
+      <%= f.label :current_passwor, "Current Password", :alt=>"we need your current password to confirm your changes" %>
+      <%= f.password_field :current_password, :class=>"editbox1", :tabindex=>"5" %>
+      <%= f.label :password, "New Password", :alt=>"leave blank if you don't want to change it" %>
+      <%= f.password_field :password, :class=>"editbox1", :tabindex=>"6" %>
+      <%= f.label :password_confirmation, "Confirm New Password" %>
+      <%= f.password_field :password_confirmation, :class=>"editbox1", :tabindex=>"7" %>
+      <%= hidden_field_tag('return_url', @return_url) %>
+        <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
 
-<%= link_to "Back", :back %>
+      </div><!-- end col2-->
+    <div class="clearer"></div>
+  </div><!--end form-wrap-->
+  <div style='float:left;margin-top:10px;position:absolute;'>
+	<a href=/V2P-Product-Reviews/Product-Submit target=_blank class='button yellow'>Request Free Trial</a>
+	<a href=/prm_welcome class='button yellow'>Display Welcome Page</a>
+  </div>
+  <div class="actionBar">
+    <ul>
+      <li>
+        <input type="submit" tabindex="6" value="Save Settings" class='button gray' name="myAccountForm:save" id="myAccountForm:save">
+      </li>
+    </ul>
+  </div><!--end actionBar-->
+<% end -%>
+</div>

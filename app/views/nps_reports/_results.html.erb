@@ -1,4 +1,4 @@
-<% form_remote_tag :url => refresh_nps_report_path(@report), :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => {:id => "update_product_report_form"} do %>
+<%= form_remote_tag :url => refresh_nps_report_path(@report), :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => {:id => "update_product_report_form"} do %>
   <div class="accordion_section">
     <div class="accordion_bar">
       <img src="/images/acc_head_left2.png" alt="" />

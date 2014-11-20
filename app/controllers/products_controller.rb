@@ -1,15 +1,15 @@
 class ProductsController < ApplicationController
- # auto_complete_for :product, :name
- # layout 'application_internal', :only => [:index]
+  #auto_complete_for :product, :name
+  # layout 'application_internal', :only => [:index]
   before_filter :authenticate_user!, :except => [:index, :auto_complete_for_product_name, :show, :case_studies, :report_settings_get, :produce_psa_report, :api_produce_psa_report, :produce_psa_report_settings]
   before_filter :verify_products_per_group_limit, :only => [:add_to_group]
   require 'open-uri'
 
   def auto_complete_for_product_name
-    product_name = params["product"].try(:[],"name") || params["product"]
+    product_name = params["query"]
 
     @items = Product.find_with_ferret("\"#{product_name}\"*", {:limit => 15})
-    render :inline => "<%= auto_complete_result @items, 'name' %>"
+    render json: @items
   end
 
   def index
@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
       if !params[:product].blank?
         @products = Product.find_with_ferret("\"#{params["product"]}\"*", :page => params[:page].blank? ? 1 : params[:page], :per_page => 15)
       else
-        @products = [].paginate
+        @products = []
       end
 
       if @products.empty?
@@ -184,7 +184,7 @@ class ProductsController < ApplicationController
   end
 
   def psa_report_keywords
-    @product = Product.find params['id']
+    @product = Product.find params[:id]
     if params[:test_data]
       render :text => '["accurate","albums","amplification","amplifier","babies","balanced","basically","bass","bass reproduction","capacity","capture quality","card","casual","classical","clean","comfort","companion","components","composer","creative","customer support","decision","deep","design","detail","effects","energy","equipment","f","feature set","females","focus","friendly","fun","gaming","general","headphone amp","headphones","high end","hits","intonation","k701 mids","landscaping","launch","lens","macro","macro lens","matches","memory card","memory sticks","music quality","musicians","other_attributes","outcome","packaging","performance","phones","picture quality","pictures produced","pillow","powerful","pressure","price","produces","product","provides","punchy bass","quality glass","quality products","record","recording quality","reliability","results","returns","set","shipping experience","shots","size","sound quality","sounding","speakers","specs","stands","sticks","storage","strings","system","tracking","transfer rates","transfer speeds","treble response","usability","wide angle"]'
       return
@@ -260,7 +260,7 @@ class ProductsController < ApplicationController
 
   def get_one_product_group
    group_attributes = {:name=>params[:id],:one_product_group=>true,:user_id=>current_user.id}
-   group = ProductGroup.find(:first, :conditions=>group_attributes)
+   group = ProductGroup.where(group_attributes)
    if !group
      group = ProductGroup.create group_attributes
    end   
@@ -290,7 +290,7 @@ class ProductsController < ApplicationController
 
     report_place = report.run(threshold, '')
 
-    doc = Nokogiri::HTML(open("http://#{ActionController::Base.session_options[:host]}#{report_place}"))
+    doc = Nokogiri::HTML(open("http://#{request.host_with_port}#{report_place}"))
     attribs = []
     whole_count = 0
     doc.xpath('//table[2]/tr').each do |node|

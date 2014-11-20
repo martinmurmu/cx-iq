@@ -3,7 +3,7 @@
 
 <% end %>
 <% unless @products.empty? -%>
-<% form_remote_tag :url => index_product_group_products_path(@product_group), :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => {:id => "update_search_results_form"} do %>
+<%= form_tag :url => product_group_products_path(@product_group), :remote => true, :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => {:id => "update_search_results_form"} do %>
 
 <%= hidden_field_tag 'page', params[:page].blank? ? 1 : params[:page] %>
 <%= hidden_field_tag "product", params['product'] %> 
@@ -34,9 +34,9 @@
       <td><%= link_to product["name"], product_path(product['id']) %></td>
       <td><%= product.categories[0] %></td>
       <td>
-        <% if @product_group.products.include? product -%>
+        <% if @product_group.products.include? product %>
           <div class="subscribed_message">Added!</div>
-        <% else -%>
+        <% else %>
           <div><%= link_to_remote "", :url  => {:controller => 'products', :action => "add_to_group", :id => product.id, :product_group_id => params[:product_group_id]}, :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => { :class=>"addtomylistbtn_search" }, :with => "'product=#{escape_javascript(params[:product])}&type=#{params[:type]}&page=#{params[:page]}'" %>
           </div>
         <% end %>

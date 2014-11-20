@@ -4,7 +4,7 @@
 
 <% end %>
 <% unless @products.empty? -%>
-<% form_remote_tag :url => "/product_groups/my_products", :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => {:id => "update_search_results_form"} do %>
+<%= form_tag :url => "/product_groups/my_products", :remote => true, :loading => "Element.show('loading_bar')", :complete => "Element.hide('loading_bar')", :html => {:id => "update_search_results_form"} do %>
 
 <%= hidden_field_tag 'page', params[:page].blank? ? 1 : params[:page] %>
 <%= hidden_field_tag "product", params['product'] %> 

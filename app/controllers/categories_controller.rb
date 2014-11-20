@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   layout 'application_internal'
   #before_filter :authenticate_user!, :except => [:auto_complete_for_manufacturer_name, :auto_complete_for_product_name]
 
-  auto_complete_for :manufacturer, :name
+  #auto_complete_for :manufacturer, :name
   #auto_complete_for :product, :name
   
   def auto_complete_for_product_name

@@ -1,5 +1,5 @@
 class Review < ActiveRecord::Base
-  set_table_name "review"
+  self.table_name = "review"
   belongs_to :product
 
 	def create_review

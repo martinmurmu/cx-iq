@@ -4,13 +4,17 @@ class Category < ActiveRecord::Base
   has_many :products, :through => :product_categories
   has_many :product_reports, :as => :category
   has_many :sent_reports, :as => :category
-  #acts_as_tree :order => "name"
-  
+  acts_as_tree :order => "name"
+ 
   def manufacturers
     q = "SELECT `manufacturer`.* FROM `manufacturer`  INNER JOIN `product` ON `manufacturer`.id = `product`.manufacturer INNER JOIN `product_category` ON `product`.id = `product_category`.product_id   WHERE ((`product_category`.category_id = #{id}))  GROUP BY `manufacturer` ORDER BY `manufacturer`.name"
     Manufacturer.find_by_sql q
   end     
-  
+
+  def anchestors
+    Category.where(id: self.parent_id)
+  end
+ 
   def is_root?
     parent_id.blank?
   end
@@ -20,7 +24,7 @@ class Category < ActiveRecord::Base
   end
   
   def most_recent_updated_product
-    @most_recent_updated_product ||= products.find :first, :order => 'last_update DESC'
+    @most_recent_updated_product ||= products.order('last_update DESC').first
   end
   
   def number_of_product_reviews
@@ -29,7 +33,7 @@ class Category < ActiveRecord::Base
   
   def children_with_products
     #children.find  :all, :joins => :product_categories, :select => "category.*, count(product_id) as products_count", :group => "category.id", :having => 'products_count > 35'
-    children.find :all, :conditions => "products_count >= #{APP_CONFIG[:min_number_of_categories]}"
+    children.where("products_count >= #{APP_CONFIG[:min_number_of_categories]}")
   end
    
   def children_with_children
@@ -41,9 +45,10 @@ class Category < ActiveRecord::Base
   end
   
   def children_having_children_and_products
-    children.delete_if{|cat|
-      !cat.has_children_with_children_and_products?
-    }
+    #children.delete_if{|cat|
+    #  !cat.has_children_with_children_and_products?
+    #}
+    children
   end
   
   def has_children_with_children_and_products?

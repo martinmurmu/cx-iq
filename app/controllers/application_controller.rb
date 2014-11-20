@@ -1,11 +1,20 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  #protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   before_filter :load_guest_from_session
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(
+        :email, :password, :password_confirmation, :current_password, :first_name, :last_name, :company)
+    end
+  end
 
   def load_guest_from_session
     @current_user = GuestUser.new if current_user.nil?

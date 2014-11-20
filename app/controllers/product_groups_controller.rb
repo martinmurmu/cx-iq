@@ -70,7 +70,7 @@ class ProductGroupsController < ApplicationController
   end
 
   def create
-    @product_group = current_user.product_groups.build(params[:product_group])
+    @product_group = current_user.product_groups.build(product_group_params)
 
     respond_to do |format|
       if @product_group.save
@@ -118,6 +118,12 @@ class ProductGroupsController < ApplicationController
           render :update do |page|
             page.replace_html 'category_list', :partial => 'my_products_search_results'
           end
+        }
+        format.text {
+          product_name = params["query"]
+
+          @items = Product.find_with_ferret("\"#{product_name}\"*", {:limit => 15})
+          render json: { suggestions: @items.map{ |product| {:id => product.id, :data => product.name, :value => product.name} } }
         }
       end
   end
@@ -358,6 +364,10 @@ class ProductGroupsController < ApplicationController
     #end
     #render :json => list.sort_by{|i| i[:importance]}.reverse.to_json
     render :json => list.sort.to_json
+  end
+
+  def product_group_params
+    params.require(:product_group).permit(:name)
   end
 
 end

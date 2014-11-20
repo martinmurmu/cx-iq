@@ -50,9 +50,9 @@ class ReportGenerator < Valuable
     ret[:path] = path
     ret[:user_id] = user_id
     ret[:product_id] = product_id
-    ret[:work_dir] = File.join(RAILS_ROOT.to_s, 'tmp', 'reports', user_id.to_s, time.to_s, product_id.to_s)
+    ret[:work_dir] = File.join(Rails.root.to_s, 'tmp', 'reports', user_id.to_s, time.to_s, product_id.to_s)
     ret[:map_output] = File.join(ret[:work_dir], 'map_output.txt')
-    ret[:report_output_path] = File.join(RAILS_ROOT, 'public', 'reports', user_id.to_s, time.to_s, product_id.to_s)
+    ret[:report_output_path] = File.join(Rails.root, 'public', 'reports', user_id.to_s, time.to_s, product_id.to_s)
     ret[:reviews_path] = File.join(ret[:work_dir], 'reviews')
     ret[:config_file] = File.join(ret[:work_dir], 'REPORT_PARAMS.xml')
     ret[:map_file] = File.join(ret[:work_dir], 'map.txt')

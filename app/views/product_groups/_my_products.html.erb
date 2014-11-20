@@ -15,7 +15,7 @@
           <%= link_to_remote "Remove", :url  => {:controller => 'product_groups', :action => "remove_product", :id => group.id}, :loading => "Element.show('loading_bar')", :with => "'product=#{params[:product]}&page=#{params[:page]}'", :complete => "Element.hide('loading_bar')" %> |
           <%= link_to 'View CX Analysis', "#", {:onclick => "getting_aggerates_data('#{group.try(:products).try(:[],0).try(:id)}')"} -%> |
           <%= link_to 'Produce trending report', produce_trending_report_settings_product_path(group.try(:products).try(:[],0)) rescue ''%>
-		      <% form_tag "/products/#{group.try(:products).try(:[],0).try(:id)}/produce_psa_report", :id => "pr_form_#{group.try(:products).try(:[],0).try(:id)}" do -%>
+		      <%= form_tag "/products/#{group.try(:products).try(:[],0).try(:id)}/produce_psa_report", :id => "pr_form_#{group.try(:products).try(:[],0).try(:id)}" do -%>
 		        <%= hidden_field_tag 'threshold', '0.0075', :id => "pr_threshold_#{group.try(:products).try(:[],0).try(:id)}" %>
 		        <%= hidden_field_tag 'keywords',  '', :id => "pr_keywords_#{group.try(:products).try(:[],0).try(:id)}" %>
 		        <%= hidden_field_tag 'mapping', '', :id => "mapping_#{group.try(:products).try(:[],0).try(:id)}" %>
@@ -34,7 +34,7 @@
 </div>
 
 <%# content_for :head_javascript do -%>
-<%= javascript_include_tag 'jquery-1.4.1.min', '/js/serialize.min.js', '/js/jquery.tinysort.min.js', '/javascripts/fancybox/jquery.fancybox-1.3.0.pack.js' %>
+<%= javascript_include_tag '/js/serialize.min.js', '/js/jquery.tinysort.min.js', '/javascripts/fancybox/jquery.fancybox-1.3.0.pack.js' %>
 <link rel="stylesheet" type="text/css" href="/javascripts/fancybox/jquery.fancybox-1.3.0.css" media="screen" />
 <script type="text/javascript">
   jQuery.noConflict();

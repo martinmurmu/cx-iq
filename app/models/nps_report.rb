@@ -1,7 +1,7 @@
-require 'prawn/format'
+#require 'prawn/format'
 
 class NpsReport < ActiveRecord::Base
-  set_table_name "prm_product_reports"
+  self.table_name = "prm_product_reports"
 
   has_many :report_manufacturers,  :foreign_key => 'report_id', :dependent => :destroy
   has_many :manufacturers, :through => :report_manufacturers
@@ -16,9 +16,8 @@ class NpsReport < ActiveRecord::Base
 
   validates_presence_of :product_category, :message => "is not selected"
 
-  default_value_for :per_page, 20
-  
-  default_value_for :filtered, false
+  per_page = 20
+  filtered = false
   
   NumberOfReviewsOptions = [{:id => 1, :name => 'All'}, {:id => 2, :name => '&gt; 100'}, {:id => 4, :name => '&gt; 50'}, {:id => 5, :name => '&gt; 25'},  {:id => 3, :name => '&lt; 100'}]
   NpsOptions = [{:id => 1, :name => 'All'}, {:id => 2, :name => 'Positive', :sql => ' < 50'}, {:id => 3, :name => 'Negative', :sql => ' > 50'}]
@@ -167,8 +166,9 @@ class NpsReport < ActiveRecord::Base
 
   def find_products(page, per_page)
     #TODO should be revised to use count(*)
-    total = Product.find(:all, :joins => [:manufacturer], :select => "product.id", :group => "product.id", :conditions => conditions, :order => order_field_and_type, :group => "product.all_reviews_count, product.nps_score").size
-    Product.paginate(:total_entries => total, :joins => [:manufacturer], :select => "product.*", :group => "product.id", :conditions => conditions, :order => order_field_and_type, :page => page, :per_page => per_page, :group => "product.all_reviews_count, product.nps_score")
+    total = Product.joins(:manufacturer).where(conditions).select("product.id").group("product.id").order(order_field_and_type).group("product.all_reviews_count, product.nps_score").size
+    Product.joins(:manufacturer).where(conditions).select("product.id").group("product.id").order(order_field_and_type).group("product.all_reviews_count, product.nps_score").paginate(total_entries: total, page: page, per_page: per_page)
+    #Product.paginate(:total_entries => total, :joins => [:manufacturer], :select => "product.*", :group => "product.id", :conditions => conditions, :order => order_field_and_type, :page => page, :per_page => per_page, :group => "product.all_reviews_count, product.nps_score")
   end
   
   def order_field_and_type
