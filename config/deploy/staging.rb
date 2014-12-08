@@ -1,4 +1,5 @@
-set :application, "staging.cx-iq.com"
+# set :application, "staging.cx-iq.com"
+set :application, "aai_ror_staging.amplifiedanalytics.com"
 #set :repository,  "https://jetcharter.unfuddle.com/svn/jetcharter_dm/trunk/web"
 # Use Git source control
 set :scm, :git
@@ -32,7 +33,7 @@ set :deploy_via, :remote_cache
 role :app, '184.106.208.47'
 role :web, '184.106.208.47'
 role :dj,  '184.106.208.47'
-role :ae,  '184.106.228.242'
+# role :ae,  '184.106.228.242'
 role :db,  '184.106.208.47',  :primary => true
 
 after "deploy:update_code", 'deploy:symlink_files'

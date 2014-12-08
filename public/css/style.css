@@ -429,10 +429,11 @@ input.time-picker {
 }
 .footer-menu {
 	display: block;
-	float: right;
-	margin: 0 290px 0 0;
+	/* float: right; */
+	/* margin: 0 290px 0 0; */
 	padding: 0;
 	width: auto;
+	margin-left: 40%;
 }
 .footer-menu ul {
 	display: block;
