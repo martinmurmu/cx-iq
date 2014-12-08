@@ -85,8 +85,6 @@
             	<ul>
                 	<li><a href="/" class=<%= @menu_current == 'home' ? 'menu-current':'' %>>Home</a></li>
                     <li><a href="/Products/case_studies" class=<%= (@menu_current=='products' && params[:action]=="case_studies") ? 'menu-current':'' %>>Case Studies</a></li>
-                    <li><a href="/Products" class=<%= (@menu_current=='products' && params[:action]=='index') ? 'menu-current':'' %>>Products</a></li>
-                    <li><a href="/Services" class=<%= @menu_current == 'services' ? 'menu-current':'' %>>Services</a></li>
                     <li><a href="/Methodology" class=<%= @menu_current == 'methodology' ? 'menu-current':'' %>>Methodology</a></li>
                     <li><a href="http://blog.amplifiedanalytics.com/">Blog</a></li>
                     <li><a href="/Contact-Us" class=<%= @menu_current == 'contact_us' ? 'menu-current':'' %>>Contact Us</a></li>
@@ -102,10 +100,6 @@
         	<div class="footer-menu">
             	<ul>
                 	<li><a href=<%= root_path %>>Home</a></li>
-                    <li>|</li>
-                    <li><a href=<%= products_path %>>Products</a></li>
-                    <li>|</li>
-                    <li><a href=<%= services_path %>>Services</a></li>
                     <li>|</li>
                     <li><a href=<%= methodology_path %>>Methodology</a></li>
                     <li>|</li>

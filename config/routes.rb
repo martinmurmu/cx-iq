@@ -88,12 +88,6 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   
-  map.with_options :controller => "services" do |page|
-    page.root :action=>'index'
-    page.services '/Services', :action=>'index'
-    page.jroot_two '/services', :action=>'index'
-  end
-  
   map.with_options :controller => "methodology" do |page|
     page.root :action=>'index'
     page.methodology '/Methodology', :action=>'index'

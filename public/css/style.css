@@ -406,7 +406,7 @@ input.time-picker {
 	display: block;
 	list-style: none;
 	margin: 0;
-	padding: 0;
+	padding: 0 0 0 127px;
 }
 .nav-menu ul li {
 	float: left;
@@ -430,7 +430,7 @@ input.time-picker {
 .footer-menu {
 	display: block;
 	float: right;
-	margin: 0 248px 0 0;
+	margin: 0 290px 0 0;
 	padding: 0;
 	width: auto;
 }
