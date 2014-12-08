@@ -17,7 +17,7 @@
 <body id="productCatalog" class="prm_body">
               
   <h2><%= @category.name %> Product Listings</h2>
-  <p>Is your product missing? <%= mail_to "support@amplifiedanalytics.com", "Email us" -%> with the details and we'll add it to our growing list!</p>
+  <p>Is your product missing? <%= mail_to "support@cx-iq.com", "Email us" -%> with the details and we'll add it to our growing list!</p>
   
   <ul id="alpha_nav">  
     <li><%= link_to 'All', url_for(params.merge(:l => 'all')) %></li>
