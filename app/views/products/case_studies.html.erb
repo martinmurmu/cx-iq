@@ -3,7 +3,52 @@
   height: auto;
   min-height: 630px;
 }
-
+.m_center_image {
+    float: left;
+    height: 360px;
+    margin: 0 !important;
+    width: 60px;
+}
+.m_left_text {
+    border-bottom: 2px solid #c7e0fb;
+    border-left: 2px solid #c7e0fb;
+    border-top: 2px solid #c7e0fb;
+    float: left;
+    height: 355px;
+    width: 47%;
+    margin-right: -2px;
+}
+.m_right_text {
+    border-bottom: 2px solid #c7e0fb;
+    border-right: 2px solid #c7e0fb;
+    border-top: 2px solid #c7e0fb;
+    float: left;
+    height: 355px;
+    width: 47%;
+    margin-left: -13px;
+}
+.m_left_text > span {
+  background: none repeat scroll 0 0 #c9e1fb;
+  float: left;
+  font-weight: bold;
+  height: 33px;
+  width: 365px;
+  padding: 13px 10px 0px 10px;
+}
+.m_right_text > span {
+  background: none repeat scroll 0 0 #c9e1fb;
+  float: left;
+  font-weight: bold;
+  height: 33px;
+  width: 368px;
+  padding: 13px 0px 0px 21px;
+}
+.m_left_text > p, .m_right_text > p  {
+  width: auto !important;
+}
+#tabs-products p{
+  height: auto;
+}
 </style>
 
 <% content_for :header do -%>
@@ -30,35 +75,30 @@
       <div class="plus"><a href="#" title="Plus"></a></div> -->
 </div>
 <div id="tabs-products" style="top: 131px;">
-	<ul style="top: 85px;">
-    	<li class="first"><a href="#CI">CE Product Manager</a></li>
+	<ul style="top: 85px;"  class="tabs-nav">
+    	<li class="first tabs-selected"><a href="#CI">An Amazon Best Seller</a></li>
         <li><a href="#MI">B2B Software Manufacturer</a></li>
         <li class="last"><a href="#BEA">Restaurant Developer</a></li>
     </ul>
-    <div id="CI" style="top: 131px;">
-    	<img src="/images/ScrShoot-MI-small.jpg" alt="Customer Intelligence" />
-    	<p style="width: 480px; top: 101px;">
-    	  As a Product Manager in Consumer Electronics industry, I used to spend
- countless hours parsing demographics and research data with market
- researchers on our team. Key metrics involving my product vs. its direct
- competition are critical for forecasting product success and assessing how
- to secure it. Historically, we had made most of our decisions based on
- assumptions with very little direct evidence. Since finding Customer
- Experience IQ, however, we have been able to use their Market Intelligence
- Analysis to get the exact information we need— what people who spend their
- money on products like ours have to say about their experiences. These
- specific measurements make it very easy for me and my team to focus on
- critical information. The cost savings, too, are staggering, as we’ve been
- able to shed hundreds of man hours in the process. Plus, we get the
- research results within 24 hours— it used to take us 3-4 times longer just
- to initiate a survey.  Customer Experience IQ is win-win for us— it provides
- us with the reliable feedback from customer analysis that we need to grow
- our customer base and pick off the competition, while saving us time and
- money.
-      </p>
-      
+    <div id="CI" style="top: 131px;" class="tabs-container">
+  <div class="m_left_text">
+  <span>Finding the white spaces in a crowded market</span>
+  <p>A global audio-equipment maker help  it enter an already-crowded accessory market<br><br>Four days after receiving the client’s request, 
+  CX-IQ delivered a report analyzing 12,743 online customer reviews of competing products <br><br>The report provided detailed insight into<br><br> 
+  - What customers disliked about the competition<br>
+  - What customers wanted in an ideal product</p>
     </div>
-    <div id="MI" style="top: 131px;">
+    <img src="/images/m_center.png" class="m_center_image">
+        <div class="m_right_text">
+        <span>Client impact: An Amazon Best Seller </span>
+        <p>Client designed and marketed a product meeting customers’ ideal specs<br><br>Client’s new accessory became a category killer, 
+          with sales exceeding five closest competitors combined<br><h6 style="text-align: center; padding: 0px; margin: 0px;">Client’s Product v Competition<br>
+        (3 Months after Client-Product Launch)</h6></p>
+        <img src="/images/m_bar.png" class="m_bar_image">
+      </p>
+    </div>
+    </div>
+    <div id="MI" style="top: 131px;" class="tabs-container tabs-hide">
     	<img src="/images/ScrShoot-CI-small.jpg" alt="Customer Intelligence" />
     	<p style="width: 480px; top: 101px;">As a B2B Software Manufacturer who sources most of our leads through our
  website, we are obviously concerned about how visitors to our site feel
@@ -82,7 +122,7 @@
  Working with Customer Experience IQ has really enhanced our dialogue with
  customers and helped us perfect our offerings.</p>
     </div>
-    <div id="BEA" style="top: 131px;">
+    <div id="BEA" style="top: 131px;" class="tabs-container tabs-hide">
     	<img src="/images/ScrShoot-BEA-small.jpg" alt="Customer Intelligence" />
     	<p style="width: 480px;">Having run 2 high-end restaurants in San Jose successfully, I decided to
  court some new, potential investors with the hopes of opening a third

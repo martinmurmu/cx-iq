@@ -1,0 +1,58 @@
+/* Caution! Ensure accessibility in print and other media types... */
+@media projection, screen { /* Use class for showing/hiding tab content, so that visibility can be better controlled in different media types... */
+    .tabs-hide {
+        display: none;
+    }
+}
+
+/* Hide useless elements in print layouts... */
+@media print {
+    .tabs-nav {
+        display: none;
+    }
+}
+
+/* Skin */
+.tabs-nav:after { /* clearing without presentational markup, IE gets extra treatment */
+    display: block;
+    clear: both;
+    content: " ";
+}
+.tabs-nav li {
+    float: left;
+    min-width: 84px; /* be nice to Opera */
+}
+.tabs-nav a, .tabs-nav a span {
+    display: block;
+    padding: 0 10px;
+}
+.tabs-nav a {
+    position: relative;
+    text-align: center;
+    white-space: nowrap; /* required in IE 6 */    
+	
+}
+.tabs-nav .tabs-selected a, .tabs-nav a:hover, .tabs-nav a:focus, .tabs-nav a:active {
+    outline: 0; /* prevent dotted border in Firefox */
+}
+
+*>.tabs-nav a span { /* hide from IE 6 */
+    width: auto;
+    height: auto;
+
+}
+
+.tabs-container {
+	position: absolute;
+	left: 50px;
+	top: 75px;
+	margin: 0;
+    padding: 15px;
+	width: 825px;
+	height: 345px;
+	z-index: 60;
+}
+.tabs-loading em {
+    padding: 150px 300px;
+    background: url(loading.gif) no-repeat 0 50%;
+}
